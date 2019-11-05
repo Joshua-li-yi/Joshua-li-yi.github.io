@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="移动业务大厅JAVA实现 基本介绍 这是小J实现的第一个流程比较完整的JAVA小程序 有什么不正确的地方请各位大大指正 题目要要求 此移动业务大厅使用的编译环境为IntelliJ IDEA Community Edition  2018.2.5 一下是开发此移动业务大厅的步骤  搭建基本的框架  用户注册  使用嗖嗖  用户登录  本月账单查询  剩余套餐余量查询  打印消费清单  套餐变更  话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动业务大厅JAVA实现">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E7%A7%BB%E5%8A%A8%E4%B8%9A%E5%8A%A1%E5%A4%A7%E5%8E%85JAVA%E5%AE%9E%E7%8E%B0&#x2F;index.html">
+<meta property="og:site_name" content="Joshua&#39;s blogs">
+<meta property="og:description" content="移动业务大厅JAVA实现 基本介绍 这是小J实现的第一个流程比较完整的JAVA小程序 有什么不正确的地方请各位大大指正 题目要要求 此移动业务大厅使用的编译环境为IntelliJ IDEA Community Edition  2018.2.5 一下是开发此移动业务大厅的步骤  搭建基本的框架  用户注册  使用嗖嗖  用户登录  本月账单查询  剩余套餐余量查询  打印消费清单  套餐变更  话">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;JAVA%E6%8A%A5%E5%91%8A383.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps2.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps3.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps4.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps5.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps6.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps7.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps8.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps9.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps10.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps11.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps12.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps14.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224312813.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image006.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224645748.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224658081.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224719589.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224726189.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224736100.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224750041.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224758658.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224808205.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224846493.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224853862.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224907004.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224914913.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224932689.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image006.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image008.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image010.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225003366.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225011262.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225027831.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225035219.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225042360.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225120438.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225534818.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225548312.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225557239.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225607456.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225614637.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image006.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225652656.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225700357.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225724070.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225731452.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225737422.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225744891.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225751649.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225800297.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225809559.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225820379.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225826636.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225834535.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225844729.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225851333.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225927575.png">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image002.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image004.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image006.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image008.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image010.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image012.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image014.jpg">
+<meta property="og:image" content="file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;ADMINI~1&#x2F;AppData&#x2F;Local&#x2F;Temp&#x2F;msohtmlclip1&#x2F;01&#x2F;clip_image016.jpg">
+<meta property="og:updated_time" content="2019-11-05T14:14:08.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;JAVA%E6%8A%A5%E5%91%8A383.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/05/移动业务大厅JAVA实现/"/>
+
+
+
+
+
+  <title>移动业务大厅JAVA实现 | Joshua's blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Joshua-li-yi/Joshua-li-yi.github.io.git" target="_blank" rel="noopener"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_gray_6d6d6d.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joshua's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/%E7%A7%BB%E5%8A%A8%E4%B8%9A%E5%8A%A1%E5%A4%A7%E5%8E%85JAVA%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李毅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joshua's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动业务大厅JAVA实现</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T21:01:32+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>移动业务大厅JAVA实现</strong></p>
+<p><strong>基本介绍</strong></p>
+<p>这是小J实现的第一个流程比较完整的JAVA小程序</p>
+<p>有什么不正确的地方请各位大大指正</p>
+<p><strong>题目要要求</strong></p>
+<p>此移动业务大厅使用的编译环境为IntelliJ IDEA Community Edition </p>
+<p>2018.2.5</p>
+<p>一下是开发此移动业务大厅的步骤</p>
+<ol>
+<li><p><strong>搭建基本的框架</strong></p>
+</li>
+<li><p><strong>用户注册</strong></p>
+</li>
+<li><p><strong>使用嗖嗖</strong></p>
+</li>
+<li><p><strong>用户登录</strong></p>
+</li>
+<li><p><strong>本月账单查询</strong></p>
+</li>
+<li><p><strong>剩余套餐余量查询</strong></p>
+</li>
+<li><p><strong>打印消费清单</strong></p>
+</li>
+<li><p><strong>套餐变更</strong></p>
+</li>
+<li><p><strong>话费充值</strong></p>
+</li>
+<li><p><strong>查看资费说明</strong></p>
+</li>
+<li><p><strong>办理退网</strong></p>
+</li>
+<li><p><strong>其他细节</strong></p>
+</li>
+<li><p><strong>整体效果展示</strong></p>
+</li>
+</ol>
+<p>一、基本框架</p>
+<p>本次作业可分为大致可以分为13个部分，首先基本框架是基础</p>
+<p>基本框架主要由类ServePackage<br>TalkPackage,NetPackage,SuperPackage,MobileCard，ConsumeInfo,Scene ,<br>MainMenu, SubMain CardUtil</p>
+<p>以及接口CallService，NetService，SendService组成</p>
+<p>基本的代码如下</p>
+<p> <img src="/.com//JAVA%E6%8A%A5%E5%91%8A383.png" alt="JAVA报告383"></p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps2.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps3.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps4.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps5.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps6.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps7.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps8.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps9.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps10.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps11.jpg" alt="img"> </p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps12.jpg" alt="img"> </p>
+<p>运行时的主界面如下</p>
+<p><img src="file:///C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5Cksohtml4784%5Cwps14.jpg" alt="img"></p>
+<p>二、用户注册</p>
+<p>用注册运行之后的界面如下</p>
+<p> <img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224312813.png" alt="image-20191101224312813"></p>
+<p>用户注册分为</p>
+<ol>
+<li><p><strong>由主菜单过度到用户注册界面</strong></p>
+</li>
+<li><p><strong>选择卡号</strong></p>
+</li>
+<li><p><strong>选择套餐</strong></p>
+</li>
+<li><p><strong>姓名和密码基本信息的输入</strong></p>
+</li>
+<li><p><strong>预存话费</strong></p>
+</li>
+<li><p><strong>和最后的输出</strong></p>
+</li>
+</ol>
+<p><strong>六个部分的细节如下</strong></p>
+<p><strong>1.有主菜单过度到用户注册界面</strong></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p>通过在主菜单的构造函数中写入函数，完成在创建主菜单对象的时候打印主菜单的操作。</p>
+<p>然后使用了swith语句，以及Scanner结合type参数完成了主菜单到用户注册界面的过渡。</p>
+<p>之后又通过递归函数实现了可以使用户完成了用户注册之后返回到主菜单的操作。</p>
+<p><strong>2选择卡号</strong></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>选择卡号的操作中通过创建carNum和result数组以及使用随机数random实现了卡号的选择</p>
+<p>最后又通过判定在已有的号码库中搜索，来实现同一个卡号不能同时注册的功能，又使用了函数递归让用户再次进行选择。</p>
+<p><strong>3套餐的选择</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224645748.png" alt="image-20191101224645748"></p>
+<p>通过函数的多态性质实现了卡的套餐选择。</p>
+<p><strong>4姓名和密码基本信息的输入</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224658081.png" alt="image-20191101224658081"></p>
+<p>由Scanner实现此功能</p>
+<p><strong>5预存话费</strong></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>在该方法外又增加了一个方法fee实现了对输入的预存金额是否满足基本的套餐需求的判定。</p>
+<p>输出效果为：</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224719589.png" alt="image-20191101224719589"></p>
+<p><strong>6最后的输出</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224726189.png" alt="image-20191101224726189"></p>
+<p>在此卡之前没有注册过的情况下，将其放入map再通过System.out.println函数输出。</p>
+<p>若已进行过注册则提示用户该卡号已注册，需要重新选择，并使用函数递归使其再次选择。</p>
+<p>三、使用嗖嗖</p>
+<p>使用嗖嗖的界面如下</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224736100.png" alt="image-20191101224736100"></p>
+<p>使用嗖嗖功能的实现分为以下几个部分</p>
+<ol>
+<li><p><strong>6个场景的设定</strong></p>
+</li>
+<li><p><strong>随机产生一个场景进行消费</strong></p>
+</li>
+<li><p><strong>某场景下的使用细节</strong></p>
+</li>
+<li><p><strong>嗖嗖功能的退出</strong></p>
+</li>
+</ol>
+<p><strong>1 6个场景的设定</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224750041.png" alt="image-20191101224750041"></p>
+<p>通过Scene类设定了6个场合</p>
+<p><strong>2 随机生成一个场景</strong></p>
+<p>!<img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224758658.png" alt="image-20191101224758658"></p>
+<p>通过random和switch以及函数递归来实现场景的随机生成</p>
+<p>当该卡的套餐支持本项消费时则更改用户数据，以及添加消费记录</p>
+<p>若用户的套餐余量充足，则不扣除当前余额</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224808205.png" alt="image-20191101224808205"></p>
+<p>若用户的套餐余量不足，则按超出套餐资费计费，扣除当前的余额</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>若用户的余额不足则退出本次消费，并提示用户充值</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224846493.png" alt="image-20191101224846493"></p>
+<p>若用户的套餐不支持此项消费则提示用户退出并重新生成消费场景（使用递归函数完成此操作）</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224853862.png" alt="image-20191101224853862"></p>
+<p>将用户的消费信息放到list当中，并提示用户已经添加一条消费记录</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224907004.png" alt="image-20191101224907004"></p>
+<p>最后将用户的消费信息和用户的手机号放到map中容易进行后期的检索</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224914913.png" alt="image-20191101224914913"></p>
+<p><strong>使用情况</strong></p>
+<p>注册</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img">   </p>
+<p>消费前后对比</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101224932689.png" alt="image-20191101224932689"></p>
+<p>不支持此项消费</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p>再次对比</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg" alt="img"></p>
+<p>余额不足提示充值</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"></p>
+<p>四、用户登录</p>
+<p>用户登录分为</p>
+<ol>
+<li><p><strong>用户的卡号和密码的验证</strong></p>
+</li>
+<li><p><strong>以及进入用户菜单界面</strong></p>
+</li>
+</ol>
+<p><strong>1用户的卡号和密码的验证</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225003366.png" alt="image-20191101225003366"></p>
+<p>通过使用 map函数的containKey函数来判断此用户是否注册</p>
+<p>以及使用字符串的equals函数来判断输入的密码和注册时的密码是否相同</p>
+<p>若手机号有误则提示重新输入</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225011262.png" alt="image-20191101225011262"></p>
+<p>若密码输入有误则提示重新输入</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225027831.png" alt="image-20191101225027831"></p>
+<p>登录后页面如下图</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225035219.png" alt="image-20191101225035219"></p>
+<p>五、本月账单查询</p>
+<p>本月账单查询运行结果如下：</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225042360.png" alt="image-20191101225042360"></p>
+<p>DecimalFormat类来实现保留一位小数</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225120438.png" alt="image-20191101225120438"></p>
+<p>然后输出了套餐月资费</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">套餐固定资费和超出套餐使用费用总和</span><br><span class="line"></span><br><span class="line">```合计：\&quot;+con\_format.format(a.serPackage.price+a.comsumeAmount)+\&quot;元</span><br></pre></td></tr></table></figure>
+
+<p>以及账户余额</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">六、套餐余量查询</span><br><span class="line"></span><br><span class="line">运行界面如下</span><br><span class="line"></span><br><span class="line">![image-20191101225225387](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191101225225387.png)</span><br><span class="line"></span><br><span class="line">使用了DecimalFormat类来实现保留一位小数</span><br><span class="line"></span><br><span class="line">![image-20191101225333788](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20191101225333788.png)</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">if(a.serPackage instanceof TalkPackage)&#123;&#125;</span><br><span class="line">if(a.serPackage instanceof NetPackage)&#123;&#125;</span><br><span class="line">if(a.serPackage instanceof SuperPackage)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过instanceof来判断此卡的套餐是哪个</p>
+<p>由此分别给出不同的套餐余量</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>七、打印消费详单</p>
+<p>打印消费详单运行界面如下</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225534818.png" alt="image-20191101225534818"></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225548312.png" alt="image-20191101225548312"></p>
+<p>打印消费详单分为</p>
+<ol>
+<li><p><strong>将list中的消费信息提取出来</strong></p>
+</li>
+<li><p><strong>将消费信息导入到文本中</strong></p>
+</li>
+</ol>
+<p><strong>两部分的细节如下</strong></p>
+<p><strong>1 将list中的消费信息提取出来</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225557239.png" alt="image-20191101225557239"></p>
+<p>通过list中的size函数结合for循环将该卡中的消费信息提取出来</p>
+<p><strong>2使用文件的IO</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225607456.png" alt="image-20191101225607456"></p>
+<p>通过exists（）函数实现了提示文件创建成功的信息</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225614637.png" alt="image-20191101225614637"></p>
+<p>又使用了FileWriter类将其写入文本文件中</p>
+<p>最后关闭文件</p>
+<p>八、套餐变更</p>
+<p>运行界面如下</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p>套餐变更功能的实现分为</p>
+<p>判断用户当前的套餐类型</p>
+<p>相同则输出</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>不同的话要是用户的余额足够则扣费，并清零原数据</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225652656.png" alt="image-20191101225652656"></p>
+<p>否则</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225700357.png" alt="image-20191101225700357"></p>
+<p>九、话费充值</p>
+<p>运行界面如下：</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225724070.png" alt="image-20191101225724070"></p>
+<p>先判断输入的手机号是否正确</p>
+<p>如果正确则修改数据完成充值</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225731452.png" alt="image-20191101225731452"></p>
+<p>如果不正确则提示重新输入</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225737422.png" alt="image-20191101225737422"></p>
+<p>10、查看资费说明</p>
+<p>运行界面</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225744891.png" alt="image-20191101225744891"></p>
+<p>资费说明的输入和输出分为两部分文件的输入和输出</p>
+<p>文件的输入</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225751649.png" alt="image-20191101225751649"></p>
+<p>通过File创建文件</p>
+<p>并通过FileWriter写入字符串</p>
+<p>文件内容的读取</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225800297.png" alt="image-20191101225800297"></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225809559.png" alt="image-20191101225809559"></p>
+<p>由BufferedReader类和FileReader类通过逐行方式输出文件内容，并显示在系统上</p>
+<p>十一、办理退网</p>
+<p>运行界面如下</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225820379.png" alt="image-20191101225820379"></p>
+<p>办理退网后</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225826636.png" alt="image-20191101225826636"></p>
+<p>通过map中的remove函数清除此卡的信息</p>
+<p>并显示退网成功</p>
+<p>十二、其他细节</p>
+<p><strong>在用户菜单中通过其他键返回上一级</strong></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225834535.png" alt="image-20191101225834535"></p>
+<p>通过在switch语句中default块儿写入主菜单的构造函数来实现此功能</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225844729.png" alt="image-20191101225844729"></p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225851333.png" alt="image-20191101225851333"></p>
+<p><strong>在每一步增加了一个输入任意数字返回当前主菜单的操作</strong></p>
+<p>实现了可以对界面进行重复操作的功能</p>
+<p>运行效果如下</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>代码实现为</p>
+<p><img src="/.com//C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191101225927575.png" alt="image-20191101225927575"></p>
+<p>通过判断输入以及函数递归实现此功能</p>
+<p><strong>退出系统</strong></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p>使用System.exit可以实现JAVA虚拟机的退出</p>
+<p>十三、整体效果展示</p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p><img src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image016.jpg" alt="img"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/29/newpapername/" rel="next" title="newpapername">
+                <i class="fa fa-chevron-left"></i> newpapername
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/05/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">李毅</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李毅</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
