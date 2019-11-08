@@ -79,12 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joshua&#39;s blogs">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="MATLAB求解线性规划问题问题1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？  问题分析x1甲种产品的件数，x2乙种产品的件数 max y=80x1+125x2  （该厂所获得的的利润） 8x1+5x2&amp;lt;=3500  （所耗费的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB—线性规划问题求解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;09&#x2F;matlab-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Joshua&#39;s blogs">
+<meta property="og:description" content="MATLAB求解线性规划问题问题1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？  问题分析x1甲种产品的件数，x2乙种产品的件数 max y=80x1+125x2  （该厂所获得的的利润） 8x1+5x2&amp;lt;=3500  （所耗费的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191109034314.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191109034734.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191109034955.png">
+<meta property="og:updated_time" content="2019-11-08T19:59:49.239Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191109034314.png">
 
 
 
@@ -114,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/09/matlab-线性规划问题求解/"/>
 
 
 
 
 
-  <title>Joshua's blogs</title>
+  <title>MATLAB—线性规划问题求解 | Joshua's blogs</title>
   
 
 
@@ -139,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -223,163 +229,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/09/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92%E4%B9%8B%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%8A%A0%E5%BC%BA%E7%89%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="李毅">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Joshua's blogs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/09/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92%E4%B9%8B%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%8A%A0%E5%BC%BA%E7%89%88/" itemprop="url">函数递归之斐波那契数列加强版</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-09T03:54:09+08:00">
-                2019-11-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/c-%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">c++算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="函数递归之斐波那契数列加强版1"><a href="#函数递归之斐波那契数列加强版1" class="headerlink" title="函数递归之斐波那契数列加强版1"></a>函数递归之斐波那契数列加强版1</h1><p><strong>背景</strong></p>
-<p>在函数递归问题中一个典型问题是求解斐波那契数列</p>
-<p>但是函数递归会面临着资源的大量消耗问题</p>
-<p>按照一种最为基本的写法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Fib</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a &lt; <span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> Fib(a - <span class="number">1</span>) + Fib(a - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">if</span> (n &lt;=<span class="number">0</span>||n&gt;<span class="number">90</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"WORNG"</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;Fib(n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在n&lt;=50左右时，大概等几秒钟是可以得出答案的</p>
-<p>然鹅一旦太大的话……</p>
-<p>你也许就得等上老一会儿</p>
-<p>下面是对该算法的改进</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Fibo</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span>&amp;,<span class="keyword">long</span> <span class="keyword">long</span>&amp;,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">if</span> (n &lt;=<span class="number">0</span>||n&gt;<span class="number">90</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"WORNG"</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;Fibo(a,b,n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">Fibo</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> &amp;a,<span class="keyword">long</span> <span class="keyword">long</span> &amp;b,<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> temp1[<span class="number">90</span>],temp2[<span class="number">90</span>];</span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (n &gt; <span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp1[j] = a + b;</span><br><span class="line">			temp2[j++] = a;</span><br><span class="line">			<span class="keyword">return</span> Fibo(temp1[j<span class="number">-1</span>],temp2[j<span class="number">-1</span>], n - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样写就可极大的缩短时间啦！！！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -409,9 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/09/matlab-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" itemprop="url">MATLAB—线性规划问题求解</a></h1>
+          <h1 class="post-title" itemprop="name headline">MATLAB—线性规划问题求解</h1>
         
 
         <div class="post-meta">
@@ -483,9 +333,7 @@
       
 
       
-        
-          
-            <h1 id="MATLAB求解线性规划问题"><a href="#MATLAB求解线性规划问题" class="headerlink" title="MATLAB求解线性规划问题"></a>MATLAB求解线性规划问题</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？</p>
+        <h1 id="MATLAB求解线性规划问题"><a href="#MATLAB求解线性规划问题" class="headerlink" title="MATLAB求解线性规划问题"></a>MATLAB求解线性规划问题</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？</p>
 <p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191109034314.png" alt></p>
 <h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>x1甲种产品的件数，x2乙种产品的件数</p>
 <p>max y=80<em>x1+125</em>x2  （该厂所获得的的利润）</p>
@@ -523,8 +371,6 @@
 
 <p>当企业选择1,2,3,4工程时，企业利润最大，为95千元。</p>
 
-          
-        
       
     </div>
     
@@ -541,12 +387,28 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/09/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92%E4%B9%8B%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%8A%A0%E5%BC%BA%E7%89%88/" rel="prev" title="函数递归之斐波那契数列加强版">
+                函数递归之斐波那契数列加强版 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -556,10 +418,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -567,6 +430,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -587,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -649,6 +525,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB求解线性规划问题"><span class="nav-number">1.</span> <span class="nav-text">MATLAB求解线性规划问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MATLAB代码如下"><span class="nav-number">1.1.1.0.1.</span> <span class="nav-text">MATLAB代码如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析-1"><span class="nav-number">1.1.2.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MATLAB代码如下-1"><span class="nav-number">1.1.2.0.1.</span> <span class="nav-text">MATLAB代码如下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题分析-2"><span class="nav-number">1.1.3.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MATLAB代码如下-2"><span class="nav-number">1.1.3.0.1.</span> <span class="nav-text">MATLAB代码如下</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -796,6 +688,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
