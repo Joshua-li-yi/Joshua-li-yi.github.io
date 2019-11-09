@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Qt*.ui界面文件对应的ui_*.h文件的作用</title>
+    <url>/2019/11/09/Qt-ui%E7%95%8C%E9%9D%A2%E6%96%87%E4%BB%B6%E5%AF%B9%E5%BA%94%E7%9A%84ui-h%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="研究-ui界面文件对应的ui-h文件的作用"><a href="#研究-ui界面文件对应的ui-h文件的作用" class="headerlink" title="研究.ui界面文件对应的ui_.h文件的作用"></a>研究<em>.ui界面文件对应的ui_</em>.h文件的作用</h3><p>ui_<em>.h 是在对 *.ui 文件编译后生成的一个文件，ui_</em>.h 会出现在编译后的目录下，或与 *.ui 同目录（与项目的 shadow build 编译设置有关）。</p>
+<h4 id="查看-ui-h-文件的内容，发现它主要做了以下的一些工作："><a href="#查看-ui-h-文件的内容，发现它主要做了以下的一些工作：" class="headerlink" title="查看 ui_*.h 文件的内容，发现它主要做了以下的一些工作："></a>查看 ui_*.h 文件的内容，发现它主要做了以下的一些工作：</h4><p>1.定义了一个类 Ui_*，用于封装可视化设计的界面。</p>
+<p>2.自动生成了界面各个组件的类成员变量定义。在 public 部分为界面上每个组件定义了一个指针变量，变量的名称就是设置的相关控件的名称。比如，在窗体上放置了一个 QLabel 和一个 QPushButton 并命名后，自动生成的定义是：</p>
+<figure class="highlight qt"><table><tr><td class="code"><pre><span class="line">QLabel*LabDemo;</span><br><span class="line"></span><br><span class="line">QPushButton*btnClos;</span><br></pre></td></tr></table></figure>
+
+<p>3.定义了 setupUi() 函数，这个函数用于创建各个界面组件，并设置其位置、大小、文字内容、字体等属性，设置信号与槽的关联。setupUi() 函数体的第一部分是根据可视化设计的界面内容，用 C++ 代码创建界面上各组件，并设置其属性。<br>接下来，setupUi() 调用了函数 retranslateUi(Widget)，用来设置界面各组件的文字内容属性，如标签的文字、按键的文字、窗体的标题等。将界面上的文字设置的内容独立出来作为一个函数 retranslateUi()。</p>
+<p>setupUi()函数的第三部分是设置信号于槽的关联，本文件中有一下两行</p>
+<figure class="highlight qt"><table><tr><td class="code"><pre><span class="line"><span class="attribute">QObject</span>::connect(btnClose,SIGNAL(clicked()),Widget,SLOT(close()))</span><br><span class="line">;</span><br><span class="line"><span class="attribute">QMetaObject</span>::connectSlotsByName(Widget);</span><br></pre></td></tr></table></figure>
+
+<p>第1 行是调用 connect() 函数，将在 UI 设计器里设置的信号与槽的关联转换为语句。这里是将 btnClose 按键的 clicked() 信号与窗体 Widget 的 close() 槽函数关联起来，就是在图 4 中设置的信号与槽的关联的程序语句实现。这样，当单击 btnClose 按钮时，就会执行 Widget 的 close() 槽函数，而 close() 槽函数的功能是关闭窗口。<br>第 2 行是设置槽函数的关联方式，用于将 UI 设计器自动生成的组件信号的槽函数与组件信号相关联。<br>所以，在Widget 的构造函数里调用 ui-&gt;setupUI(this)，就实现了窗体上组件的创建、属性设置、信号与槽的关联。</p>
+<p>定义 namespace Ui，并定义一个从Ui_Widget 继承的类Widget。 </p>
+<figure class="highlight qt"><table><tr><td class="code"><pre><span class="line">namespace <span class="title">Ui</span>&#123;</span><br><span class="line">class <span class="attribute">Widget</span>:<span class="attribute">public Ui Widget&#123;&#125;</span></span><br><span class="line"><span class="attribute">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>ui_widget.h 文件里实现界面功能的类是 Ui_Widget。再定义一个类 Widget 从 Ui_Widget 继承而来，并定义在 namespace Ui 里，这样 Ui:: Widget 与 widget.h 里的类 Widget 同名，但是用 namespace 区分开来。所以，界面的 Ui:: Widget 类与文件 widget.h 里定义的 Widget 类实际上是两个类，但是设计的程序员对 Qt 的处理让用户感觉不到 Ui:: Widget 类的存在。</p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数递归之斐波那契数列加强版</title>
     <url>/2019/11/09/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92%E4%B9%8B%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%8A%A0%E5%BC%BA%E7%89%88/</url>
     <content><![CDATA[<h1 id="函数递归之斐波那契数列加强版1"><a href="#函数递归之斐波那契数列加强版1" class="headerlink" title="函数递归之斐波那契数列加强版1"></a>函数递归之斐波那契数列加强版1</h1><p><strong>背景</strong></p>
