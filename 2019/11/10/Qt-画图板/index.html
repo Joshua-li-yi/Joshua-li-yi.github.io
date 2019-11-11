@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Qt," />
 
 
 
@@ -87,12 +87,37 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Joshua&#39;s blogs">
-<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;archives&#x2F;2019&#x2F;10&#x2F;index.html">
+<meta name="description" content="Qt画图板程序的实现问题描述 Qt环境Qt Creator 4.8.2 技术细节画图板程序的实现分为以下三个部分，  画图板界面的设计  界面和后台程序之间信号的传递  画图板功能程序的具体实现    画图板界面的设计  利用Qt design设计画图板，包括，菜单栏，工具栏和用户窗口 具体界面如下：  绘制图形可以绘制选择，直线，矩形，和圆  选择涂鸦即可绘制自由线条 可以选择，画笔的粗细，颜色">
+<meta name="keywords" content="Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt-画图板">
+<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2019&#x2F;11&#x2F;10&#x2F;Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF&#x2F;index.html">
 <meta property="og:site_name" content="Joshua&#39;s blogs">
+<meta property="og:description" content="Qt画图板程序的实现问题描述 Qt环境Qt Creator 4.8.2 技术细节画图板程序的实现分为以下三个部分，  画图板界面的设计  界面和后台程序之间信号的传递  画图板功能程序的具体实现    画图板界面的设计  利用Qt design设计画图板，包括，菜单栏，工具栏和用户窗口 具体界面如下：  绘制图形可以绘制选择，直线，矩形，和圆  选择涂鸦即可绘制自由线条 可以选择，画笔的粗细，颜色">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191110225749.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111142852.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;a145.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111142945.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143015.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143100.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143158.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143227.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143258.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143328.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143407.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143436.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143505.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143538.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;a1009.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143723.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143801.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143827.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143855.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;a1215.png">
+<meta property="og:updated_time" content="2019-11-11T06:40:19.474Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191110225749.png">
 
 
 
@@ -122,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://lyvoid.site/archives/2019/10/"/>
+  <link rel="canonical" href="http://lyvoid.site/2019/11/10/Qt-画图板/"/>
 
 
 
 
 
-  <title>归档 | Joshua's blogs</title>
+  <title>Qt-画图板 | Joshua's blogs</title>
   
 
 
@@ -147,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,74 +290,282 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 5 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joshua's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/10/29/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Qt-画图板</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-10-29T18:57:35+08:00"
-              content="2019-10-29" >
-          10-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-10T22:52:16+08:00">
+                2019-11-10
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/" class="leancloud_visitors" data-flag-title="Qt-画图板">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="Qt画图板程序的实现"><a href="#Qt画图板程序的实现" class="headerlink" title="Qt画图板程序的实现"></a>Qt画图板程序的实现</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191110225749.png" alt></p>
+<h4 id="Qt环境"><a href="#Qt环境" class="headerlink" title="Qt环境"></a>Qt环境</h4><p>Qt Creator 4.8.2</p>
+<h4 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h4><p>画图板程序的实现分为以下三个部分，</p>
+<ol>
+<li><p>画图板界面的设计</p>
+</li>
+<li><p>界面和后台程序之间信号的传递</p>
+</li>
+<li><p>画图板功能程序的具体实现</p>
+</li>
+</ol>
+<ol>
+<li><strong>画图板界面的设计</strong></li>
+</ol>
+<p>利用Qt design设计画图板，包括，菜单栏，工具栏和用户窗口</p>
+<p>具体界面如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111142852.png" alt></p>
+<p>绘制图形可以绘制选择，直线，矩形，和圆</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a145.png" alt></p>
+<p>选择涂鸦即可绘制自由线条</p>
+<p>可以选择，画笔的粗细，颜色和画笔的样式，也可以选择画刷的颜色和样式</p>
+<p>二．<strong>界面和后台程序之间信号的传递</strong></p>
+<p>在菜单栏的选择中使用了，connect函数实现信号的传递，使用action中自带的triggered()信号，来获得所点击的内容</p>
+<p>具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111142945.png" alt></p>
+<p>槽的定义为：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143015.png" alt></p>
+<p>graph在头文件中的定义为：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143100.png" alt></p>
+<p>画笔的粗细值的传递的具体代码如下：</p>
+<figure class="highlight qt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui-\&gt;spinBox-\&gt;setMinimum(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143158.png" alt></p>
+<p>画笔的颜色和画笔的样式，画刷的颜色和样式具体的实现代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143227.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143258.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143328.png" alt></p>
+<p>先使用了combox中的activated槽函数，将下拉列表的选择项提取出来，再一一对应对应的颜色与格式。</p>
+<p>三 <strong>画图板功能程序的具体实现</strong></p>
+<p>使用鼠标press，move，和release函数来获得鼠标的状态，并将状态记录下来</p>
+<p>具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143407.png" alt></p>
+<p>isDrawing 用来记录画板是否处于绘画状态</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143436.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143505.png" alt></p>
+<p>问题及解决</p>
+<ol>
+<li></li>
+</ol>
+<p><strong>问题描述</strong>：在涂鸦功能的代码实现上，发现总是只能显示最终所画的两个点，而不能实现，鼠标点击之后路过哪里就在哪里画。</p>
+<p><strong>问题解决</strong>：经过对代码的分析发现，造成上面的原因是，直接套用了上面画矩形和圆的双缓冲机制，而忽略了，双缓冲机制，是为了避免拖拽残影而将最终的tempix上的状态复制到pix画板上，所有，应该实时将涂鸦的内容复制到pix画板上，所以最终加了</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143538.png" alt></p>
+<p>pix=tempix：这句</p>
+<p>最后解决了，涂鸦的路径绘制问题</p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a1009.png" alt></p>
+<p>2.</p>
+<p><strong>问题描述</strong>：无法在画板上进行图形的连续绘制，每次只能在画板上画一个图形，再画另一个图形之后，就会更新前面所画的图形</p>
+<p><strong>问题解决</strong>：分析绘制图形的代码发现，应该将</p>
+<p>if(isDrawing)放在if(graph==1)里面可以解决上述问题，且只有一个</p>
+<p>if(!isDrawing)</p>
+<p>pix=tempix;</p>
+<p>这样既可实现连续绘制，因为如果有多个</p>
+<p>if(!isDrawing)</p>
+<p>pix=tempix;</p>
+<p>时，每次绘完之后他就会重启一个画板。</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143723.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143801.png" alt></p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143827.png" alt></p>
+<p>3<strong>.</strong></p>
+<p><strong>问题描述</strong>：无法更改画笔，画刷，画笔和画刷的信号传递过程没有设计好</p>
+<p>开始时直接在构造函数里写combox的信号与槽，发现无法完成画笔和槽之间的切换。</p>
+<p><strong>问题解决</strong>：经过查阅资料后，明白了combox和spinbox的使用细节。之后直接调用了他们的相关槽函数，具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143855.png" alt></p>
+<p>使用了combox的activated槽函数，和spinbox的editingfinished槽函数解决了问题。</p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a1215.png" alt></p>
+
+      
     </div>
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	<div>
+      
+        
+      
+	</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Qt/" rel="tag"># Qt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/09/Qt-ui%E7%95%8C%E9%9D%A2%E6%96%87%E4%BB%B6%E5%AF%B9%E5%BA%94%E7%9A%84ui-h%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/" rel="next" title="Qt*.ui界面文件对应的ui_*.h文件的作用">
+                <i class="fa fa-chevron-left"></i> Qt*.ui界面文件对应的ui_*.h文件的作用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -340,6 +573,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -360,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -431,6 +680,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt画图板程序的实现"><span class="nav-number">1.</span> <span class="nav-text">Qt画图板程序的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Qt环境"><span class="nav-number">1.1.1.</span> <span class="nav-text">Qt环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术细节"><span class="nav-number">1.1.2.</span> <span class="nav-text">技术细节</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -582,6 +847,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

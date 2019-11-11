@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Qt-画图板</title>
+    <url>/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/</url>
+    <content><![CDATA[<h2 id="Qt画图板程序的实现"><a href="#Qt画图板程序的实现" class="headerlink" title="Qt画图板程序的实现"></a>Qt画图板程序的实现</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191110225749.png" alt></p>
+<h4 id="Qt环境"><a href="#Qt环境" class="headerlink" title="Qt环境"></a>Qt环境</h4><p>Qt Creator 4.8.2</p>
+<h4 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h4><p>画图板程序的实现分为以下三个部分，</p>
+<ol>
+<li><p>画图板界面的设计</p>
+</li>
+<li><p>界面和后台程序之间信号的传递</p>
+</li>
+<li><p>画图板功能程序的具体实现</p>
+</li>
+</ol>
+<ol>
+<li><strong>画图板界面的设计</strong></li>
+</ol>
+<p>利用Qt design设计画图板，包括，菜单栏，工具栏和用户窗口</p>
+<p>具体界面如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111142852.png" alt></p>
+<p>绘制图形可以绘制选择，直线，矩形，和圆</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a145.png" alt></p>
+<p>选择涂鸦即可绘制自由线条</p>
+<p>可以选择，画笔的粗细，颜色和画笔的样式，也可以选择画刷的颜色和样式</p>
+<p>二．<strong>界面和后台程序之间信号的传递</strong></p>
+<p>在菜单栏的选择中使用了，connect函数实现信号的传递，使用action中自带的triggered()信号，来获得所点击的内容</p>
+<p>具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111142945.png" alt></p>
+<p>槽的定义为：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143015.png" alt></p>
+<p>graph在头文件中的定义为：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143100.png" alt></p>
+<p>画笔的粗细值的传递的具体代码如下：</p>
+<figure class="highlight qt"><table><tr><td class="code"><pre><span class="line">ui-\&gt;spinBox-\&gt;setMinimum(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143158.png" alt></p>
+<p>画笔的颜色和画笔的样式，画刷的颜色和样式具体的实现代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143227.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143258.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143328.png" alt></p>
+<p>先使用了combox中的activated槽函数，将下拉列表的选择项提取出来，再一一对应对应的颜色与格式。</p>
+<p>三 <strong>画图板功能程序的具体实现</strong></p>
+<p>使用鼠标press，move，和release函数来获得鼠标的状态，并将状态记录下来</p>
+<p>具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143407.png" alt></p>
+<p>isDrawing 用来记录画板是否处于绘画状态</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143436.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143505.png" alt></p>
+<p>问题及解决</p>
+<ol>
+<li></li>
+</ol>
+<p><strong>问题描述</strong>：在涂鸦功能的代码实现上，发现总是只能显示最终所画的两个点，而不能实现，鼠标点击之后路过哪里就在哪里画。</p>
+<p><strong>问题解决</strong>：经过对代码的分析发现，造成上面的原因是，直接套用了上面画矩形和圆的双缓冲机制，而忽略了，双缓冲机制，是为了避免拖拽残影而将最终的tempix上的状态复制到pix画板上，所有，应该实时将涂鸦的内容复制到pix画板上，所以最终加了</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143538.png" alt></p>
+<p>pix=tempix：这句</p>
+<p>最后解决了，涂鸦的路径绘制问题</p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a1009.png" alt></p>
+<p>2.</p>
+<p><strong>问题描述</strong>：无法在画板上进行图形的连续绘制，每次只能在画板上画一个图形，再画另一个图形之后，就会更新前面所画的图形</p>
+<p><strong>问题解决</strong>：分析绘制图形的代码发现，应该将</p>
+<p>if(isDrawing)放在if(graph==1)里面可以解决上述问题，且只有一个</p>
+<p>if(!isDrawing)</p>
+<p>pix=tempix;</p>
+<p>这样既可实现连续绘制，因为如果有多个</p>
+<p>if(!isDrawing)</p>
+<p>pix=tempix;</p>
+<p>时，每次绘完之后他就会重启一个画板。</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143723.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143801.png" alt></p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143827.png" alt></p>
+<p>3<strong>.</strong></p>
+<p><strong>问题描述</strong>：无法更改画笔，画刷，画笔和画刷的信号传递过程没有设计好</p>
+<p>开始时直接在构造函数里写combox的信号与槽，发现无法完成画笔和槽之间的切换。</p>
+<p><strong>问题解决</strong>：经过查阅资料后，明白了combox和spinbox的使用细节。之后直接调用了他们的相关槽函数，具体代码如下：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191111143855.png" alt></p>
+<p>使用了combox的activated槽函数，和spinbox的editingfinished槽函数解决了问题。</p>
+<p>效果展示：</p>
+<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/a1215.png" alt></p>
+]]></content>
+      <categories>
+        <category>Qt</category>
+      </categories>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Qt*.ui界面文件对应的ui_*.h文件的作用</title>
     <url>/2019/11/09/Qt-ui%E7%95%8C%E9%9D%A2%E6%96%87%E4%BB%B6%E5%AF%B9%E5%BA%94%E7%9A%84ui-h%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
     <content><![CDATA[<h3 id="研究-ui界面文件对应的ui-h文件的作用"><a href="#研究-ui界面文件对应的ui-h文件的作用" class="headerlink" title="研究.ui界面文件对应的ui_.h文件的作用"></a>研究<em>.ui界面文件对应的ui_</em>.h文件的作用</h3><p>ui_<em>.h 是在对 *.ui 文件编译后生成的一个文件，ui_</em>.h 会出现在编译后的目录下，或与 *.ui 同目录（与项目的 shadow build 编译设置有关）。</p>
