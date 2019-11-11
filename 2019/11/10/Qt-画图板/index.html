@@ -115,7 +115,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143827.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;20191111143855.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;first_1&#x2F;a1215.png">
-<meta property="og:updated_time" content="2019-11-11T06:40:19.474Z">
+<meta property="og:updated_time" content="2019-11-11T07:25:12.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Joshua-li-yi&#x2F;blog_images&#x2F;master&#x2F;images&#x2F;20191110225749.png">
 
@@ -166,11 +166,16 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 
   
     <script src="/js/cursor/love.min.js"></script>
   
 
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
   
   
     
@@ -516,6 +521,35 @@
 	<div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/">Qt-画图板</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 yi 的个人博客">yi</a></p>
+  <p><span>发布时间:</span>2019年11月10日 - 22:52</p>
+  <p><span>最后更新:</span>2019年11月11日 - 15:25</p>
+  <p><span>原始链接:</span><a href="/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/" title="Qt-画图板">http://lyvoid.site/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2019/11/10/Qt-%E7%94%BB%E5%9B%BE%E6%9D%BF/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
       
 	</div>
     
@@ -740,7 +774,25 @@
 
 
 
-
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>  Sometimes your whole life boils down to one insame move.
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("11/08/2019 23:14:21");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小Y站已经安全运行辽 "+dnum+" 天啦 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
         
 
 
