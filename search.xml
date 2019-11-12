@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>K-近邻算法分析</title>
+    <url>/2019/11/13/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="K—近邻算法分析"><a href="#K—近邻算法分析" class="headerlink" title="K—近邻算法分析"></a>K—近邻算法分析</h1><p>K—近邻算法采用测量不同特征之间的距离方法进行分类</p>
+<p>特点：</p>
+<ul>
+<li><p>对异常值不敏感</p>
+</li>
+<li><p>精度高</p>
+</li>
+<li><p>计算复杂度高</p>
+</li>
+<li><p>空间复杂度高</p>
+</li>
+</ul>
+<p><strong>K—近邻算法的一般流程</strong></p>
+<ol>
+<li><p>收集数据</p>
+</li>
+<li><p>准备数据</p>
+</li>
+<li><p>分析数据</p>
+</li>
+<li><p>测试算法</p>
+</li>
+<li><p>使用算法</p>
+</li>
+</ol>
+<p>示例代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># K近邻算法</span></span><br><span class="line"><span class="comment"># 调用numpy和operator包</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># dataSet数据集合 没有标签</span></span><br><span class="line"><span class="comment"># labels 标签</span></span><br><span class="line"><span class="comment"># k 最近邻近的数目</span></span><br><span class="line"><span class="comment"># inX 分类的输入向量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify0</span><span class="params">(inX, dataSet, labels, k)</span>:</span></span><br><span class="line">    <span class="comment"># 提取数据的特征数量</span></span><br><span class="line">    <span class="comment"># shape[0]提取一维长度</span></span><br><span class="line">    <span class="comment"># shape[1]提取二维长度</span></span><br><span class="line">    dataSetSize = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 使用了欧式距离</span></span><br><span class="line">    diffMat = tile(inX, (dataSetSize, <span class="number">1</span>))-dataSet</span><br><span class="line">    sqDiffMat = diffMat**<span class="number">2</span></span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=<span class="number">1</span>)</span><br><span class="line">    distances = sqDistances**<span class="number">0.5</span></span><br><span class="line">    <span class="comment"># argsort()为大小排序</span></span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        voteIlable = labels[sortedDistIndicies[i]]</span><br><span class="line">        classCount[voteIlable] = classCount.get(voteIlable, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(), </span><br><span class="line">                              key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learing</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用PicGo遇到的坑集合</title>
     <url>/2019/11/12/%E4%BD%BF%E7%94%A8PicGo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h2 id="使用PicGo遇到的坑集合"><a href="#使用PicGo遇到的坑集合" class="headerlink" title="使用PicGo遇到的坑集合"></a>使用PicGo遇到的坑集合</h2><p>我们在写blog的时候很多时候都会上传图片，然鹅光靠一个伴随生成的保存图片的文件夹有时候可能不够方便</p>
