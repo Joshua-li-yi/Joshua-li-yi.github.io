@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HTML基础1</title>
+    <url>/2020/02/21/HTML%E5%9F%BA%E7%A1%801/</url>
+    <content><![CDATA[<h2 id="HTML基础1"><a href="#HTML基础1" class="headerlink" title="HTML基础1"></a>HTML基础1</h2><p>HTML是一种超文本标记语言（英语：HyperText Markup Language，简称：HTML）这语言能用来干嘛嘞，简单来说就是能用来写网页，但是要想真正做出一个比较精美的网页仅仅有HTML是不够滴，需要其他的语言CSS，JS等等，可能还需要用到一些框架比如前端最有名的三大框架Vue,React,Angular,等等而其中有可能用到类似于Webpack的打包工具。</p>
+<p>以下是小J在学习前端的过程中的一些总结和经验分享。</p>
+<p>写前端代码的编译器可以有好多选择，VScode ， IntelliJ IDEA……都可，看自己喜欢用哪一种啦。</p>
+<p>以下代码均用的是 VScode所编写</p>
+<p>要想学明白HTML首先最主要的是明白<strong>标签</strong>的概念，就小J理解来说标签就是类似与C++，python的一句句代码。</p>
+<p>标签大体上可以分为单标签，例如</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span> //链接</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>&gt;</span> //图片</span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span>  //输出一条横线</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>双标签</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span>//头</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span>//身体</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>段落</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>之后是大体了解一下html的框架是啥样的，废话不多说直接上代码</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 整个网页都包裹在一个html标签里 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 在html标签里基本可以分为两大部分head（头），body（身体） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- title是文档的标题，就是在浏览器网址上面的那个标题 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>文档的标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- style 里可以写一些CSS代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- body的内容就是展示在页面上的内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 到此结束 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>ok</p>
+<p>接下来的第三部就是要理解一些常用标签的作用和用法啦</p>
+<p>这里小编推荐两个网站，已经列出了常用的标签和用法</p>
+<ul>
+<li><a href="https://www.runoob.com/html/html-intro.html" target="_blank" rel="noopener">菜鸟教程</a></li>
+<li><a href="https://www.w3school.com.cn/h.asp" target="_blank" rel="noopener">W3school</a></li>
+</ul>
+<p>第四部就是要实际的敲代码了,做一些小的demo。</p>
+<p>这一部分内容下次再讲啦，今天就先写到这里叭</p>
+<p>（悄悄说：小编实在太懒了~~）</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>波士顿矩阵和新波士顿矩阵</title>
     <url>/2020/01/31/%E6%B3%A2%E5%A3%AB%E9%A1%BF%E7%9F%A9%E9%98%B5%E5%92%8C%E6%96%B0%E6%B3%A2%E5%A3%AB%E9%A1%BF%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h2 id="波士顿矩阵和新波士顿矩阵"><a href="#波士顿矩阵和新波士顿矩阵" class="headerlink" title="波士顿矩阵和新波士顿矩阵"></a>波士顿矩阵和新波士顿矩阵</h2><p>在制定公司层战略的时候，BCG矩阵（波士顿矩阵）是一种非常流行的方法，下面咱们就来聊聊波士顿矩阵和他的弟弟新波士顿矩阵叭</p>
