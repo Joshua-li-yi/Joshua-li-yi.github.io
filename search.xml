@@ -1,6 +1,788 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python连接mysql</title>
+    <url>/2020/03/18/python%E8%BF%9E%E6%8E%A5mysql/</url>
+    <content><![CDATA[<h2 id="python-连接mysql"><a href="#python-连接mysql" class="headerlink" title="python 连接mysql"></a>python 连接mysql</h2><br>
+
+<h3 id="1-使用pymysql库"><a href="#1-使用pymysql库" class="headerlink" title="1.使用pymysql库"></a>1.使用<code>pymysql</code>库</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="2-连接数据库"><a href="#2-连接数据库" class="headerlink" title="2.连接数据库"></a>2.连接数据库</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<blockquote>
+<p>host：字符串， MySQL服务器地址</p>
+<p>port：整数 MySQL服务器端口号3306</p>
+<p>user：字符串， 用户名</p>
+<p>password或者passwd：字符串 密码</p>
+<p>db：字符串， 数据库名称</p>
+<p>charset：字符串，连接编码</p>
+</blockquote>
+<br>
+
+<h3 id="3-创建游标对象"><a href="#3-创建游标对象" class="headerlink" title="3.创建游标对象"></a>3.创建游标对象</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cursor = db.cursor()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="4-正常写SQL语句"><a href="#4-正常写SQL语句" class="headerlink" title="4.正常写SQL语句"></a>4.正常写SQL语句</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sql = <span class="string">"SELECT * FROM test1"</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="5-游标执行SQL"><a href="#5-游标执行SQL" class="headerlink" title="5.游标执行SQL"></a>5.游标执行SQL</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cursor.execute(sql)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="6-获取结果并打印"><a href="#6-获取结果并打印" class="headerlink" title="6.获取结果并打印"></a>6.获取结果并打印</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">result = cursor.fetchall()</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> result:</span><br><span class="line">    print(row)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="7-关闭光标并关闭数据库"><a href="#7-关闭光标并关闭数据库" class="headerlink" title="7.关闭光标并关闭数据库"></a>7.关闭光标并关闭数据库</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cursor.close()</span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="SQL常用操作"><a href="#SQL常用操作" class="headerlink" title="SQL常用操作"></a>SQL常用操作</h3><ul>
+<li>创建表</li>
+<li>插入</li>
+<li>查询</li>
+<li>数据库更新</li>
+<li>删除操作</li>
+</ul>
+<br>
+
+<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开数据库连接</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用cursor()方法获取操作游标 </span></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果数据表已经存在使用 execute() 方法删除表。</span></span><br><span class="line">cursor.execute(<span class="string">"DROP TABLE IF EXISTS EMPLOYEE"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据表SQL语句</span></span><br><span class="line">sql = <span class="string">"""CREATE TABLE EMPLOYEE (</span></span><br><span class="line"><span class="string">         FIRST_NAME  CHAR(20) NOT NULL,</span></span><br><span class="line"><span class="string">         LAST_NAME  CHAR(20),</span></span><br><span class="line"><span class="string">         AGE INT,  </span></span><br><span class="line"><span class="string">         SEX CHAR(1),</span></span><br><span class="line"><span class="string">         INCOME FLOAT )"""</span></span><br><span class="line"></span><br><span class="line">cursor.execute(sql)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+ <br>
+
+<h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开数据库连接</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用cursor()方法获取操作游标 </span></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># SQL 插入语句</span></span><br><span class="line">sql = <span class="string">"""INSERT INTO EMPLOYEE(FIRST_NAME,</span></span><br><span class="line"><span class="string">         LAST_NAME, AGE, SEX, INCOME)</span></span><br><span class="line"><span class="string">         VALUES ('Mac', 'Mohan', 20, 'M', 2000)"""</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">   <span class="comment"># 执行sql语句</span></span><br><span class="line">   cursor.execute(sql)</span><br><span class="line">   <span class="comment"># 提交到数据库执行</span></span><br><span class="line">   db.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">   <span class="comment"># Rollback in case there is any error</span></span><br><span class="line">   db.rollback()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开数据库连接</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用cursor()方法获取操作游标 </span></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># SQL 查询语句</span></span><br><span class="line">sql = <span class="string">"SELECT * FROM EMPLOYEE \</span></span><br><span class="line"><span class="string">       WHERE INCOME &gt; %s"</span> % (<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">   <span class="comment"># 执行SQL语句</span></span><br><span class="line">   cursor.execute(sql)</span><br><span class="line">   <span class="comment"># 获取所有记录列表</span></span><br><span class="line">   results = cursor.fetchall()</span><br><span class="line">   <span class="keyword">for</span> row <span class="keyword">in</span> results:</span><br><span class="line">      fname = row[<span class="number">0</span>]</span><br><span class="line">      lname = row[<span class="number">1</span>]</span><br><span class="line">      age = row[<span class="number">2</span>]</span><br><span class="line">      sex = row[<span class="number">3</span>]</span><br><span class="line">      income = row[<span class="number">4</span>]</span><br><span class="line">      <span class="comment"># 打印结果</span></span><br><span class="line">      <span class="keyword">print</span> <span class="string">"fname=%s,lname=%s,age=%s,sex=%s,income=%s"</span> % \</span><br><span class="line">             (fname, lname, age, sex, income )</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">   <span class="keyword">print</span> <span class="string">"Error: unable to fecth data"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="数据库更新"><a href="#数据库更新" class="headerlink" title="数据库更新"></a>数据库更新</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开数据库连接</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用cursor()方法获取操作游标 </span></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># SQL 更新语句</span></span><br><span class="line">sql = <span class="string">"UPDATE EMPLOYEE SET AGE = AGE + 1 WHERE SEX = '%c'"</span> % (<span class="string">'M'</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">   <span class="comment"># 执行SQL语句</span></span><br><span class="line">   cursor.execute(sql)</span><br><span class="line">   <span class="comment"># 提交到数据库执行</span></span><br><span class="line">   db.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">   <span class="comment"># 发生错误时回滚</span></span><br><span class="line">   db.rollback()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开数据库连接</span></span><br><span class="line">db = pymysql.connect(host=<span class="string">'localhost'</span>, port=<span class="number">3316</span>, user=<span class="string">'root'</span>, passwd=<span class="string">''</span>, db=<span class="string">'test'</span>, charset=<span class="string">'utf8mb4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用cursor()方法获取操作游标 </span></span><br><span class="line">cursor = db.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># SQL 删除语句</span></span><br><span class="line">sql = <span class="string">"DELETE FROM EMPLOYEE WHERE AGE &gt; %s"</span> % (<span class="number">20</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">   <span class="comment"># 执行SQL语句</span></span><br><span class="line">   cursor.execute(sql)</span><br><span class="line">   <span class="comment"># 提交修改</span></span><br><span class="line">   db.commit()</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">   <span class="comment"># 发生错误时回滚</span></span><br><span class="line">   db.rollback()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>JS字符串</title>
+    <url>/2020/03/18/JS%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h2 id="JS字符串"><a href="#JS字符串" class="headerlink" title="JS字符串"></a>JS字符串</h2><br>
+
+<h4 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h4><ul>
+<li><p>字符串基本操作</p>
+<ul>
+<li>document.write(str.fontcolor(‘red’));</li>
+<li>document.write(str.fontsize(45));</li>
+<li>document.write(str.sub());</li>
+<li>document.write(str.sup());</li>
+<li>……</li>
+</ul>
+</li>
+<li><p>字符串拼接</p>
+<ul>
+<li>str3.concat(“world”);</li>
+<li>alert(str3+’world’);</li>
+</ul>
+</li>
+<li><p>字符串查找</p>
+<ul>
+<li>str.indexOf(‘h’,3)</li>
+<li>str.lastIndexOf(‘h’,3)</li>
+<li>str.search(/abc/i)</li>
+</ul>
+</li>
+<li><p>字符串替换</p>
+<ul>
+<li>str3.replace(/a/ig,’hhhhhh’)</li>
+</ul>
+</li>
+<li><p>字符串分割</p>
+<ul>
+<li>str.substring(2,4)</li>
+<li>str.split(“ “,3)</li>
+<li>str2.join(“+”)</li>
+</ul>
+</li>
+<li><p>字符串大小写</p>
+<ul>
+<li>str.toLowerCase()</li>
+<li>str.toUpperCase()</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>字符串的使用<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串基本操作</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    var str = "hello world!";</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 用大号字体显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.big()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 显示闪动字符串IE下无效</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.blink()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用粗体显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.bold()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 以打字机文本显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fixed()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 以删除线来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.strike()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用指定颜色来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fontcolor('red')+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用指定字体大小来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fontsize(45)+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 将字符串显示为链接</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.link()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 把字符串显示为下标</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.sub()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 把字符串显示为上标</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.sup()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     //    str.charAt(3)显示下标为3得字母</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     console.log(str.charAt(3));//108</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     // str.charCodeAt(3)显示下标为3得字母得ASCII值</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     console.log(str.charCodeAt(3));</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="comment">//     // String.fromCharCode(ASCII值)</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     // 返回ASCII对应得字母</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     document.write(String.fromCharCode(99));</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     var str2 = String.fromCharCode(97,98,99);</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     document.write(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// str3.concat("world") 字符串得拼接，返回拼接后得字符串，生成新得字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    var str3= "hello ";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    var str2=str3.concat("world");</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    alert(str2)//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    alert(str3)//hello </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// // 一般使用字符串拼接符 + </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str3+'world');//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串的查找</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// indexOf()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// indexOf(字符串，开始查找的位置) 两个参数</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回子串第一次的字符串中出现的位置，否则返回-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="abcdefg";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.indexOf('bcd'));//1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.indexOf('h',3));//-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// lastindexOf()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// lastindexOf(字符串，开始查找的位置) 两个参数</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回子串最后一次的字符串中出现的位置，否则返回-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="abcabcabcabc";</span></span></span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.lastIndexOf('abc'));//9</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.lastIndexOf('h',3));//-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// search(子串) 可以是正则表达式</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 子串写法  "abc"  /abc/ </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// /abc/ig i 忽略大小写 g全局搜索</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="Abcabcabcabc";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search("abc"));//3</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search(/abc/));//3</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search(/abc/i));//0</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// replace()字符串替换</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// replace(匹配的字符串|正则表达式,替换为的新表达式)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回值是替换完成后新生成的字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="a b c d";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.replace('b',"hhhhh");//a hhhhh c d</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// // alert(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str3 ="a b c d a a a";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str4 = str3.replace('a',"hhhhh");</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str4);//hhhhh b c d a a a 无法进行全局替换</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// str3 ="A b c d a a a";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str5 = str3.replace(/a/ig,'hhhhhh');</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str5);//hhhhhh b c d hhhhhh hhhhhh hhhhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串分割</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// substring()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// substring(开始的下标，结束的下标)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回分割后的新字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.substring(2,4);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2);//ll</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// split()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// split(分隔符，生成的字符长度)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 如果为""会分割为单个字符</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回的是一个字符串数组 字符串=&gt;数组</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word hhhh hh hhhh";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.split(" ");//hello,word,hhhh,hh,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str3 = str.split(" ",3);//hello,word,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str4 = str.split("");//h,e,l,l,o, ,w,o,r,d, ,h,h,h,h, ,h,h, ,h,h,h,h</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str3);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str4);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 数组=&gt;字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// join()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word hhhh hh hhhh";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.split(" ");//hello,word,hhhh,hh,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2.join("+"));//hello+word+hhhh+hh+hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串大小写问题</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "HELLO world";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.toLowerCase());//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.toUpperCase());//HELLO WORLD</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;input type="button" value="按钮" id="btn"&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>神器集合1</title>
+    <url>/2020/03/18/%E7%A5%9E%E5%99%A8%E9%9B%86%E5%90%881/</url>
+    <content><![CDATA[<h2 id="神器集合（1）"><a href="#神器集合（1）" class="headerlink" title="神器集合（1）"></a>神器集合（1）</h2><p>本章节干活慢慢哦~~</p>
+<p>一章可以让你成为别人家的孩子o(*≧▽≦)ツ</p>
+<br>
+
+<h3 id="一、个人网上图片库"><a href="#一、个人网上图片库" class="headerlink" title="一、个人网上图片库"></a>一、个人网上图片库</h3><p>搭建一个网上的图片库，一方面自己的博客图片有个归宿</p>
+<p>另一方面也可以保存一些自己喜欢的图片哦</p>
+<p><a href="[https://www.qiniu.com](https://www.qiniu.com/)">七牛云</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301100340213.png" alt="image-20200301100340213" style="zoom:25%;">
+
+<p>搭建教程见这里<a href="https://www.jianshu.com/p/6a118a49ab1f" target="_blank" rel="noopener">点我^ - ^</a></p>
+<br>
+
+<h3 id="二、刷题"><a href="#二、刷题" class="headerlink" title="二、刷题"></a>二、刷题</h3><p>程序员必备，话不多说往下看就好~</p>
+<p><a href="[https://www.nowcoder.com](https://www.nowcoder.com/)">牛客网</a></p>
+<p><a href="[https://leetcode-cn.com](https://leetcode-cn.com/)">leetcode</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301100756984.png" alt="image-20200301100756984" style="zoom: 25%;">
+
+<p><a href="https://www.jiuzhang.com/" target="_blank" rel="noopener">九章算法</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301100514137.png" alt="image-20200301100514137" style="zoom: 25%;">
+
+<p><a href="https://careercup.com/" target="_blank" rel="noopener">careercup</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301102426454.png" alt="image-20200301102426454" style="zoom:25%;">
+
+<p><a href="https://www.lintcode.com/" target="_blank" rel="noopener">lintcode</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301102503774.png" alt="image-20200301102503774" style="zoom:25%;">
+
+<br>
+
+<h3 id="三、chrome插件"><a href="#三、chrome插件" class="headerlink" title="三、chrome插件"></a>三、chrome插件</h3><p>配上几款好的浏览器插件可以上自己的浏览器成为浏览器中的钢铁侠ヾ(≧▽≦*)o</p>
+<ol>
+<li>Speed control html5 video <ol>
+<li>可以控制一些网页的视频播放速度（雨课堂，）</li>
+</ol>
+</li>
+<li>Send to OneNote<ol>
+<li>可以将网页发到OneNote当中</li>
+</ol>
+</li>
+<li>拓展管理器</li>
+<li>哔哩哔哩助手</li>
+<li>购物党</li>
+<li>Lastpass</li>
+<li>图片助手</li>
+<li>广告净化器</li>
+</ol>
+<p>更多优质资源请看小编搜集的素材</p>
+<p><a href="https://www.bilibili.com/video/av77046175" target="_blank" rel="noopener">https://www.bilibili.com/video/av77046175</a></p>
+<br>
+
+<h3 id="四、PPT插件"><a href="#四、PPT插件" class="headerlink" title="四、PPT插件"></a>四、PPT插件</h3><p>几款PPT插件就可以让你成为PPT大神</p>
+<p>让甲方爸爸、和老师再也不用担心啦</p>
+<p><a href="http://meihua.docer.com/" target="_blank" rel="noopener"><strong>PPT美化大师</strong></a></p>
+<ul>
+<li>内容规划，生成PPT模版</li>
+<li>海量优质PPT在线选择</li>
+<li>在线图片、图形、幻灯片素材</li>
+<li>导出各种类型格式1（拼图、全图、图片、视频）</li>
+<li>批量删除（动画、切换页、备注）</li>
+</ul>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301100908388.png" alt="image-20200301100908388" style="zoom: 25%;">
+
+<p><a href="https://www.papocket.com/" target="_blank" rel="noopener"><strong>口袋动画PA</strong></a></p>
+<ul>
+<li>动画删除</li>
+<li>动画序列</li>
+<li>颜色替换</li>
+<li>动画库</li>
+<li>高级动画设计</li>
+</ul>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301100956573.png" alt="image-20200301100956573" style="zoom:25%;">
+
+<p><a href="https://www.islide.cc/" target="_blank" rel="noopener"><strong>iSlide</strong></a></p>
+<ul>
+<li>一键优化</li>
+<li>素材资源</li>
+<li>智能图表</li>
+</ul>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101029935.png" alt="image-20200301101029935" style="zoom:25%;">
+
+<p><a href="http://www.1ppt.com/" target="_blank" rel="noopener">第一PPT</a>可以免费下载PPT模版哦(๑•̀ㅂ•́)و✧</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101053541.png" alt="image-20200301101053541" style="zoom:25%;">
+
+<br>
+
+<h3 id="五、程序员必备平台"><a href="#五、程序员必备平台" class="headerlink" title="五、程序员必备平台"></a>五、程序员必备平台</h3><p>程序员的天堂，我们的世界</p>
+<p><a href="https://www.v2ex.com" target="_blank" rel="noopener">v2ex</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101115346.png" alt="image-20200301101115346" style="zoom:25%;">
+
+<p><a href="https://stackoverflow.com/" target="_blank" rel="noopener">stackoverflow</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101143192.png" alt="image-20200301101143192" style="zoom:25%;">
+
+<p><a href="https://github.com/" target="_blank" rel="noopener">github</a></p>
+<p><a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">领英</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101228287.png" alt="image-20200301101228287" style="zoom:25%;">
+
+<p><a href="https://www.hellogithub.com/" target="_blank" rel="noopener">Hellogithub</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101257258.png" alt="image-20200301101257258" style="zoom:25%;">
+
+<p>Hellogithub每周都会分享github上一些有用有趣的项目哦~~快来看看叭</p>
+<p><a href="http://hao.199it.com/" target="_blank" rel="noopener">大数据导航</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101424529.png" alt="image-20200301101424529" style="zoom:25%;">
+
+<p>找数据可能是让人很头疼的事了，这个网站是个很不错的选择</p>
+<p>大数据导航是一个极其全面的大数据导航网站，它提供的大数据工具包括：互联网趋势分析、全球互联网数据、教育数据、网站排名查询工具、移动应用监测工具、网站热点分析工具、语义分析工具、直播数据、游戏数据、数据库、旅游行业工具、地理信息数据、数据可视化工具、文本分析工具、网站性能工具。</p>
+<p>它对这些大数据网站进行了详细的分类和整理，让你可以轻松找到你需要的大数据工具，它也一直在收纳更新新的大数据网站，非常良心。</p>
+<br>
+
+<h3 id="六、文档、PDF搜索、视频下载"><a href="#六、文档、PDF搜索、视频下载" class="headerlink" title="六、文档、PDF搜索、视频下载"></a>六、文档、PDF搜索、视频下载</h3><p>是不是经常觉得找不到资料或者好不容易找到资料之后发现**还要花钱</p>
+<p>下面两个可能帮到你哦</p>
+<p><a href="https://blog.csdn.net/qq_44697035/article/details/102957288" target="_blank" rel="noopener">冰点文库</a></p>
+<p>冰点文库可以无需积分也无需登陆就能自由下载百度文库、豆丁网、丁香网、电器网、MBA智库等文库文档，支持多任务同时下载哦。</p>
+<p>点击上面链接就可获取下载方法</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101526003.png" alt="image-20200301101526003" style="zoom: 25%;">
+
+<p><a href="https://www.jiumodiary.com/" target="_blank" rel="noopener"><strong>鸠摩搜书</strong></a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101604582.png" alt="image-20200301101604582" style="zoom: 25%;">
+
+<p>可以搜索pdf，而且非常全哦~~</p>
+<p><a href="https://www.urlgot.cn/" target="_blank" rel="noopener">Urlgot</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101650122.png" alt="image-20200301101650122" style="zoom: 25%;">
+
+<p>Urlgot 是一个不可多得的在线视频下载网站，支持的视频平台非常全面，几乎支持所有的主流视频平台；它还支持多种分辨率视频供你选择下载，非常良心。</p>
+<br>
+
+<h3 id="七、稀奇古怪的网站"><a href="#七、稀奇古怪的网站" class="headerlink" title="七、稀奇古怪的网站"></a>七、稀奇古怪的网站</h3><p>以下是小编搜集的好玩又有趣的网站，有兴趣的可以点开，说不定你也会喜欢上的~~</p>
+<p><a href="https://letsview.com/zh/" target="_blank" rel="noopener">幕享</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101726145.png" alt="image-20200301101726145" style="zoom: 25%;">
+
+<p>幕享是一个良心并且好用的无线投屏工具，它完全免费，支持全平台投屏，支持将你的安卓手机和苹果手机投屏到电脑上。可以用到、课程讲解、会议演示、设计工作、娱乐等哦</p>
+<p><a href="https://neal.fun/spend" target="_blank" rel="noopener">花比尔·盖茨的钱</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101757778.png" alt="image-20200301101757778" style="zoom: 25%;">
+
+<p>专门给缺钱但想有花不完的钱的“患者”提供</p>
+<p>花比尔·盖茨的钱是一个非常有趣好玩的网站，它让你模拟体验花比尔·盖茨的钱，感受花钱的快乐，而且你还要思考下如何花光比尔·盖茨的钱。</p>
+<p><a href="https://chp.shadiao.app/" target="_blank" rel="noopener">彩虹屁生成器</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101858240.png" alt="image-20200301101858240" style="zoom: 25%;">
+
+<p>功能和字面意思一样，自己点进去体会一下叭(&gt;▽&lt;)</p>
+<p><a href="https://igfonts.io/" target="_blank" rel="noopener">在线字体转换器</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101928289.png" alt="image-20200301101928289" style="zoom: 25%;">
+
+<p>在线字体转换器是一个实用的特殊字体转化工具，它可以将字体转化为多种不同样式的特殊字体。支持实时转换，当你输入文字的时候，自动实时转换；它对英文字体的支持更加友好，转换之后的英文字体有趣生动.</p>
+<p><a href="http://www.yanwenzi.com/maimeng/" target="_blank" rel="noopener">颜文字</a></p>
+<img src="http://q6b782rdi.bkt.clouddn.com/imagesimage-20200301101928289.png" alt="image-20200301101946748" style="zoom: 25%;">
+
+<p>超级多可爱卖萌的颜文字哦︿(￣︶￣)︿</p>
+<p>可爱的小姐姐们肯定会喜欢滴~~</p>
+<br>
+
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>大嘎们请给个小心心支持一下小编叭，我会更加努力滴~~</p>
+<p>如果有小伙伴有很多好玩，有趣的网站，可以和小编分享一下，嘻嘻</p>
+<p>那第一期先到这里啦~~</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>web贪吃蛇</title>
+    <url>/2020/03/18/web%E8%B4%AA%E5%90%83%E8%9B%87/</url>
+    <content><![CDATA[<h2 id="贪吃蛇，HTML-CSS-JS实现"><a href="#贪吃蛇，HTML-CSS-JS实现" class="headerlink" title="贪吃蛇，HTML+CSS+JS实现"></a>贪吃蛇，HTML+CSS+JS实现</h2><br>
+
+<h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图:"></a>效果图:</h4><img src="http://q6b782rdi.bkt.clouddn.com/images24.png" alt="image-20200315010725326" style="zoom:25%;">
+
+<h4 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h4><ul>
+<li>搭建基本HTML，CSS框架</li>
+<li>JS实现核心游戏过程<ul>
+<li>canvas画布上绘制地图、小蛇、食物</li>
+<li>食物随机生成，不能生成在小蛇身上</li>
+<li>键盘控制小蛇移动</li>
+<li>小蛇成长</li>
+<li>小蛇撞墙</li>
+</ul>
+</li>
+<li>setInterval添加计时器</li>
+<li>添加button事件</li>
+</ul>
+<br>
+
+<p>[注]：WSAD分别控制上下左右</p>
+<h4 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h4><br>
+
+<p><code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>贪吃蛇<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="css">    *&#123;<span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">	<span class="selector-class">.map</span>&#123;<span class="attribute">margin</span>:<span class="number">20px</span> auto;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">height</span><span class="selector-pseudo">:600px</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">width</span><span class="selector-pseudo">:900px</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">background</span><span class="selector-pseudo">:gray</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">border</span><span class="selector-pseudo">:10px</span> <span class="selector-tag">solid</span> <span class="selector-id">#AFAEB2</span>;</span></span><br><span class="line"><span class="css">		<span class="selector-tag">border-radius</span><span class="selector-pseudo">:8px</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#timeBox</span>&#123;</span></span><br><span class="line">        background-color: indigo;</span><br><span class="line">        height: 45px;</span><br><span class="line">        width: 500px;</span><br><span class="line"><span class="css">        <span class="selector-tag">border</span><span class="selector-pseudo">:10px</span> <span class="selector-tag">solid</span> <span class="selector-id">#AFAEB2</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">border-radius</span><span class="selector-pseudo">:8px</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">margin</span><span class="selector-pseudo">:20px</span> <span class="selector-tag">auto</span>;</span></span><br><span class="line">        padding-top: 4px;</span><br><span class="line">        font-size: 45px;</span><br><span class="line"><span class="css">        <span class="selector-tag">color</span><span class="selector-pseudo">:white</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-class">.btn</span>&#123;</span></span><br><span class="line">         margin-left: 500px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span> =<span class="string">"timeBox"</span> <span class="attr">align</span> =<span class="string">"center"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"id_H"</span>&gt;</span>00<span class="tag">&lt;/<span class="name">span</span>&gt;</span>:</span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"id_M"</span>&gt;</span>00<span class="tag">&lt;/<span class="name">span</span>&gt;</span>:</span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"id_S"</span>&gt;</span>00<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"开始"</span> <span class="attr">id</span> =<span class="string">"btnStart"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"暂停"</span> <span class="attr">id</span> =<span class="string">"btnPause"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"新游戏"</span> <span class="attr">id</span> =<span class="string">"btnStartANewGanme"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"入门级"</span> <span class="attr">id</span> =<span class="string">"btnSimple"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"正常级"</span> <span class="attr">id</span> =<span class="string">"btnNomal"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"地狱级"</span> <span class="attr">id</span> =<span class="string">"btnHard"</span> <span class="attr">style</span>=<span class="string">"width: 100px ;height: 30px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">height</span>=<span class="string">"600"</span> <span class="attr">width</span>=<span class="string">"900"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><code>index.js</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 简化操作</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">var</span> c=$(<span class="string">"canvas"</span>);</span><br><span class="line">    <span class="keyword">var</span> ctx=c.getContext(<span class="string">"2d"</span>);</span><br><span class="line">    <span class="comment">//定义一条蛇</span></span><br><span class="line">    <span class="keyword">var</span> snake =[];</span><br><span class="line">    <span class="comment">//初始化蛇的长度</span></span><br><span class="line">    <span class="keyword">var</span> snakeCount = <span class="number">6</span>;</span><br><span class="line">    <span class="comment">//food </span></span><br><span class="line">	<span class="keyword">var</span> foodx =<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> foody =<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//snack move speed</span></span><br><span class="line">    <span class="keyword">var</span> moveSpeed = <span class="number">150</span>;  </span><br><span class="line">    <span class="comment">// direction</span></span><br><span class="line">    <span class="keyword">var</span> togo =<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// draw map</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">drawtable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// draw Vertical line</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">60</span>;i++)<span class="comment">//画竖线</span></span><br><span class="line">        &#123;</span><br><span class="line">        ctx.strokeStyle=<span class="string">"black"</span>;</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.moveTo(<span class="number">15</span>*i,<span class="number">0</span>);</span><br><span class="line">        ctx.lineTo(<span class="number">15</span>*i,<span class="number">600</span>);</span><br><span class="line">        ctx.closePath();</span><br><span class="line">        ctx.stroke();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// draw Horizontal line</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">40</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">        ctx.strokeStyle=<span class="string">"black"</span>;</span><br><span class="line">        ctx.beginPath();</span><br><span class="line">        ctx.moveTo(<span class="number">0</span>,<span class="number">15</span>*j);</span><br><span class="line">        ctx.lineTo(<span class="number">900</span>,<span class="number">15</span>*j);</span><br><span class="line">        ctx.closePath();</span><br><span class="line">        ctx.stroke();</span><br><span class="line">        &#125;</span><br><span class="line">        drawSnackAndFood();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">drawSnackAndFood</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> k=<span class="number">0</span>;k&lt;snakeCount;k++)<span class="comment">//画蛇的身体</span></span><br><span class="line">		&#123;</span><br><span class="line">			ctx.fillStyle=<span class="string">"#000"</span>;</span><br><span class="line">			<span class="keyword">if</span> (k==snakeCount<span class="number">-1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				ctx.fillStyle=<span class="string">"blue"</span>;<span class="comment">//蛇头的颜色与身体区分开</span></span><br><span class="line">			&#125;</span><br><span class="line">			ctx.fillRect(snake[k].x,snake[k].y,<span class="number">15</span>,<span class="number">15</span>);<span class="comment">//前两个数是矩形的起始坐标，后两个数是矩形的长宽。</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// draw food</span></span><br><span class="line">        ctx.fillStyle =<span class="string">"black"</span>;</span><br><span class="line">        ctx.fillRect(foodx,foody,<span class="number">15</span>,<span class="number">15</span>);</span><br><span class="line">        ctx.fill();</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> k=<span class="number">0</span>;k&lt;snakeCount;k++)</span><br><span class="line">    		&#123;</span><br><span class="line">    			snake[k]=&#123;<span class="attr">x</span>:k*<span class="number">15</span>,<span class="attr">y</span>:<span class="number">0</span>&#125;;	</span><br><span class="line">            &#125;</span><br><span class="line">        addfood();</span><br><span class="line">        drawtable();</span><br><span class="line">          <span class="comment">//在start中调用添加食物函数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">addfood</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	    foodx = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">60</span>)*<span class="number">15</span>; <span class="comment">//随机产生一个0-1之间的数</span></span><br><span class="line">	    foody = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">40</span>)*<span class="number">15</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> k=<span class="number">0</span>;k&lt;snake;k++)</span><br><span class="line">		&#123;</span><br><span class="line">            <span class="comment">//防止产生的随机食物落在蛇身上</span></span><br><span class="line">			<span class="keyword">if</span> (foodx==snake[k].x&amp;&amp;foody==sanke[k].y)</span><br><span class="line">			addfood();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">move</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.onkeydown=<span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</span><br><span class="line">                    <span class="keyword">switch</span>(ev.keyCode)</span><br><span class="line">                    &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">65</span>: togo = <span class="number">1</span>; <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">87</span>: togo = <span class="number">2</span>; <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">68</span>: togo = <span class="number">3</span>; <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">83</span>: togo = <span class="number">4</span>; <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">default</span>: togo = <span class="number">0</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">        　　&#125;</span><br><span class="line">        <span class="keyword">switch</span> (togo)</span><br><span class="line">	    &#123;</span><br><span class="line">	    <span class="keyword">case</span> <span class="number">1</span>: snake.push(&#123;<span class="attr">x</span>:snake[snakeCount<span class="number">-1</span>].x<span class="number">-15</span>,<span class="attr">y</span>:snake[snakeCount<span class="number">-1</span>].y&#125;); <span class="keyword">break</span>;<span class="comment">//left</span></span><br><span class="line">	    <span class="keyword">case</span> <span class="number">2</span>: snake.push(&#123;<span class="attr">x</span>:snake[snakeCount<span class="number">-1</span>].x,<span class="attr">y</span>:snake[snakeCount<span class="number">-1</span>].y<span class="number">-15</span>&#125;); <span class="keyword">break</span>;<span class="comment">//down</span></span><br><span class="line">	    <span class="keyword">case</span> <span class="number">3</span>: snake.push(&#123;<span class="attr">x</span>:snake[snakeCount<span class="number">-1</span>].x+<span class="number">15</span>,<span class="attr">y</span>:snake[snakeCount<span class="number">-1</span>].y&#125;); <span class="keyword">break</span>;<span class="comment">//right</span></span><br><span class="line">	    <span class="keyword">case</span> <span class="number">4</span>: snake.push(&#123;<span class="attr">x</span>:snake[snakeCount<span class="number">-1</span>].x,<span class="attr">y</span>:snake[snakeCount<span class="number">-1</span>].y+<span class="number">15</span>&#125;); <span class="keyword">break</span>;<span class="comment">//up</span></span><br><span class="line">	    <span class="keyword">default</span>: snake.push(&#123;<span class="attr">x</span>:snake[snakeCount<span class="number">-1</span>].x+<span class="number">15</span>,<span class="attr">y</span>:snake[snakeCount<span class="number">-1</span>].y&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        snake.shift();<span class="comment">//删除数组第一个元素</span></span><br><span class="line">   	    ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">900</span>,<span class="number">600</span>);<span class="comment">//清除画布重新绘制</span></span><br><span class="line">    	isEat();</span><br><span class="line">	    isDead();</span><br><span class="line">	    drawtable();</span><br><span class="line">   &#125; 			</span><br><span class="line">  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">isEat</span>(<span class="params"></span>)//吃到食物后长度加1</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(snake[snakeCount<span class="number">-1</span>].x==foodx&amp;&amp;snake[snakeCount<span class="number">-1</span>].y==foody)</span><br><span class="line">    &#123;</span><br><span class="line">		addfood();</span><br><span class="line">		snakeCount++;</span><br><span class="line">		snake.unshift(&#123;<span class="attr">x</span>:<span class="number">-15</span>,<span class="attr">y</span>:<span class="number">-15</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">isDead</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (snake[snakeCount<span class="number">-1</span>].x&gt;<span class="number">885</span>||snake[snakeCount<span class="number">-1</span>].y&gt;<span class="number">585</span>||snake[snakeCount<span class="number">-1</span>].x&lt;<span class="number">0</span>||snake[snakeCount<span class="number">-1</span>].y&lt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">		alert(<span class="string">"You are dead,GAME OVER!!!"</span>);</span><br><span class="line">		<span class="built_in">window</span>.location.reload();</span><br><span class="line">		&#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">time</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="keyword">var</span> count=<span class="number">0</span>;<span class="comment">//开始计时后的总秒数</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">       <span class="keyword">var</span> timer2 = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnStart"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        timer=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            count++;</span><br><span class="line">            <span class="comment">//改变显示的时分秒</span></span><br><span class="line">            $(<span class="string">"id_S"</span>).innerHTML=showNumber(count%<span class="number">60</span>);</span><br><span class="line">            $(<span class="string">"id_M"</span>).innerHTML=showNumber(<span class="built_in">parseInt</span>(count/<span class="number">60</span>)%<span class="number">60</span>);</span><br><span class="line">            $(<span class="string">"id_H"</span>).innerHTML=showNumber(<span class="built_in">parseInt</span>(count/<span class="number">3600</span>));</span><br><span class="line">                &#125;,<span class="number">1000</span>)</span><br><span class="line">            timer2= setInterval(move,moveSpeed);</span><br><span class="line">            drawtable();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnPause"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           clearInterval(timer);</span><br><span class="line">           clearInterval(timer2);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnStartANewGanme"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">        clearInterval(timer2);</span><br><span class="line">        count=<span class="number">0</span>;</span><br><span class="line">        $(<span class="string">"id_S"</span>).innerHTML=<span class="string">"00"</span>;</span><br><span class="line">        $(<span class="string">"id_M"</span>).innerHTML=<span class="string">"00"</span>;</span><br><span class="line">        $(<span class="string">"id_H"</span>).innerHTML=<span class="string">"00"</span>;</span><br><span class="line">        start();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnSimple"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           moveSpeed =<span class="number">300</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnNomal"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        moveSpeed =<span class="number">150</span>;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       $(<span class="string">"btnHard"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        moveSpeed =<span class="number">65</span>;</span><br><span class="line">        &#125;</span><br><span class="line">   <span class="comment">// 处理单个数字</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">showNumber</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(num&lt;<span class="number">10</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0"</span>+num;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//    准备开始</span></span><br><span class="line">   start();</span><br><span class="line"><span class="comment">//    等待点击按钮</span></span><br><span class="line">   time();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>MFC SetROP2(R2_XORPEN)异或方式画动态变色小球</title>
+    <url>/2020/03/18/MFC%20SetROP2(R2_XORPEN)%E5%BC%82%E6%88%96%E6%96%B9%E5%BC%8F%E7%94%BB%E5%8A%A8%E6%80%81%E5%8F%98%E8%89%B2%E5%B0%8F%E7%90%83/</url>
+    <content><![CDATA[<h2 id="MFC-SetROP2-R2-XORPEN-异或方式画动态变色小球"><a href="#MFC-SetROP2-R2-XORPEN-异或方式画动态变色小球" class="headerlink" title="MFC SetROP2(R2_XORPEN)异或方式画动态变色小球"></a>MFC SetROP2(R2_XORPEN)异或方式画动态变色小球</h2><br>
+
+<h3 id="效果动画"><a href="#效果动画" class="headerlink" title="效果动画"></a>效果动画</h3><img src="http://q6b782rdi.bkt.clouddn.com/images1.gif" alt="3.1" style="zoom:25%;">
+
+<br>
+
+<p>###　去掉异或之后的图像</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/images26.png" alt="image-20200317181553453" style="zoom:25%;">
+
+
+
+<br>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>MFC中可以绘制异或动画</p>
+<p><code>pDC-&gt;SetROP2(R2_XORPEN);</code></p>
+<p>如果一个地方有小球表示1，没有小球表示0</p>
+<p>第一次在一个地方画的时候为，小球可以展现出来</p>
+<p><code>0^1=1</code></p>
+<p>第二次在同一个地方画的时候，小球被消去</p>
+<p><code>1^1=0</code></p>
+<p>接着只需要加上颜色就阔以实现啦</p>
+<ul>
+<li>先随机生成一个RGB数据</li>
+<li>在将这个RGB值保存在vector数组中</li>
+<li>画小球的时候，画刷颜色取的是新生成的RGB数据</li>
+<li>消去小球的时候，画刷颜色取得是上一次的RGB数据</li>
+</ul>
+<br>
+
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	mytime onTimer 的执行次数</span></span><br><span class="line"><span class="comment">	x y 小球现在所处的坐标值，起点为（0，0）</span></span><br><span class="line"><span class="comment">	moveX 小球每次移动的距离</span></span><br><span class="line"><span class="comment">	vector&lt;int&gt; vector_rgb 将红、绿、蓝存起来</span></span><br><span class="line"><span class="comment">	vector&lt;vector&lt;int&gt;&gt;  rgb_store 将小球每次的RGB值存起来</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="keyword">int</span> mytime = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;  rgb_store;</span><br><span class="line"><span class="keyword">void</span> CMFCApplication1View::OnTimer(UINT_PTR nIDEvent)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC *pDC = GetDC();</span><br><span class="line">	CRect rect;</span><br><span class="line">	GetClientRect(&amp;rect);</span><br><span class="line">	mytime +=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (mytime == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector_rgb2;</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		rgb_store.push_back(vector_rgb2);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector_rgb;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> red = rand() % <span class="number">255</span>;</span><br><span class="line">	<span class="keyword">int</span> green = rand() % <span class="number">255</span>;</span><br><span class="line">	<span class="keyword">int</span> blue = rand() % <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">	vector_rgb.push_back(red);</span><br><span class="line">	vector_rgb.push_back(green);</span><br><span class="line">	vector_rgb.push_back(blue);</span><br><span class="line"></span><br><span class="line">	rgb_store.push_back(vector_rgb);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (nIDEvent == <span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 擦除上一次画的小球</span></span><br><span class="line">		<span class="keyword">int</span> red2 = rgb_store[mytime<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> green2 = rgb_store[mytime<span class="number">-1</span>][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> blue2 = rgb_store[mytime<span class="number">-1</span>][<span class="number">2</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 选择和上次一样的画刷</span></span><br><span class="line">		CBrush brush2;</span><br><span class="line">		brush2.CreateSolidBrush(RGB(red2, green2, blue2));</span><br><span class="line">		pDC-&gt;SelectObject(&amp;brush2);</span><br><span class="line">        </span><br><span class="line">		pDC-&gt;SetROP2(R2_XORPEN);</span><br><span class="line">		pDC-&gt;Ellipse(x,y, x+ <span class="number">15</span>, y+ <span class="number">15</span>);</span><br><span class="line">		<span class="comment">/*if (y&lt;0 || y&gt;rect.bottom - 15)</span></span><br><span class="line"><span class="comment">			moveY = 0 - moveY;*/</span></span><br><span class="line">		<span class="keyword">if</span> (x&lt;<span class="number">0</span> || x&gt;rect.right - <span class="number">15</span>)</span><br><span class="line">			moveX = <span class="number">0</span> - moveX;</span><br><span class="line">		x += moveX;</span><br><span class="line">		y =<span class="built_in">sin</span>(x)*<span class="number">250</span>+<span class="number">250</span>;</span><br><span class="line">		<span class="comment">// 画新的小球</span></span><br><span class="line">		CBrush brush;</span><br><span class="line">		brush.CreateSolidBrush(RGB(red, green, blue));</span><br><span class="line">		pDC-&gt;SelectObject(&amp;brush);</span><br><span class="line">		pDC-&gt;Ellipse(x, y, x + <span class="number">15</span>, y + <span class="number">15</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	CView::OnTimer(nIDEvent);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> CMFCApplication1View::OnCreate(LPCREATESTRUCT lpCreateStruct)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (CView::OnCreate(lpCreateStruct) == <span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加您专用的创建代码</span></span><br><span class="line">    <span class="comment">// 开始计时器 </span></span><br><span class="line">	SetTimer(<span class="number">1</span>, <span class="number">100</span>, <span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CMFCApplication1View::OnDestroy()</span><br><span class="line">&#123;</span><br><span class="line">	CView::OnDestroy();</span><br><span class="line">    <span class="comment">// 结束计时器</span></span><br><span class="line">	KillTimer(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加消息处理程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>考虑到空间复杂度</p>
+<p>做出如下改进</p>
+<br>
+
+<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	x y 小球现在所处的坐标值，起点为（0，0）</span></span><br><span class="line"><span class="comment">	moveX 小球每次移动的距离</span></span><br><span class="line"><span class="comment">	vector&lt;int&gt; vector_rgb 将红、绿、蓝存起来</span></span><br><span class="line"><span class="comment">	vector&lt;vector&lt;int&gt;&gt;  rgb_store 将小球每次的RGB值存起来 只有两组数据，只需不断更新即可</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"><span class="keyword">bool</span> flage = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;  rgb_store;</span><br><span class="line"><span class="keyword">void</span> CMFCApplication1View::OnTimer(UINT_PTR nIDEvent)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	CDC *pDC = GetDC();</span><br><span class="line">	CRect rect;</span><br><span class="line">	GetClientRect(&amp;rect);</span><br><span class="line">	<span class="keyword">if</span> (flage == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector_rgb2;</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		vector_rgb2.push_back(<span class="number">0</span>);</span><br><span class="line">		rgb_store.push_back(vector_rgb2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vector_rgb;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> red = rand() % <span class="number">255</span>;</span><br><span class="line">	<span class="keyword">int</span> green = rand() % <span class="number">255</span>;</span><br><span class="line">	<span class="keyword">int</span> blue = rand() % <span class="number">255</span>;</span><br><span class="line"></span><br><span class="line">	vector_rgb.push_back(red);</span><br><span class="line">	vector_rgb.push_back(green);</span><br><span class="line">	vector_rgb.push_back(blue);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 更新rgb_store ，使该vector里只有两组rgb数据</span></span><br><span class="line">	<span class="keyword">if</span> (flage == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		rgb_store.push_back(vector_rgb);</span><br><span class="line">		flage = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		rgb_store[<span class="number">0</span>] = rgb_store[<span class="number">1</span>];</span><br><span class="line">		rgb_store[<span class="number">1</span>] = vector_rgb;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (nIDEvent == <span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 擦除上一次画的小球</span></span><br><span class="line">		<span class="keyword">int</span> red2 = rgb_store[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> green2 = rgb_store[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> blue2 = rgb_store[<span class="number">0</span>][<span class="number">2</span>];</span><br><span class="line">		CBrush brush2;</span><br><span class="line">		brush2.CreateSolidBrush(RGB(red2, green2, blue2));</span><br><span class="line">		pDC-&gt;SelectObject(&amp;brush2);</span><br><span class="line">		pDC-&gt;SetROP2(R2_XORPEN);</span><br><span class="line">		pDC-&gt;Ellipse(x,y, x+ <span class="number">15</span>, y+ <span class="number">15</span>);</span><br><span class="line">		<span class="comment">/*if (y&lt;0 || y&gt;rect.bottom - 15)</span></span><br><span class="line"><span class="comment">			moveY = 0 - moveY;*/</span></span><br><span class="line">		<span class="keyword">if</span> (x&lt;<span class="number">0</span> || x&gt;rect.right - <span class="number">15</span>)</span><br><span class="line">			moveX = <span class="number">0</span> - moveX;</span><br><span class="line">		x += moveX;</span><br><span class="line">		y =<span class="built_in">sin</span>(x)*<span class="number">250</span>+<span class="number">250</span>;</span><br><span class="line">		<span class="comment">// 画小球</span></span><br><span class="line">		CBrush brush;</span><br><span class="line">		brush.CreateSolidBrush(RGB(red, green, blue));</span><br><span class="line">		pDC-&gt;SelectObject(&amp;brush);</span><br><span class="line">		pDC-&gt;Ellipse(x, y, x + <span class="number">15</span>, y + <span class="number">15</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	CView::OnTimer(nIDEvent);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> CMFCApplication1View::OnCreate(LPCREATESTRUCT lpCreateStruct)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (CView::OnCreate(lpCreateStruct) == <span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span>  在此添加您专用的创建代码</span></span><br><span class="line">	SetTimer(<span class="number">1</span>, <span class="number">100</span>, <span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CMFCApplication1View::OnDestroy()</span><br><span class="line">&#123;</span><br><span class="line">	CView::OnDestroy();</span><br><span class="line">	KillTimer(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加消息处理程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>mathpix——超级利器</title>
+    <url>/2020/03/18/mathpix%E2%80%94%E2%80%94%E8%B6%85%E7%BA%A7%E5%88%A9%E5%99%A8/</url>
+    <content><![CDATA[<h2 id="超级利器——mathpix-文本、图片公式转md-latex格式"><a href="#超级利器——mathpix-文本、图片公式转md-latex格式" class="headerlink" title="超级利器——mathpix 文本、图片公式转md/latex格式"></a>超级利器——mathpix 文本、图片公式转md/latex格式</h2><p>今天要介绍一款超级利器，让我们摆脱敲latex或者md公式让人头秃的烦恼</p>
+<p>mathpix</p>
+<p>界面小巧灵活</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/images17.png" alt="image-20200304185658306" style="zoom: 25%;">
+
+<p>他可以将文本或者图片类型的公式转化为latex或者md格式的，是不是很nb(๑•̀ㅂ•́)و✧</p>
+<br>
+
+<p>并且自带截图快捷键 ctrl+alt+m</p>
+<p>快捷又简单</p>
+<p>支持MacOS、Windows、Linux三种系统哦，快来试试吧~~</p>
+<p>下载网址在这里哦<a href="https://mathpix.com" target="_blank" rel="noopener">点我</a></p>
+<p>另附<a href="http://www.mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">Latex常用公式大全</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>K-邻近算法分析</title>
+    <url>/2020/03/18/K-%E9%82%BB%E8%BF%91%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="K—近邻算法分析"><a href="#K—近邻算法分析" class="headerlink" title="K—近邻算法分析"></a>K—近邻算法分析</h1><p>K—近邻算法采用测量不同特征之间的距离方法进行分类</p>
+<p>特点：</p>
+<ul>
+<li><p>对异常值不敏感</p>
+</li>
+<li><p>精度高</p>
+</li>
+<li><p>计算复杂度高</p>
+</li>
+<li><p>空间复杂度高</p>
+</li>
+</ul>
+<p><strong>K—近邻算法的一般流程</strong></p>
+<ol>
+<li><p>收集数据</p>
+</li>
+<li><p>准备数据</p>
+</li>
+<li><p>分析数据</p>
+</li>
+<li><p>测试算法</p>
+</li>
+<li><p>使用算法</p>
+</li>
+</ol>
+<p>示例代码如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># K近邻算法</span></span><br><span class="line"><span class="comment"># 调用numpy和operator包</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># dataSet数据集合 没有标签</span></span><br><span class="line"><span class="comment"># labels 标签</span></span><br><span class="line"><span class="comment"># k 最近邻近的数目</span></span><br><span class="line"><span class="comment"># inX 分类的输入向量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify0</span><span class="params">(inX, dataSet, labels, k)</span>:</span></span><br><span class="line">    <span class="comment"># 提取数据的特征数量</span></span><br><span class="line">    <span class="comment"># shape[0]提取一维长度</span></span><br><span class="line">    <span class="comment"># shape[1]提取二维长度</span></span><br><span class="line">    dataSetSize = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 使用了欧式距离</span></span><br><span class="line">    diffMat = tile(inX, (dataSetSize, <span class="number">1</span>))-dataSet</span><br><span class="line">    sqDiffMat = diffMat**<span class="number">2</span></span><br><span class="line">    sqDistances = sqDiffMat.sum(axis=<span class="number">1</span>)</span><br><span class="line">    distances = sqDistances**<span class="number">0.5</span></span><br><span class="line">    <span class="comment"># argsort()为大小排序</span></span><br><span class="line">    sortedDistIndicies = distances.argsort()</span><br><span class="line">    classCount = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        voteIlable = labels[sortedDistIndicies[i]]</span><br><span class="line">        classCount[voteIlable] = classCount.get(voteIlable, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    sortedClassCount = sorted(classCount.iteritems(), </span><br><span class="line">                              key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>K、M、G、T、P、E</title>
+    <url>/2020/03/18/K%E3%80%81M%E3%80%81G%E3%80%81T%E3%80%81P%E3%80%81E/</url>
+    <content><![CDATA[<h2 id="K-M-G-T-P-E-Z-Y……那些事"><a href="#K-M-G-T-P-E-Z-Y……那些事" class="headerlink" title="K\M\G\T\P\E\Z\Y……那些事"></a>K\M\G\T\P\E\Z\Y……那些事</h2><p>经常被什么pm\nm\fm……还有什么K M G T ……搞混</p>
+<p>由此总结了如下几个表格（会不间断更新……见到一个加进去……）</p>
+<p>常见的（从大到小）</p>
+<table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="center">大小</th>
+<th align="center">读法</th>
+<th align="center">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center">10^100</td>
+<td align="center">谷戈</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Y</td>
+<td align="center">10^24尧</td>
+<td align="center">尧</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Z</td>
+<td align="center">10^21</td>
+<td align="center">泽</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">E</td>
+<td align="center">10^18</td>
+<td align="center">艾</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">P</td>
+<td align="center">10^15</td>
+<td align="center">拍</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">T</td>
+<td align="center">10^12</td>
+<td align="center">太</td>
+<td align="center">1TB</td>
+</tr>
+<tr>
+<td align="center">G</td>
+<td align="center">10^9</td>
+<td align="center">吉（就是英文字母g）</td>
+<td align="center">1GB</td>
+</tr>
+<tr>
+<td align="center">M</td>
+<td align="center">10^6</td>
+<td align="center">兆</td>
+<td align="center">1MB</td>
+</tr>
+<tr>
+<td align="center">K</td>
+<td align="center">10^3</td>
+<td align="center">千（K）</td>
+<td align="center">1Km、1KB</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">10^(-1)</td>
+<td align="center">分</td>
+<td align="center">1dm</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">10^(-2)</td>
+<td align="center">厘</td>
+<td align="center">1cm</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">10^(-3)</td>
+<td align="center">毫</td>
+<td align="center">1mm</td>
+</tr>
+<tr>
+<td align="center">μ</td>
+<td align="center">10^(-6)</td>
+<td align="center">|miu|</td>
+<td align="center">1μm</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="center">10^(-9)</td>
+<td align="center">纳</td>
+<td align="center">1ns、1nm</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td align="center">10^(-12)</td>
+<td align="center">皮</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="center">10^(-15)</td>
+<td align="center">飞</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">10^(-18)</td>
+<td align="center">埃（阿）</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<br>
+
+<p>计算机（从大到小）</p>
+<table>
+<thead>
+<tr>
+<th align="center">十进制术语</th>
+<th align="center">缩写</th>
+<th align="center">数值</th>
+<th align="center">二进制术语</th>
+<th align="center">缩写</th>
+<th align="center">数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">yottabyte</td>
+<td align="center">YB</td>
+<td align="center">10^24</td>
+<td align="center">yobibyte</td>
+<td align="center">YiB</td>
+<td align="center">2^80</td>
+</tr>
+<tr>
+<td align="center">zettabyte</td>
+<td align="center">ZB</td>
+<td align="center">10^21</td>
+<td align="center">zebibyte</td>
+<td align="center">ZiB</td>
+<td align="center">2^70</td>
+</tr>
+<tr>
+<td align="center">exabyte</td>
+<td align="center">EB</td>
+<td align="center">10^18</td>
+<td align="center">exbibyte</td>
+<td align="center">EiB</td>
+<td align="center">2^60</td>
+</tr>
+<tr>
+<td align="center">petabyte</td>
+<td align="center">PB</td>
+<td align="center">10^15</td>
+<td align="center">pebibyte</td>
+<td align="center">PiB</td>
+<td align="center">2^50</td>
+</tr>
+<tr>
+<td align="center">terabyte</td>
+<td align="center">TB</td>
+<td align="center">10^12</td>
+<td align="center">tebibyte</td>
+<td align="center">TiB</td>
+<td align="center">2^40</td>
+</tr>
+<tr>
+<td align="center">gigabyte</td>
+<td align="center">GB</td>
+<td align="center">10^9</td>
+<td align="center">gibibyte</td>
+<td align="center">GiB</td>
+<td align="center">2^30</td>
+</tr>
+<tr>
+<td align="center">megabyte</td>
+<td align="center">MB</td>
+<td align="center">10^6</td>
+<td align="center">mebibyte</td>
+<td align="center">MiB</td>
+<td align="center">2^20</td>
+</tr>
+<tr>
+<td align="center">kilobyte</td>
+<td align="center">KB</td>
+<td align="center">10^3</td>
+<td align="center">kibibyte</td>
+<td align="center">KiB</td>
+<td align="center">2^10</td>
+</tr>
+</tbody></table>
+<br>
+
+<p>接下来是一些容易搞混的单位</p>
+<p>MB/s(兆字节每秒)</p>
+<p>Mb/s(兆比特每秒)<br>Mbps(兆比特每秒)<br>Mbit/s(兆比特每秒)</p>
+<p>1bit/s=1b/s=1bps<br>1Byte(字节) = 8 bit(比特) 【1B=8b】</p>
+<p>1MB/s=Mbit/s=8Mb/s=8Mbps</p>
+<br>
+
+<p>这些都是小编找资料总结的若有出入地方，欢迎各位不吝指正或者补充。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>JS函数</title>
+    <url>/2020/03/18/JS%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="JS函数相关用法"><a href="#JS函数相关用法" class="headerlink" title="JS函数相关用法"></a>JS函数相关用法</h2><br>
+
+<h4 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h4><ul>
+<li>参数个数不确定，arguments使用</li>
+<li>事件驱动函数</li>
+</ul>
+<br>
+
+<h4 id="1-arguments"><a href="#1-arguments" class="headerlink" title="1.arguments"></a>1.arguments</h4><p>关键用法</p>
+<ul>
+<li><code>arguments[i]下标</code></li>
+<li><code>arguments.length</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>arguments use<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">        <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 计算所有传入参数的和，具体传入多少参数不确定</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 使用arguments</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 在每一个函数内，都有一个内置的数组，是一个变量——arguments</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// arguments可以存储当前函数传入的所有参数，而且是通过传参的顺序，进行排列的</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// arguments.length 传入参数的个数</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 要访问arguments的数据，需要通过下标进行访问</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// function sum()&#123;</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//     // alert(arguments);//[object Arguments]</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//     alert(arguments[1]);//6</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//     var sum2=0;</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//     for(var i=0;i&lt;arguments.length;i++)</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//         sum2+=arguments[i];</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//    alert(sum2);//18</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// &#125;</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// sum(5,6,7);</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// =====================================================================</span></span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="2-事件驱动函数"><a href="#2-事件驱动函数" class="headerlink" title="2.事件驱动函数"></a>2.事件驱动函数</h4><p>关键用法</p>
+<ul>
+<li><code>&lt;input type=&quot;button&quot; value=&quot;按钮&quot; id=&quot;btn&quot;&gt;</code></li>
+<li><code>&lt;input type=&quot;text&quot; value=&quot;修改前的文本&quot; id=&quot;txt&quot;&gt;</code></li>
+<li><code>window.onload =function(){}</code></li>
+<li><code>var oBtn = document.getElementById(&quot;btn&quot;);</code></li>
+<li><code>oBtn.onclick = function(){}</code></li>
+<li><code>oTxt.value = &quot;修改后的文本内容&quot;;</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>事件驱动函数1<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 事件驱动函数？</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 在和页面进行交互的过程中所调用的函数叫做事件驱动函数</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 事件？</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 和页面交互的行为称之为事件。eg：鼠标的相关问题，点击，获取焦点失去焦点</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 步骤</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 我们可以通过document.getElementById()找到符合条件的标签节点</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 然后可以和事件驱动函数一起给当前的按钮绑定一系列的操作，完成用户操作</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">// var oBtn = document.getElementById("btn");</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(oBtn);//null 程序是自上而下运行的 ,这个时候button还没出被加载</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// window.onload 的使用</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">// alert(oBtn);//[object HTMLInputElement] 这个时候就可以了</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 给按钮添加事件驱动函数</span></span></span><br><span class="line"><span class="actionscript">        oBtn.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="string">'点击'</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<br>
+
+<p>事件驱动函数——修改文本内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>事件驱动函数2 修改文本内容<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">    <span class="comment">// window.onload 的使用</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> oTxt = <span class="built_in">document</span>.getElementById(<span class="string">"txt"</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// 给按钮添加事件驱动函数</span></span></span><br><span class="line"><span class="actionscript">        <span class="comment">// oTxt.value 是字符串</span></span></span><br><span class="line">        alert(oTxt.value);</span><br><span class="line"><span class="actionscript">        oBtn.onclick = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="string">'修改文本啦'</span>);</span></span><br><span class="line"><span class="actionscript">            oTxt.value = <span class="string">"修改后的文本内容"</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">"修改前的文本"</span> <span class="attr">id</span>=<span class="string">"txt"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>G-S匹配算法</title>
+    <url>/2020/03/18/G-S%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="G-S稳定匹配算法详解"><a href="#G-S稳定匹配算法详解" class="headerlink" title="G-S稳定匹配算法详解"></a>G-S稳定匹配算法详解</h2><p>GS算法是解决稳定匹配问题(stable matching)的一个优秀的算法。</p>
+<p>下面以男女配对的例子来介绍稳定匹配问题并阐述GS算法的具体步骤。</p>
+<p>GS算法，全称Gale-Shapley算法。</p>
+<br>
+
+<h3 id="一、问题描述及假设"><a href="#一、问题描述及假设" class="headerlink" title="一、问题描述及假设"></a>一、问题描述及假设</h3><ul>
+<li><p>有n个单身男性集合M = {m1, m2, …, mn}和n个单身女性集合W = {w1, w2, …, wn}</p>
+</li>
+<li><p>假设每个男性对不同女性的喜好程度都不同，单身女性亦如是。</p>
+</li>
+<li><p>男性mi(1 &lt;= i &lt;= n)有一张属于自己的对n个女性的排序表，mi把他最爱慕的女性放在第一位，第二爱慕的女性放在第二位，以此类推，排名越靠前女性表示mi越爱慕的该女性。同样地，女性wi(1 &lt;= i &lt;= n)也有一张属于自己的对n个男性的排序表，排名越靠前的男性越受该女性的喜爱。</p>
+</li>
+<li><p>每个人最终都要有伴侣</p>
+</li>
+</ul>
+<br>
+
+<h3 id="二、伪代码"><a href="#二、伪代码" class="headerlink" title="二、伪代码"></a>二、伪代码</h3><img src="http://q6b782rdi.bkt.clouddn.com/images15.png" alt="image-20200302163507613" style="zoom:50%;">
+
+<p>引自《算法设计》（Jon Kleinberg  Eva Tardos 著 ，张立昂，屈婉玲 译）</p>
+<br>
+
+<h3 id="三、具体代码"><a href="#三、具体代码" class="headerlink" title="三、具体代码"></a>三、具体代码</h3><p>C++实现</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// describe where there is a woman is single in a man[a]'s list or not</span></span><br><span class="line"><span class="comment">// if have single woman return 1,else return 0</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mans_date</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">bool</span>**b, <span class="keyword">int</span> number)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		<span class="keyword">if</span> (b[a][i] == <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// if all the mans have the lovers return 0,else 1</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">have_man</span><span class="params">(<span class="keyword">bool</span>*mans_state, <span class="keyword">int</span> number, <span class="keyword">int</span> &amp;index)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		<span class="keyword">if</span> (mans_state[i] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			index = i;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// G-S algorithm</span></span><br><span class="line"><span class="comment">// number----the mans and women number</span></span><br><span class="line"><span class="comment">// man ------mans'priority matrix</span></span><br><span class="line"><span class="comment">// women ----women's priority matrix</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">gs</span><span class="params">(<span class="keyword">int</span> number, <span class="keyword">int</span> **man, <span class="keyword">int</span> **women)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//mans and women state describe they are single or not </span></span><br><span class="line">	<span class="keyword">bool</span> *mans_state = <span class="keyword">new</span> <span class="keyword">bool</span>[number];</span><br><span class="line">	<span class="keyword">bool</span> *women_state = <span class="keyword">new</span> <span class="keyword">bool</span>[number];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// describe a lovers </span></span><br><span class="line">	<span class="keyword">int</span> *woman_man_pair = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// mans_women describe a man and a women where had date or not</span></span><br><span class="line">	<span class="keyword">bool</span> **mans_women;</span><br><span class="line">	mans_women = <span class="keyword">new</span> <span class="keyword">bool</span>*[number];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		mans_women[i] = <span class="keyword">new</span> <span class="keyword">bool</span>[number];</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//initialize</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mans_state[i] = <span class="number">0</span>;</span><br><span class="line">		women_state[i] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; number; j++)</span><br><span class="line">			mans_women[i][j] = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//use inverse to reduce complexity</span></span><br><span class="line">	<span class="keyword">int</span> **inverse;</span><br><span class="line">	inverse = <span class="keyword">new</span> <span class="keyword">int</span>*[number];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		inverse[i] = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; number; j++)</span><br><span class="line">			inverse[i][women[i][j]] = j;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (have_man(mans_state, number, index) &amp;&amp; mans_date(index, mans_women, number))</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> tmp_man = index;</span><br><span class="line">		<span class="keyword">int</span> tmp_woman;</span><br><span class="line">		<span class="comment">//select the women tmp_man like most and this woman is single</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">			<span class="keyword">if</span> (mans_women[tmp_man][man[tmp_man][i]] == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				tmp_woman = man[tmp_man][i];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (women_state[tmp_woman] == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// tmp_man and tmp_woman is not single</span></span><br><span class="line">			women_state[tmp_woman] = <span class="number">1</span>;</span><br><span class="line">			mans_state[tmp_man] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">			<span class="comment">//tmp_woman's lover is tmp_man</span></span><br><span class="line">			woman_man_pair[tmp_woman]=tmp_man;</span><br><span class="line">			<span class="comment">//tmp_man and tmp_woman had a date</span></span><br><span class="line">			mans_women[tmp_man][tmp_woman] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">//m2-----tmp_woman's lover now</span></span><br><span class="line">			<span class="keyword">int</span> m2 = woman_man_pair[tmp_woman];</span><br><span class="line">			<span class="comment">//compair m2 with tmp_man,if tmp_man is more excellent ,tmp_woman will date with tmp_man and break up with m2</span></span><br><span class="line">			<span class="keyword">if</span> (inverse[tmp_woman][m2] &gt; inverse[tmp_woman][tmp_man])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//tmp_woman's lover is tmp_man</span></span><br><span class="line">				woman_man_pair[tmp_woman] = tmp_man;</span><br><span class="line">				<span class="comment">//m2 back to single</span></span><br><span class="line">				mans_state[m2] = <span class="number">0</span>;</span><br><span class="line">				<span class="comment">//tmp_man is not single</span></span><br><span class="line">				mans_state[tmp_man] = <span class="number">1</span>;</span><br><span class="line">				<span class="comment">//tmp_woman's lover is tmp_man</span></span><br><span class="line">				mans_women[tmp_man][tmp_woman] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">//tmp_man and tmp_woman had a date</span></span><br><span class="line">				mans_women[tmp_man][tmp_woman] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//return the woman mans'like in man'order</span></span><br><span class="line">	<span class="keyword">int</span> *end_pair = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">		end_pair[woman_man_pair[i]] = i;</span><br><span class="line">	<span class="keyword">return</span> end_pair;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> number, **mans, **women;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"input the number of man or woman:"</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; number;</span><br><span class="line"></span><br><span class="line">	mans = <span class="keyword">new</span> <span class="keyword">int</span>*[number];</span><br><span class="line">	women = <span class="keyword">new</span> <span class="keyword">int</span>*[number];</span><br><span class="line"></span><br><span class="line">	<span class="comment">//initialize</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mans[i] = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line">		women[i] = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"input mans' priority matrix"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; number; j++)</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; mans[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"input women's priority matrix"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; number; j++)</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; women[i][j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; number; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; number; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			mans[i][j] -= <span class="number">1</span>;</span><br><span class="line">			women[i][j] -= <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">int</span>*end_pair2 = <span class="keyword">new</span> <span class="keyword">int</span>[number];</span><br><span class="line">	end_pair2 = gs(number, mans, women);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;number;i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt;end_pair2[i]+<span class="number">1</span>&lt;&lt;<span class="string">"  "</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中使用了反转的思想实现降低时间复杂度的需要</p>
+<br>
+
+<h3 id="四、输入输出"><a href="#四、输入输出" class="headerlink" title="四、输入输出"></a>四、输入输出</h3><p>输入：</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/images16.png" alt="image-20200302165415161" style="zoom:50%;">
+
+<br>
+
+<p>输出：</p>
+<p><code>3 1 2 5 4</code></p>
+<p>经验证，是稳定匹配</p>
+<br>
+
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>对于男性而言，G-S算法是最理想的，因为男性匹配到的都是最佳有效伴侣(best(m))</p>
+<p>而对于女性来说匹配到的最差有效伴侣(worst(w))</p>
+<p>虽然男性可能常常会被拒绝的一方，是但是只要不断尝试，最终得到的结果就是最美好的</p>
+<p>这启示我们不管追寻爱情还是做其他事前，应该积极主动一点才会有最好的结局。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>完美解决git下载慢问题（亲测有效）</title>
+    <url>/2020/03/18/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3git%E4%B8%8B%E8%BD%BD%E6%85%A2%E9%97%AE%E9%A2%98%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="完美解决git下载慢问题（亲测有效，不用改host）"><a href="#完美解决git下载慢问题（亲测有效，不用改host）" class="headerlink" title="完美解决git下载慢问题（亲测有效，不用改host）"></a>完美解决git下载慢问题（亲测有效，不用改host）</h2><p>git一个大佬云集的网站，当我们遇到一个特别感兴趣的项目的时候想下载下来看看，我们敲了git clone ……</p>
+<p>然后<img src="http://q6b782rdi.bkt.clouddn.com/images18.png" alt="image-20200312000748172" style="zoom:25%;"></p>
+<p>我服了……15KiB/s</p>
+<br>
+
+<p>先简单科普一下<br><br></p>
+<p>KiB/s和咱们平时看到的KB/s有啥不同，</p>
+<p>Ki 和 K 只是数学单位</p>
+<p>Ki = 1024</p>
+<p>K  = 1000</p>
+<p>这二者之间没有任何联系<br><br></p>
+<p>B 和 b 表示物理存储单位</p>
+<p>B = Byte 即一个字节</p>
+<p>b = bit   即一个二进制位</p>
+<p>二者的关系是 : 1 Byte = 8 bit</p>
+ <br>
+
+<p>简单算一下之后如下结果:</p>
+<p>1Kib = 1024 bit</p>
+<p>1Kb  = 1000 bit</p>
+<p>1KiB = 1024 Byte</p>
+<p>1KB  = 1000 Byte<br><br></p>
+<p>所以15.00KiB/s 和14.65KB/s 差不多</p>
+<p>(ノへ￣、)慢的出奇</p>
+<p>等下载下来，自己的孩子都能爬树了……<br><br></p>
+<p>在网上也找了很多资料，什么修改host文件……</p>
+<p>然后试了一大堆，效果不是很好<br><br></p>
+<p>机缘巧合之下让我知道了gitee类似于中国的git</p>
+<p>d=====(￣▽￣*)b</p>
+<p>这样就快很多了</p>
+<p>来让我们看一下怎么做吧</p>
+<h3 id="1-首先先登陆gitee官网注册一个账号和git差不多"><a href="#1-首先先登陆gitee官网注册一个账号和git差不多" class="headerlink" title="1.首先先登陆gitee官网注册一个账号和git差不多"></a>1.首先先登陆gitee官网注册一个账号和git差不多</h3><p>gitee（码云）介绍</p>
+<blockquote>
+<p>相比于GitHub，码云有以下优势：</p>
+<ul>
+<li>在语言的使用上支持中文，对英语薄弱的童鞋就很友好啦</li>
+<li>其次，国内 IT 行业有自己的特点，天然决定了对开源软件的需求也有自己的特点，比如小程序这个东西，只有国内有，做个开源的小程序托管在码云比 GitHub 明显更有优势，因为关注着都是国内的开发者；</li>
+<li>现在编程越来越普及，每个人都可以参与和贡献开源项目，去做一些有意思的东西分享出来，那么从受众、交流便利度、访问速度等方面，码云都有优势</li>
+</ul>
+</blockquote>
+<h3 id="2-然后再导入一个已存在的仓库"><a href="#2-然后再导入一个已存在的仓库" class="headerlink" title="2.然后再导入一个已存在的仓库"></a>2.然后再导入一个已存在的仓库</h3><img src="http://q6b782rdi.bkt.clouddn.com/images19.png" alt="image-20200311230248033" style="zoom: 25%;">
+
+
+
+<img src="http://q6b782rdi.bkt.clouddn.com/images20.png" alt="image-20200311230402880" style="zoom: 25%;">
+
+<h3 id="之后就可以直接下载啦"><a href="#之后就可以直接下载啦" class="headerlink" title="之后就可以直接下载啦"></a>之后就可以直接下载啦</h3><p>提供两种方式</p>
+<ul>
+<li><img src="http://q6b782rdi.bkt.clouddn.com/images21.png" alt="image-20200311230528888" style="zoom:25%;">
+</li>
+<li><p>还是用git  clone （”链接”）就好啦</p>
+</li>
+<li><p>不过就是多了一步要输入你的gitee账号</p>
+</li>
+<li><img src="http://q6b782rdi.bkt.clouddn.com/images22.png" alt="image-20200311230812948" style="zoom:25%;">
+
+</li>
+</ul>
+<p>看一下下载速度</p>
+<img src="http://q6b782rdi.bkt.clouddn.com/images23.png" alt="image-20200311231127294" style="zoom:25%;">
+
+<p>下载速度差不多是之前的100倍</p>
+<p>d=====(￣▽￣*)b</p>
+<p>完美解决</p>
+]]></content>
+  </entry>
+  <entry>
     <title>以hello world为例，详细分析程序的运行过程</title>
     <url>/2020/02/27/%E4%BB%A5hello-world%E4%B8%BA%E4%BE%8B%EF%BC%8C%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<h2 id="以hello-world为例，详细分析程序的运行过程"><a href="#以hello-world为例，详细分析程序的运行过程" class="headerlink" title="以hello world为例，详细分析程序的运行过程"></a>以hello world为例，详细分析程序的运行过程</h2><h4 id="（一）环境说明："><a href="#（一）环境说明：" class="headerlink" title="（一）环境说明："></a><strong>（一）环境说明：</strong></h4><p>IDE ：Visual Studio 2017</p>
@@ -148,200 +930,6 @@
       <tags>
         <tag>ES6</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>我们的第52周零一天</title>
-    <url>/2020/02/24/%E6%88%91%E4%BB%AC%E7%9A%84%E7%AC%AC52%E5%91%A8%E9%9B%B6%E4%B8%80%E5%A4%A9/</url>
-    <content><![CDATA[<!DOCTYPE html>
-<html>
-<head>
-<title>我们的第52周零一天</title>
-<style type="text/css">
-</style>
-</head>
-<body>
-    <div class="first">
-        <h1 align="center">
-            我们的第52周零一天
-        </h1>
-        <br>
-        <br>
-        <p align="center">我的管家 ♥ 大人</p>
-        <p align="center">哎 ♥ 认识你 5 2 周零 1 天 ♥ 了</p>
-        <p align="center">你记得木  总之 ♥ 幸会 ♥</p>
-        <p align="center">嚛 ♥</p>
-        <br>
-        <br>
-    </div>
-    <div class="second">
-            <P align="center" style="color:rgb(126, 137,25); font-size: 27px;">
-               <u> 01</u>
-            </P>
-            <h2 align="center">
-                纪念
-            
-            <P align="center">
-                <img width="414px" src="https://mmbiz.qpic.cn/mmbiz_jpg/gMFTxuVFibtlrEukBTdO3Ja3ka0L6t3hoj1XyYrgD92dib6HHfgDDSSpAKMhbfEzr3iaXsoxFajm0xf1uczqKC4Bw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="未加载出来">
-            </P>
-            <br>
-            <p align="center">
-            我不是特别喜欢记录。<br>
-            就像翻之前写的日记<br>
-            本来挺可爱的一天<br>
-            打开本子 把故事翻译成文字 写下来 合上<br>
-            再用时间发酵<br>
-            再翻开看的时候 <br>
-            这一天真的变得好无趣..<br>
-            所以还不如不写<br>
-            现在又想记录了。<br>
-            一来 是和你在一起的时间太开心 也太短暂了<br>
-            回忆起来就像做梦一样 太飘渺<br>
-            二来 <br>
-            你说你不喜欢回忆<br>
-            那我就要让你开开心心地去做不喜欢做的事<br>
-            比如 待会儿你要做的事儿<br>
-            准备好了吗 <br>
-              <b style="font-size: 29px;">
-                那
-              </b>
-             继续往下看咯<br>
-        </p>
-        </h2></div>
-<div>
-    <P align="center" style="color:rgb(126, 137,25); font-size: 27px;">
-        <u> 02</u>
-     </P>
-     <h2 align="center">
-         想你
-     
-    <p align="center">
-        好久不见了 最最最 
-        <b style="font-size: 29px;">
-            想
-          </b>
-       念的是和你一起吃过的好吃的<br>
-        好吧 其实就是我馋了）<br>
-        <b style="font-size: 29px;">
-            烧烤 
-          </b>
-          <b style="font-size: 25px;">
-            火锅 
-          </b><b style="font-size: 23px;">
-            鸭血粉丝 
-          </b><b style="font-size: 21px;">
-            章鱼小丸子 
-          </b><b style="font-size: 19px;">
-            小龙虾  
-          </b><b style="font-size: 16px;">
-            烤冷面  
-          </b>
-        生菜叶儿...<br>
-        <b style="font-size: 29px;">
-            烧烤 
-          </b>
-          <b style="font-size: 25px;">
-            小笼包 
-          </b><b style="font-size: 23px;">
-            冰淇凌 
-          </b><b style="font-size: 21px;">
-            布丁蛋挞 
-          </b><b style="font-size: 19px;">
-            寻花吻茶 
-          </b><b style="font-size: 16px;">
-            烤鱼  
-          </b>
-          串串儿 ...<br>
-        最想念的还是文科的小火锅 <br>
-        虽然它不是最好吃的<br>
-    </p>
-        <p align="center">
-            <img width="343px" src="https://mmbiz.qpic.cn/mmbiz_jpg/gMFTxuVFibtlrEukBTdO3Ja3ka0L6t3ho3ZQXOrVW7yEvGfqET1Z74icvUtgiawhmNSeTJnTSXmG6s83NMicZaalDw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1
-            " alt>
-        </p>
-        <p align="center">
-        还 
-        <b style="font-size: 29px;">
-            想 
-          </b>
-         不开心的时候你给我买的棉花糖<br>
-        虽然后来变得特别丑哈哈哈 :)<br>
-        那段时间我情绪不太好 老是觉得我们没有以后 <br>
-        是你给我讲了很多道理呀<br>
-        让我明白有些事情 错过了 <br>
-        可能就成为永远的遗憾了 <br>
-        勇敢的人会努力去把未知的变成自己想要的样子<br>
-        那个晚上 我觉得好幸福<br>
-        <b style="font-size: 23px;">
-            有人宠着可真好  ●'◡'●
-          </b>
-         <br>
-        </p>
-        <P align="center">
-            <img width="394" src="https://mmbiz.qpic.cn/mmbiz_jpg/gMFTxuVFibtlrEukBTdO3Ja3ka0L6t3hoqMdn71o71AoSSibBFeCN1VHE2Y64CGzrjmqW4jzYzLqTT5NDaj6ENAQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt>
-        </P>
-        <p align="center">
-            <b style="font-size: 23px;">
-                想
-              </b>
-         我们一起看过的风景
-        虽然最远不过一辆612的距离）<br>
-        对了这是我们参加积极分子培训班<br>
-        去参观博物馆回来的路上拍的<br>
-       记得那段时间我们老是吵架 <br>
-        都不记得吵得什么了 <br>
-        <b style="font-size: 20px;">
-            真是的￣へ￣
-          </b>
-        <br>
-        </p>
-        <p align="center">
-            <img width="571px" src="https://mmbiz.qpic.cn/mmbiz_jpg/gMFTxuVFibtlrEukBTdO3Ja3ka0L6t3hoyx5cyGUqGNk6rw6yQKgvib9kyzSUKGiaW441njY2DGhTIlt8HVvC1xew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt>
-        </p>
-        <p align="center">
-            <b style="font-size: 20px;">
-                想
-              </b>
-         一起玩过的游戏<br>
-        想你讲过的笑话<br>
-        虽然其实并不怎么好笑 :)<br>
-        想念牵着你的手边走边笑 <br>
-        想念那时候的天空、<br>
-        晚风、<br>
-        沙沙的树叶儿<br>
-        叽叽的鸟儿叫<br>
-        一切都刚刚好<br>
-        </p>
-        <p align="center">
-            <img width="513px" src="https://mmbiz.qpic.cn/mmbiz_jpg/gMFTxuVFibtlrEukBTdO3Ja3ka0L6t3ho1DLRcOYVLrvhtRrBOlvCDkTXicdUR0KkAg6VMvgDiccB4Fl3OmMS2gIA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt>
-        </p>
-        <p align="center">
-            <b style="font-size: 20px;">
-                想 你...
-              </b>
-         <br>
-        <br>
-        对了 有人说：<br>
-        世上的每个人都有一颗属于他的星星 <br>
-        在黑夜里默默守护他<br>
-        <br>
-        可有那么一瞬   <br>
-        我看到我的星星变成了你<br>
-        从此  我看你时的眼里便有了光<br>
-        简单说就是...<br>
-        我喜欢你 嘻嘻~<br>
-        <br>
-        但是 真的 初次见你的那个夜晚 <br>
-        <br>
-        星光真的好美 。<br>
-        <br>
-        <b style="font-size: 23px;">未完 待续……</b>
-        <br>
-    </p>
-</h2></div>
-
-<p>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​        </p>
-<p>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​<br>​        </p>
-</body></html>]]></content>
   </entry>
   <entry>
     <title>ES6系列(1)</title>
@@ -551,7 +1139,7 @@
     <content><![CDATA[<h2 id="css练习——绘制安卓机器人"><a href="#css练习——绘制安卓机器人" class="headerlink" title="css练习——绘制安卓机器人"></a>css练习——绘制安卓机器人</h2><p>一个学校里BBS的学长的布置的小练习 (￣ ‘i ￣;) </p>
 <p>用css画一个安卓机器人</p>
 <p>效果如下</p>
-<img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/20191120200036.png" style="zoom: 33%;">
+<img src="http://q6b782rdi.bkt.clouddn.com/images13.png" style="zoom: 25%;">
 
 <p>虽然有点丑……</p>
 <p>不管啦 (*￣rǒ￣) </p>
@@ -968,8 +1556,8 @@
   <entry>
     <title>MATLAB—线性规划问题求解</title>
     <url>/2019/11/09/matlab-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="MATLAB求解线性规划问题"><a href="#MATLAB求解线性规划问题" class="headerlink" title="MATLAB求解线性规划问题"></a>MATLAB求解线性规划问题</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？</p>
-<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191109034314.png" alt></p>
+    <content><![CDATA[<h1 id="MATLAB求解线性规划问题"><a href="#MATLAB求解线性规划问题" class="headerlink" title="MATLAB求解线性规划问题"></a>MATLAB求解线性规划问题</h1><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.（生产问题）某工厂计划生产甲、乙两种产品，主要材料有钢材3500kg，铁材1800kg，专用设备能力2800台时，材料与设备能力的消耗定额及单位产品所获利润如表所示，问如何安排生产，才能使该厂所获利润最大？</p>
+<p><img src="http://q6b782rdi.bkt.clouddn.com/images10.png" alt></p>
 <h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>x1甲种产品的件数，x2乙种产品的件数</p>
 <p>max y=80<em>x1+125</em>x2  （该厂所获得的的利润）</p>
 <p>8<em>x1+5</em>x2&lt;=3500  （所耗费的钢材不超过3500kg）</p>
@@ -981,7 +1569,7 @@
 
 <p>当生产甲0件，乙450件时，该厂利润最大，为56250元</p>
 <p>2.（运输问题）设两个建材厂C1和C2，每年沙石的产量分别为35万吨和55万吨，这些沙石需要供应到W1、W2和W3三个建筑工地，每年建筑工地对沙石的需求量分别为26万吨、35万吨和26万吨，各建材厂到建筑工地之间的运费（万元/万吨）如表所示，问应当如何调运才能使得总运费最小。</p>
-<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191109034734.png" alt></p>
+<p><img src="http://q6b782rdi.bkt.clouddn.com/images11.png" alt></p>
 <h3 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="问题分析"></a>问题分析</h3><p>c1x1,c1x2,c1x3,分别为c1建材厂调到w1，w2，w3三个建筑工地的砂石量（万吨）</p>
 <p>c2x1,c2x2,c2x3, 分别为c2建材厂调到w1，w2，w3三个建筑工地的砂石量（万吨）</p>
 <p>min y=10<em>c1x1+12</em>c1x2+9<em>c1x3+8</em>c2x1+11<em>c2x2+13</em>c2x3(总运费最小)</p>
@@ -995,8 +1583,8 @@
 
 <p>当c1向w1,w2,w3分别运送0,6,26万吨，c2向w1,w2,w3分别运送26,29,0万吨时，总运费最小，为833万元。</p>
 <p>3.（资金分配问题）某企业在今后三年有5项工程考虑施工，每项工程的期望收入和年度费用如表所示。假定每一项已经批准的工程要在整个三年内完成。问企业应怎样选择工程，使企业总收入最大。</p>
-<p><img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/20191109034955.png" alt></p>
-<h3 id="问题分析-2"><a href="#问题分析-2" class="headerlink" title="问题分析"></a>问题分析</h3><p>x1,x2,x3,x4,x5分别表示工程1,2，3,4,5</p>
+<p><img src="http://q6b782rdi.bkt.clouddn.com/images12.png" alt></p>
+<h3 id="问题分析-2"><a href="#问题分析-2" class="headerlink" title="问题分析"></a>问题分析</h3><p>x1,x2,x3,x4,x5分别表示工程1,2,3,4,5</p>
 <p>max y=20<em>x1+40</em>x2+20<em>x3+15</em>x4+30*x5 (企业总收入最大)</p>
 <p>5<em>x1+4</em>x2+3<em>x3+7</em>x4+8*x5&lt;=25（第1年最大可用基金数为25千元）</p>
 <p>1<em>x1+7</em>x2+9<em>x3+4</em>x4+6*x5&lt;=25（第2年最大可用基金数为25千元）</p>
