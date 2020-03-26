@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "64a8ee42"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机组成原理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
+<meta name="keywords" content="计算机组成原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIPS寄存器和指令总结">
+<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;03&#x2F;26&#x2F;MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:site_name" content="Joshua&#39;s blogs">
+<meta property="og:description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-26T13:50:36.444Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lyvoid.site/2020/03/26/MIPS寄存器和指令总结/"/>
+
+
+
+
+
+  <title>MIPS寄存器和指令总结 | Joshua's blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<!-- 旋转魔方 -->
+
+   
+      <style>
+  /*最外层容器样式*/
+  .wrap {
+    width: 0px;
+    height: 0px;
+    /*margin: 80px;*/
+    /*position: relative;*/
+    position: fixed;
+    bottom: 80px;
+    right: 80px;
+    z-index: 999;
+  }
+
+  /*包裹所有容器样式*/
+  .cube {
+    width: 0px;
+    height: 0px;
+    margin: 0 auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(-80deg);
+    animation: rotate linear 10s infinite;
+  }
+
+  @-webkit-keyframes rotate {
+    from {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+      transform: rotateX(360deg) rotateY(360deg);
+    }
+  }
+
+  .cube div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+    transition: all .4s;
+  }
+
+  /*定义所有图片样式*/
+  .pic {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cube .out_front {
+    transform: rotateY(0deg) translateZ(25px);
+  }
+
+  .cube .out_back {
+    transform: translateZ(-25px) rotateY(180deg);
+  }
+
+  .cube .out_left {
+    transform: rotateY(-90deg) translateZ(25px);
+  }
+
+  .cube .out_right {
+    transform: rotateY(90deg) translateZ(25px);
+  }
+
+  .cube .out_top {
+    transform: rotateX(90deg) translateZ(25px);
+  }
+
+  .cube .out_bottom {
+    transform: rotateX(-90deg) translateZ(25px);
+  }
+
+  /*定义小正方体样式*/
+  .cube span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+
+  .cube .in_pic {
+    width: 25px;
+    height:25px;
+  }
+
+  .cube .in_front {
+    transform: rotateY(0deg) translateZ(12px);
+  }
+
+  .cube .in_back {
+    transform: translateZ(-12px) rotateY(180deg);
+  }
+
+  .cube .in_left {
+    transform: rotateY(-90deg) translateZ(12px);
+  }
+
+  .cube .in_right {
+    transform: rotateY(90deg) translateZ(12px);
+  }
+
+  .cube .in_top {
+    transform: rotateX(90deg) translateZ(12px);
+  }
+
+  .cube .in_bottom {
+    transform: rotateX(-90deg) translateZ(12px);
+  }
+
+  /*鼠标移入后样式*/
+  .cube:hover .out_front {
+    transform: rotateY(0deg) translateZ(50px);
+  }
+
+  .cube:hover .out_back {
+    transform: translateZ(-50px) rotateY(180deg);
+  }
+
+  .cube:hover .out_left {
+    transform: rotateY(-90deg) translateZ(50px);
+  }
+
+  .cube:hover .out_right {
+    transform: rotateY(90deg) translateZ(50px);
+  }
+
+  .cube:hover .out_top {
+    transform: rotateX(90deg) translateZ(50px);
+  }
+
+  .cube:hover .out_bottom {
+    transform: rotateX(-90deg) translateZ(50px);
+  }
+</style>
+
+<div class="wrap">
+
+    <!--包裹所有元素的容器-->
+    <div class="cube">
+        <!--前面图片 -->
+        <div class="out_front">
+          <a onclick="back2top()">
+              <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+        <!--后面图片 -->
+        <div class="out_back">
+            <a onclick="back2top()">
+              <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+        <!--左面图片 -->
+        <div class="out_left">
+            <a onclick="back2top()">
+              <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+        <!--右面图片 -->
+        <div class="out_right">
+            <a onclick="back2top()">
+                <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+        <!--上面图片 -->
+        <div class="out_top">
+            <a onclick="back2top()">
+                <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+        <!--下面图片 -->
+        <div class="out_bottom">
+            <a onclick="back2top()">
+                <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/5.jpg" class="pic" />
+            </a>
+        </div>
+
+        <!--小正方体 -->
+        <span class="in_front">
+            <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+        <span class="in_back">
+             <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+        <span class="in_left">
+            <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+        <span class="in_right">
+            <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+        <span class="in_top">
+            <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+        <span class="in_bottom">
+            <img src="https://raw.githubusercontent.com/Joshua-li-yi/blog_images/master/images/first_1/mmexport1560073596609.jpg" class="in_pic" />
+        </span>
+    </div>
+
+</div>
+
+<script>
+  function back2top(){
+    $('html, body').animate({scrollTop: 0}, 500);
+  }
+</script>
+   
+
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joshua's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joshua's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MIPS寄存器和指令总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T21:50:04+08:00">
+                2020-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="MIPS寄存器和指令总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <br>
+
+<p>每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看</p>
+<br>
+
+<h3 id="32个通用寄存器"><a href="#32个通用寄存器" class="headerlink" title="32个通用寄存器"></a>32个通用寄存器</h3><table>
+<thead>
+<tr>
+<th align="center">Register</th>
+<th align="center">Name</th>
+<th align="center">Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$0</td>
+<td align="center">$zero</td>
+<td align="center">常量0(constant value 0)</td>
+</tr>
+<tr>
+<td align="center">$1</td>
+<td align="center">$at</td>
+<td align="center">保留给汇编器(Reserved for assembler)</td>
+</tr>
+<tr>
+<td align="center">$2-$3</td>
+<td align="center">$v0-$v1</td>
+<td align="center">函数调用返回值(values for results and expression evaluation)</td>
+</tr>
+<tr>
+<td align="center">$4-$7</td>
+<td align="center">$a0-$a3</td>
+<td align="center">函数调用参数(arguments)</td>
+</tr>
+<tr>
+<td align="center">$8-$15</td>
+<td align="center">$t0-$t7</td>
+<td align="center">暂时的(或随便用的)</td>
+</tr>
+<tr>
+<td align="center">$16-$23</td>
+<td align="center">$s0-$s7</td>
+<td align="center">保存的(或如果用，需要SAVE/RESTORE的)(saved)</td>
+</tr>
+<tr>
+<td align="center">$24-$25</td>
+<td align="center">$t8-$t9</td>
+<td align="center">暂时的(或随便用的)</td>
+</tr>
+<tr>
+<td align="center">$28</td>
+<td align="center">$gp</td>
+<td align="center">全局指针(Global Pointer)</td>
+</tr>
+<tr>
+<td align="center">$29</td>
+<td align="center">$sp</td>
+<td align="center">堆栈指针(Stack Pointer)</td>
+</tr>
+<tr>
+<td align="center">$30</td>
+<td align="center">$fp</td>
+<td align="center">帧指针(Frame Pointer)</td>
+</tr>
+<tr>
+<td align="center">$31</td>
+<td align="center">$ra</td>
+<td align="center">返回地址(return address)</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="32个寄存器（详细）"><a href="#32个寄存器（详细）" class="headerlink" title="32个寄存器（详细）"></a>32个寄存器（详细）</h3><table>
+<thead>
+<tr>
+<th align="center">Register Name</th>
+<th align="center">Number</th>
+<th align="center">Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$zero</td>
+<td align="center">0</td>
+<td align="center">Constant 0</td>
+</tr>
+<tr>
+<td align="center">$at</td>
+<td align="center">1</td>
+<td align="center">Reserved for assembler</td>
+</tr>
+<tr>
+<td align="center">$v0</td>
+<td align="center">2</td>
+<td align="center">Expression evaluation and results of a function</td>
+</tr>
+<tr>
+<td align="center">$v1</td>
+<td align="center">3</td>
+<td align="center">Expression evaluation and results of a function</td>
+</tr>
+<tr>
+<td align="center">$a0</td>
+<td align="center">4</td>
+<td align="center">Argument 1</td>
+</tr>
+<tr>
+<td align="center">$a1</td>
+<td align="center">5</td>
+<td align="center">Argument 2</td>
+</tr>
+<tr>
+<td align="center">$a2</td>
+<td align="center">6</td>
+<td align="center">Argument 3</td>
+</tr>
+<tr>
+<td align="center">$a3</td>
+<td align="center">7</td>
+<td align="center">Argument 4</td>
+</tr>
+<tr>
+<td align="center">$t0</td>
+<td align="center">8</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t1</td>
+<td align="center">9</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t2</td>
+<td align="center">10</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t3</td>
+<td align="center">11</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t4</td>
+<td align="center">12</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t5</td>
+<td align="center">13</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t6</td>
+<td align="center">14</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t7</td>
+<td align="center">15</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s0</td>
+<td align="center">16</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s1</td>
+<td align="center">17</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s2</td>
+<td align="center">18</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s3</td>
+<td align="center">19</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s4</td>
+<td align="center">20</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s5</td>
+<td align="center">21</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s6</td>
+<td align="center">22</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$s7</td>
+<td align="center">23</td>
+<td align="center">Saved temporary (preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t8</td>
+<td align="center">24</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$t9</td>
+<td align="center">25</td>
+<td align="center">Temporary (not preserved across call)</td>
+</tr>
+<tr>
+<td align="center">$k0</td>
+<td align="center">26</td>
+<td align="center">Reserved for OS kernel</td>
+</tr>
+<tr>
+<td align="center">$k1</td>
+<td align="center">27</td>
+<td align="center">Reserved for OS kernel</td>
+</tr>
+<tr>
+<td align="center">$gp</td>
+<td align="center">28</td>
+<td align="center">Pointer to global area</td>
+</tr>
+<tr>
+<td align="center">$sp</td>
+<td align="center">29</td>
+<td align="center">Stack pointer</td>
+</tr>
+<tr>
+<td align="center">$fp or s8</td>
+<td align="center">30</td>
+<td align="center">Frame pointer</td>
+</tr>
+<tr>
+<td align="center">$ra</td>
+<td align="center">31</td>
+<td align="center">Return address (used by function call)</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="MIPS指令集（31条）"><a href="#MIPS指令集（31条）" class="headerlink" title="MIPS指令集（31条）"></a>MIPS指令集（31条）</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>助记符</strong></th>
+<th align="center">用法</th>
+<th align="center">解释</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">R-type</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">add</td>
+<td align="center">add $1,$2,$3</td>
+<td align="center">$1=$2+$3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
+</tr>
+<tr>
+<td align="center">addu</td>
+<td align="center">addu $1,$2,$3</td>
+<td align="center">$1=$2+$3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
+</tr>
+<tr>
+<td align="center">sub</td>
+<td align="center">sub $1,$2,$3</td>
+<td align="center">$1=$2-$3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
+</tr>
+<tr>
+<td align="center">subu</td>
+<td align="center">subu $1,$2,$3</td>
+<td align="center">$1=$2-$3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
+</tr>
+<tr>
+<td align="center">and</td>
+<td align="center">and $1,$2,$3</td>
+<td align="center">$1=$2 &amp; $3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
+</tr>
+<tr>
+<td align="center">or</td>
+<td align="center">or $1,$2,$3</td>
+<td align="center">$1=$2 | $3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
+</tr>
+<tr>
+<td align="center">xor</td>
+<td align="center">xor $1,$2,$3</td>
+<td align="center">$1=$2 ^ $3</td>
+<td align="center">其中rs＝$2，rt=$3, rd=$1(异或）</td>
+</tr>
+<tr>
+<td align="center">nor</td>
+<td align="center">nor $1,$2,$3</td>
+<td align="center">$1=~($2|$3)</td>
+<td align="center">；其中rs＝$2，rt=$3, rd=$1(或非）</td>
+</tr>
+<tr>
+<td align="center">slt</td>
+<td align="center">slt $1,$2,$3</td>
+<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
+<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1</td>
+</tr>
+<tr>
+<td align="center">sltu</td>
+<td align="center">sltu $1,$2,$3</td>
+<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
+<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1  (无符号数）</td>
+</tr>
+<tr>
+<td align="center">sll</td>
+<td align="center">sll $1,$2,10</td>
+<td align="center">$1=$2&lt;&lt;10</td>
+<td align="center">rd &lt;- rt &lt;&lt; shamt ；shamt存放移位的位数，  也就是指令中的立即数，其中rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">srl</td>
+<td align="center">srl $1,$2,10</td>
+<td align="center">$1=$2&gt;&gt;10</td>
+<td align="center">rd &lt;- rt &gt;&gt; shamt ；(logical) ，其中rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">sra</td>
+<td align="center">sra $1,$2,10</td>
+<td align="center">$1=$2&gt;&gt;10</td>
+<td align="center">rd &lt;- rt &gt;&gt; shamt  ；(arithmetic) 注意符号位保留  其中rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">sllv</td>
+<td align="center">sllv $1,$2,$3</td>
+<td align="center">$1=$2&lt;&lt;$3</td>
+<td align="center">rd &lt;- rt &lt;&lt; rs ；其中rs＝$3，rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">srlv</td>
+<td align="center">srlv $1,$2,$3</td>
+<td align="center">$1=$2&gt;&gt;$3</td>
+<td align="center">rd &lt;- rt &gt;&gt; rs ；(logical)其中rs＝$3，rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">srav</td>
+<td align="center">srav $1,$2,$3</td>
+<td align="center">$1=$2&gt;&gt;$3</td>
+<td align="center">rd &lt;- rt &gt;&gt; rs ；(arithmetic) 注意符号位保留  其中rs＝$3，rt=$2, rd=$1</td>
+</tr>
+<tr>
+<td align="center">jr</td>
+<td align="center">jr $31</td>
+<td align="center">goto $31</td>
+<td align="center">PC &lt;- rs</td>
+</tr>
+<tr>
+<td align="center">I-type</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">addi</td>
+<td align="center">addi $1,$2,100</td>
+<td align="center">$1=$2+100</td>
+<td align="center">rt &lt;- rs + (sign-extend)immediate ；其中rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">addiu</td>
+<td align="center">addiu $1,$2,100</td>
+<td align="center">$1=$2+100</td>
+<td align="center">rt &lt;- rs + (zero-extend)immediate ；其中rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">andi</td>
+<td align="center">andi $1,$2,10</td>
+<td align="center">$1=$2 &amp; 10</td>
+<td align="center">rt &lt;- rs &amp; (zero-extend)immediate ；其中rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">ori</td>
+<td align="center">andi $1,$2,10</td>
+<td align="center">$1=$2 | 10</td>
+<td align="center">rt &lt;- rs | (zero-extend)immediate ；其中rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">xori</td>
+<td align="center">andi $1,$2,10</td>
+<td align="center">$1=$2 ^ 10</td>
+<td align="center">rt &lt;- rs xor (zero-extend)immediate ；其中rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">lui</td>
+<td align="center">lui $1,100</td>
+<td align="center">$1=100*65536</td>
+<td align="center">rt &lt;- immediate*65536 ；将16位立即数放到目标寄存器高16      位，目标寄存器的低16位填0</td>
+</tr>
+<tr>
+<td align="center">lw</td>
+<td align="center">lw $1,10($2)</td>
+<td align="center">$1=memory[$2  +10]</td>
+<td align="center">rt &lt;- memory[rs + (sign-extend)immediate] ；rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">sw</td>
+<td align="center">sw $1,10($2)</td>
+<td align="center">memory[$2+10]  =$1</td>
+<td align="center">memory[rs + (sign-extend)immediate] &lt;- rt ；rt=$1,rs=$2</td>
+</tr>
+<tr>
+<td align="center">beq</td>
+<td align="center">beq $1,$2,10</td>
+<td align="center">if($1==$2)   goto PC+4+40</td>
+<td align="center">if (rs == rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
+</tr>
+<tr>
+<td align="center">bne</td>
+<td align="center">bne $1,$2,10</td>
+<td align="center">if($1!=$2)   goto PC+4+40</td>
+<td align="center">if (rs != rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
+</tr>
+<tr>
+<td align="center">slti</td>
+<td align="center">slti $1,$2,10</td>
+<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
+<td align="center">if (rs &lt;(sign-extend)immediate) rt=1 else rt=0 ；   其中rs＝$2，rt=$1</td>
+</tr>
+<tr>
+<td align="center">sltiu</td>
+<td align="center">sltiu $1,$2,10</td>
+<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
+<td align="center">if (rs &lt;(zero-extend)immediate) rt=1 else rt=0 ；  其中rs＝$2，rt=$1</td>
+</tr>
+<tr>
+<td align="center">J-type</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">j 10000</td>
+<td align="center">goto 10000</td>
+<td align="center">PC &lt;- (PC+4)[31..28],address,0,0  ；address=10000/4</td>
+</tr>
+<tr>
+<td align="center">jal</td>
+<td align="center">jal 10000</td>
+<td align="center">$31&lt;-PC+4; goto 10000</td>
+<td align="center">$31&lt;-PC+4；PC &lt;- (PC+4)[31..28],address,0,0   ；address=10000/4</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><table>
+<thead>
+<tr>
+<th align="center">助记符</th>
+<th align="center">用法</th>
+<th align="center">解释</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">bnez</td>
+<td align="center">bnez $t0 ,trylk</td>
+<td align="center">if $t0 != 0 ,goto  trylk</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">beqz</td>
+<td align="center">beqz $t0 ,trylk</td>
+<td align="center">if $t0 ==0, goto trylk</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">伪指令</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">not</td>
+<td align="center">not $1,$2</td>
+<td align="center">对应MIPS，nor $1,$2,$zero</td>
+<td align="center">或非操作</td>
+</tr>
+<tr>
+<td align="center">move</td>
+<td align="center">move $1,$2</td>
+<td align="center">对应MIPS , or $1,$2,$zero</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">li</td>
+<td align="center">li $1,$2</td>
+<td align="center">对应MIPS，ori $1,$zero,c</td>
+<td align="center">c为16位立即数</td>
+</tr>
+</tbody></table>
+<br>
+
+<p>会不断更新~</p>
+<p>若有错误，不吝指正~</p>
+
+      
+    </div>
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">MIPS寄存器和指令总结</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 yi 的个人博客">yi</a></p>
+  <p><span>发布时间:</span>2020年03月26日 - 21:50</p>
+  <p><span>最后更新:</span>2020年03月26日 - 21:50</p>
+  <p><span>原始链接:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" title="MIPS寄存器和指令总结">http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+	</div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/26/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3git%E4%B8%8B%E8%BD%BD%E6%85%A2%E9%97%AE%E9%A2%98%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E4%B8%8D%E7%94%A8%E6%94%B9host%EF%BC%89/" rel="next" title="完美解决git下载慢问题（亲测有效，不用改host）">
+                <i class="fa fa-chevron-left"></i> 完美解决git下载慢问题（亲测有效，不用改host）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/26/G-S%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="prev" title="G-S稳定匹配算法详解">
+                G-S稳定匹配算法详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Joshua-li-yi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#32个通用寄存器"><span class="nav-number">1.</span> <span class="nav-text">32个通用寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32个寄存器（详细）"><span class="nav-number">2.</span> <span class="nav-text">32个寄存器（详细）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIPS指令集（31条）"><span class="nav-number">3.</span> <span class="nav-text">MIPS指令集（31条）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他指令"><span class="nav-number">4.</span> <span class="nav-text">其他指令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yi</span>
+
+  
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+-->
+
+
+
+<!-- 网站运行时间的设置 -->
+<div class="runing-time">
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>  Sometimes your whole life boils down to one insame move.
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("11/08/2019 23:14:21");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "小J站已经安全运行辽 "+dnum+" 天啦 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'XiAtNclb1Mlycy88pMumCkrx-gzGzoHsz',
+        appKey: 'NcYqELjWj1c6rhMyzNTKOoxr',
+        placeholder: '各位道友，请举手发言[]~(￣▽￣)~*',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("zFaWqktPm6GTBdhNEtxXUxbe-gzGzoHsz", "YcGNBJicC5b7s5tsXSr6Um5P");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
