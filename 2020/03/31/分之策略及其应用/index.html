@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="前端," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -87,16 +87,18 @@
 
 
 
-<meta name="description" content="主要内容 字符串基本操作  document.write(str.fontcolor(‘red’)); document.write(str.fontsize(45)); document.write(str.sub()); document.write(str.sup()); ……   字符串拼接  str3.concat(“world”); alert(str3+’world’); str">
-<meta name="keywords" content="前端">
+<meta name="description" content="一、分治策略简介在很多情况下，分治策略有可能是简单而强有力的方法，可以用来提高算法的效率 不要问我为什么，他就是这样的…… 大概的步骤有三部分 1，将输入的数据分成若干部分 2、递归的求解每个部分的问题 3、将子问题的解组合成为一个全局的解 二、应用领域分治算法可以被运用到许许多多的方面，可以充当其他算法的一个i组成部分，也可以稍做修改成为另一个算法，例如 归并排序 找平面上最邻近的点对问题 降低">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS字符串相关操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;03&#x2F;26&#x2F;JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C&#x2F;index.html">
+<meta property="og:title" content="分之策略及其应用">
+<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;03&#x2F;31&#x2F;%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8&#x2F;index.html">
 <meta property="og:site_name" content="Joshua&#39;s blogs">
-<meta property="og:description" content="主要内容 字符串基本操作  document.write(str.fontcolor(‘red’)); document.write(str.fontsize(45)); document.write(str.sub()); document.write(str.sup()); ……   字符串拼接  str3.concat(“world”); alert(str3+’world’); str">
+<meta property="og:description" content="一、分治策略简介在很多情况下，分治策略有可能是简单而强有力的方法，可以用来提高算法的效率 不要问我为什么，他就是这样的…… 大概的步骤有三部分 1，将输入的数据分成若干部分 2、递归的求解每个部分的问题 3、将子问题的解组合成为一个全局的解 二、应用领域分治算法可以被运用到许许多多的方面，可以充当其他算法的一个i组成部分，也可以稍做修改成为另一个算法，例如 归并排序 找平面上最邻近的点对问题 降低">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-26T14:03:36.783Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200330211911994.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-03-30T16:28:16.522Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200330211911994.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://lyvoid.site/2020/03/26/JS字符串相关操作/"/>
+  <link rel="canonical" href="http://lyvoid.site/2020/03/31/分之策略及其应用/"/>
 
 
 
 
 
-  <title>JS字符串相关操作 | Joshua's blogs</title>
+  <title>分之策略及其应用 | Joshua's blogs</title>
   
 
 
@@ -522,7 +524,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/03/26/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yi">
@@ -539,7 +541,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS字符串相关操作</h1>
+          <h1 class="post-title" itemprop="name headline">分之策略及其应用</h1>
         
 
         <div class="post-meta">
@@ -551,8 +553,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T22:03:10+08:00">
-                2020-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-31T00:26:52+08:00">
+                2020-03-31
               </time>
             
 
@@ -574,8 +576,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -592,8 +594,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/03/26/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" itemprop="commentCount"></span>
+                <a href="/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -601,7 +603,7 @@
 
           
           
-             <span id="/2020/03/26/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/" class="leancloud_visitors" data-flag-title="JS字符串相关操作">
+             <span id="/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="leancloud_visitors" data-flag-title="分之策略及其应用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -632,53 +634,155 @@
       
 
       
-        <br>
+        <h3 id="一、分治策略简介"><a href="#一、分治策略简介" class="headerlink" title="一、分治策略简介"></a>一、分治策略简介</h3><p>在很多情况下，分治策略有可能是简单而强有力的方法，可以用来提高算法的效率</p>
+<p>不要问我为什么，他就是这样的……</p>
+<p>大概的步骤有三部分</p>
+<p>1，将输入的数据分成若干部分</p>
+<p>2、递归的求解每个部分的问题</p>
+<p>3、将子问题的解组合成为一个全局的解</p>
+<h3 id="二、应用领域"><a href="#二、应用领域" class="headerlink" title="二、应用领域"></a>二、应用领域</h3><p>分治算法可以被运用到许许多多的方面，可以充当其他算法的一个i组成部分，也可以稍做修改成为另一个算法，例如</p>
+<p>归并排序</p>
+<p>找平面上最邻近的点对问题</p>
+<p>降低整数相乘的复杂度</p>
+<p>消除信号的噪音</p>
+<p>……<br><br></p>
+<h3 id="三、算法核心部分分析"><a href="#三、算法核心部分分析" class="headerlink" title="三、算法核心部分分析"></a>三、算法核心部分分析</h3><p>马克思和恩格斯教导我们一定要抓住主要矛盾的主要方面</p>
+<p>从我的角度看，我们学习分治算法的主要矛盾是将其应用的其他方面</p>
+<p>而主要方面就是一定要理解算法的核心部分</p>
+<p>这样就可以根据实际情况对分治算法做出适当的修改，提高解决问题的效率</p>
+<p><strong>接下来我将会通过解决一下几个问题，让大家比较简单的掌握分治算法</strong></p>
+<ul>
+<li><p><strong>分治算法的整体步骤大概是什么样的</strong></p>
+</li>
+<li><p><strong>怎么预计和分析一个分治算法的好坏，即对分治算法的复杂度进行评估</strong></p>
+</li>
+<li><p><strong>怎么改进一个分治算法</strong></p>
+</li>
+</ul>
+<p>上面以及提到过分治算法的大概过程</p>
+<p>我再重述一下</p>
+<ol>
+<li><p>将输入的数据分成若干部分</p>
+</li>
+<li><p>递归的求解每个部分的问题</p>
+</li>
+<li><p>将子问题的解组合成为一个全局的解</p>
+</li>
+</ol>
+<p>为了让大家更好的理解这个过程就拿最为熟悉的归并排序算法举例</p>
+<br>
 
-<h4 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h4><ul>
-<li><p>字符串基本操作</p>
-<ul>
-<li>document.write(str.fontcolor(‘red’));</li>
-<li>document.write(str.fontsize(45));</li>
-<li>document.write(str.sub());</li>
-<li>document.write(str.sup());</li>
-<li>……</li>
-</ul>
+<p>嘛也不说直接上源代码</p>
+<p>python实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 归并排序主体</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="comment"># 如果数组中只有两个数</span></span><br><span class="line">    <span class="keyword">if</span>(len(arr)&lt;<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    </span><br><span class="line">    middle = math.floor(len(arr)/<span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 将现有的整个数组分成左右两个部分，采用的切割方法是从middle处切割</span></span><br><span class="line">    left, right = arr[<span class="number">0</span>:middle], arr[middle:]</span><br><span class="line">    <span class="comment"># 最后递归合并</span></span><br><span class="line">    <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left,right)</span>:</span></span><br><span class="line">    <span class="comment"># 存储结果</span></span><br><span class="line">    result = []</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 比较排头的元素</span></span><br><span class="line">    <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">        <span class="keyword">if</span> left[<span class="number">0</span>] &lt;= right[<span class="number">0</span>]:</span><br><span class="line">            result.append(left.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="comment"># 合并左右部分</span></span><br><span class="line">    <span class="keyword">while</span> left:</span><br><span class="line">        result.append(left.pop(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">while</span> right:</span><br><span class="line">        result.append(right.pop(<span class="number">0</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    list = [<span class="number">1</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">45</span>, <span class="number">98</span>, <span class="number">90</span>, <span class="number">78</span>, <span class="number">99</span>, <span class="number">123</span>, <span class="number">2</span>]</span><br><span class="line">    print(<span class="string">"List is:"</span>, list)</span><br><span class="line">    result = mergeSort(list)</span><br><span class="line">    print(<span class="string">"list sorted :"</span>, result)</span><br></pre></td></tr></table></figure>
+
+<p>相信很多人又这样的问题，为啥这玩意要在middle处切割的，又为啥要分成两个部分，不分成三个，四个……部分呢？这些问题就是我们下面要详细讨论的了</p>
+<br>
+
+<p>“小朋友，你是否有很多问好？？？”</p>
+<br>
+
+<p>说实话，一开始学的时候我也一脸懵逼━┳━　━┳━</p>
+<p>要想弄懂这个问题就我们就需要知道下面这个公式，并且需要会进行对应的推导</p>
+<br>
+
+<h3 id="四、公式推导"><a href="#四、公式推导" class="headerlink" title="四、公式推导"></a>四、公式推导</h3><p>首先定义T(n)为该算法在规模为n的输入实例的最坏的运行时间</p>
+<p>然后看</p>
+<p>$$ T\left( n \right) =\left{ \begin{array}{l}     aT\left( n/b \right) +g\left( n \right) \left( n&gt;1 \right)\   0\ \left( n=1 \right)\ \end{array} \right. $$ </p>
+<p>这个公式</p>
+<p>这个公式就是归并排序的递推公式，下面的很多问题就是围绕这个问题展开的</p>
+<br>
+
+<h4 id="公式的含义"><a href="#公式的含义" class="headerlink" title="公式的含义"></a>公式的含义</h4><ul>
+<li><p>一个规模为n的问题每一次被分成了a个子问题，</p>
 </li>
-<li><p>字符串拼接</p>
-<ul>
-<li>str3.concat(“world”);</li>
-<li>alert(str3+’world’);</li>
-<li>str2.join(“+”)</li>
-</ul>
+<li><p>每个问题的规模是n/b</p>
 </li>
-<li><p>字符串查找</p>
-<ul>
-<li>str.indexOf(‘h’,3)</li>
-<li>str.lastIndexOf(‘h’,3)</li>
-<li>str.search(/abc/i)</li>
-</ul>
-</li>
-<li><p>字符串替换</p>
-<ul>
-<li>str3.replace(/a/ig,’hhhhhh’)</li>
-</ul>
-</li>
-<li><p>字符串分割</p>
-<ul>
-<li>str.substring(2,4)</li>
-<li>str.split(“ “,3)</li>
-</ul>
-</li>
-<li><p>字符串大小写</p>
-<ul>
-<li>str.toLowerCase()</li>
-<li>str.toUpperCase()</li>
-</ul>
+<li><p>各个子问题的解的复杂度为 g(n)</p>
 </li>
 </ul>
 <br>
 
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>字符串的使用<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">'text/css'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span> </span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串基本操作</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    var str = "hello world!";</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 用大号字体显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.big()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 显示闪动字符串IE下无效</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.blink()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用粗体显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.bold()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 以打字机文本显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fixed()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 以删除线来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.strike()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用指定颜色来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fontcolor('red')+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 使用指定字体大小来显示字符串</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.fontsize(45)+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 将字符串显示为链接</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.link()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 把字符串显示为下标</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.sub()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    // 把字符串显示为上标</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//    document.write(str.sup()+'&lt;br&gt;');</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     //    str.charAt(3)显示下标为3得字母</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     console.log(str.charAt(3));//108</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     // str.charCodeAt(3)显示下标为3得字母得ASCII值</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     console.log(str.charCodeAt(3));</span></span></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="comment">//     // String.fromCharCode(ASCII值)</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     // 返回ASCII对应得字母</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     document.write(String.fromCharCode(99));</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     var str2 = String.fromCharCode(97,98,99);</span></span></span><br><span class="line"><span class="actionscript"><span class="comment">//     document.write(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// str3.concat("world") 字符串得拼接，返回拼接后得字符串，生成新得字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    var str3= "hello ";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    var str2=str3.concat("world");</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    alert(str2)//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//    alert(str3)//hello </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// // 一般使用字符串拼接符 + </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str3+'world');//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串的查找</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// indexOf()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// indexOf(字符串，开始查找的位置) 两个参数</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回子串第一次的字符串中出现的位置，否则返回-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="abcdefg";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.indexOf('bcd'));//1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.indexOf('h',3));//-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// lastindexOf()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// lastindexOf(字符串，开始查找的位置) 两个参数</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回子串最后一次的字符串中出现的位置，否则返回-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="abcabcabcabc";</span></span></span><br><span class="line">    </span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.lastIndexOf('abc'));//9</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.lastIndexOf('h',3));//-1</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// search(子串) 可以是正则表达式</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 子串写法  "abc"  /abc/ </span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// /abc/ig i 忽略大小写 g全局搜索</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="Abcabcabcabc";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search("abc"));//3</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search(/abc/));//3</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.search(/abc/i));//0</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// replace()字符串替换</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// replace(匹配的字符串|正则表达式,替换为的新表达式)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回值是替换完成后新生成的字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str ="a b c d";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.replace('b',"hhhhh");//a hhhhh c d</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// // alert(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str3 ="a b c d a a a";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str4 = str3.replace('a',"hhhhh");</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str4);//hhhhh b c d a a a 无法进行全局替换</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// str3 ="A b c d a a a";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str5 = str3.replace(/a/ig,'hhhhhh');</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str5);//hhhhhh b c d hhhhhh hhhhhh hhhhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// =====================================================================</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串分割</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// substring()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// substring(开始的下标，结束的下标)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回分割后的新字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.substring(2,4);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2);//ll</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// split()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// split(分隔符，生成的字符长度)</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 如果为""会分割为单个字符</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 返回的是一个字符串数组 字符串=&gt;数组</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word hhhh hh hhhh";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.split(" ");//hello,word,hhhh,hh,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str3 = str.split(" ",3);//hello,word,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str4 = str.split("");//h,e,l,l,o, ,w,o,r,d, ,h,h,h,h, ,h,h, ,h,h,h,h</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str3);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str4);</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 数组=&gt;字符串</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// join()</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "hello word hhhh hh hhhh";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str2 = str.split(" ");//hello,word,hhhh,hh,hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str2.join("+"));//hello+word+hhhh+hh+hhhh</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// -------------------------------------------------------------</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// 字符串大小写问题</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// var str = "HELLO world";</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.toLowerCase());//hello world</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">// alert(str.toUpperCase());//HELLO WORLD</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;input type="button" value="按钮" id="btn"&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>接下来的这个图你们一定就可以看懂了</p>
+<p><img src="https://img-blog.csdnimg.cn/20200330211911994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这个图就是上面归并排序的分治策略图</p>
+<br>
+
+<h4 id="n为2的倍数"><a href="#n为2的倍数" class="headerlink" title="n为2的倍数"></a>n为2的倍数</h4><p>接下来我们就手动推导出归并排序的复杂度为$T\left( n \right) = n\log_{2}n$</p>
+<p>首先根据</p>
+<p>$$T\left( n \right) = aT\left( \frac{n}{b} \right) + g\left( n \right)$$</p>
+<p>我们可以写出</p>
+<p>归并排序中每一次被分为2个子问题，每一个子问题的规模是其爸爸的一半，因为归并排序进行排序操作的时候只比较头两个元素的大小，当一半为空时，直接把另一半的其他部分加到结果上就行，所以每一个子问题的复杂度为n</p>
+<p>首先从简单的n为2的倍数开始</p>
+<p>$$T\left( n \right) = 2T\left( \frac{n}{2} \right) + n$$</p>
+<p>$$\frac{T\left( n \right)}{n} = \frac{2T\left( \frac{n}{2} \right)}{n} + 1$$</p>
+<p>$$= \frac{T\left( \frac{n}{2} \right)}{\frac{n}{2}} + 1$$</p>
+<p>$$= \frac{T\left( \frac{n}{4} \right)}{\frac{n}{4}} + 1 + 1$$</p>
+<p>$$= \frac{T\left( \frac{n}{8} \right)}{\left( \frac{n}{8} \right)} + 1 + 1 + 1$$</p>
+<p>$$\ldots\ldots$$</p>
+<p>$$= \frac{T\left( \frac{n}{n} \right)}{\left( \frac{n}{n} \right)} + \log_{2}n*1$$</p>
+<p>$$= \log_{2}n$$</p>
+<p>$$T\left( n \right) = n\log_{2}n$$</p>
+<br>
+
+<h4 id="n为自然数"><a href="#n为自然数" class="headerlink" title="n为自然数"></a>n为自然数</h4><p>其次对于一般情况我们要证明</p>
+<p>$$T\left( n \right) \leq n\ ceiling\left( \log_{2}n \right)$$</p>
+<p>递推公式为<br>$$ T\left( n \right) &lt;=\ \left{ \begin{array}{l}     0\ \left( n=1 \right)\     T\left( ceiling\left( n/2 \right) \right) +T\left( floor\left( n/2 \right) \right) +n\ \left( n&gt;1 \right)\ \end{array} \right.  $$<br>我们采用归纳法</p>
+<p>当n= 1时显然成立</p>
+<p>令 $n_{1} = floor\left( \frac{n}{2} \right)\ n_{2} = \text{ceiling}\left( \frac{n}{2} \right)$</p>
+<p>假设$n - 1$命题时命题成立</p>
+<p>$$ T\left( n \right) &lt;=T\left( n_1 \right) +T\left( n_2 \right) +n $$ $$ &lt;=n_1\left( ceiling\left( \log _2n_1 \right) \right) +n_2\left( ceiling\left( \log _2\ n_2 \right) \right) +n $$ $$ &lt;=n_1\left( ceiling\left( \log _2\ n_2 \right) \right) +n_2\left( ceiling\left( \log _2\ n_2 \right) \right) +n $$ $$ =n\left( ceiling\left( \log _2\ n_2 \right) \right) +n $$ $$ &lt;=n\left( ceiling\left( \log _2\ ceiling\left( n/2 \right) \right) \right) +n $$ $$ &lt;=n\left( ceiling\left( \log _2\ n \right) -1 \right) +n $$ $$ &lt;=n\left( ceiling\left( \log _2\ n \right) \right)  $$ </p>
+<p>综上，我们回答刚刚的问题为啥这玩意要在middle处切割的，又为啥要分成两个部分，不分成三个，四个……部分呢？</p>
+<p>其实可以在不同地方切割，我们一般选择在middle出切割，也可选择切成多个部分，但是这样的复杂度时不同的</p>
+<br>
+
+<h4 id="g-n-c"><a href="#g-n-c" class="headerlink" title="g(n)=c"></a>g(n)=c</h4><p>对于g(n)=c</p>
+<p>这个公式最后可以证明</p>
+<p>$$T\left( n \right) = O\left( n^{\log_{b}a} \right)\ $$</p>
+<br>
+
+<h4 id="g-n-c-n-d"><a href="#g-n-c-n-d" class="headerlink" title="g(n) = c*n^d"></a>g(n) = c*n^d</h4><p>对于$g\left( n \right) = \text{cn}^{d}$</p>
+<p>满足如下定理</p>
+<p>设函数满足这个递推关系$T\left( n \right) = aT\left( \frac{n}{b} \right) + \text{cn}^{d}$的增函数，其中$n = b^{k}$,a&gt;=1，b是大于1的正整数，c，d为实数且c&gt;=0,d&gt;=0，那么<br>$$ T\left( n \right) =\left{ \begin{array}{l}     O\left( n^d \right) \ a&lt;b^d\     O\left( n^d\log\text{\ }n \right) \ a=b^d\     O\left( n^{\log _a\ b} \right) \ a&gt;b^d\ \end{array} \right.  $$<br>有兴趣的可以自己证明一下，这里就不给出证明了</p>
+<p>敲公式实在太累人了ε(┬┬﹏┬┬)3<br><br></p>
+<h3 id="五、分治算法的应用"><a href="#五、分治算法的应用" class="headerlink" title="五、分治算法的应用"></a>五、分治算法的应用</h3><p>经过对核心算法的理解</p>
+<p>我们就可以解决之前提出的问题了<br><br></p>
+<p>分治算法第一步就是就是将问题分成对应的a部分，每个问题的规模是n/b之后递归求解每一个问题，最后进行组合</p>
+<p>那怎么对一个分治算法的复杂度进行评估呢？</p>
+<p>我们可以用上面T(n)公式进行推导，将对应的a，b，g(n)，带入然后计算出T(n)</p>
+<p>同时我们可以运用不同的计算方法改变a，b，g(n)的值，由此来达到改进算法效率的目的</p>
+<br>
+
+<p>接下来我们就通过改进整数的乘法来看一下分治算法的牛逼之处吧</p>
+<p>最普通的乘法少说一点吧</p>
+<p>x*y，在计算机中是通过二进制来计算的，所以是先转为二进制再相乘</p>
+<p>复杂度为O(n^2)</p>
+<p>接下来我们通过分治算法来进行改进</p>
+<br>
+
+<p>我们令</p>
+<p>$$ x = 2^{(n/2)}*x1+x0$$</p>
+<p>$$y = 2^{(n/2)}*y1+y0$$</p>
+<p>$$x<em>y = (2^{(n/2)}</em>x1+x0)(2^{(n/2)}*y1+y0)$$</p>
+<p>$$= 2^n <em>x1</em> y1+2^{(n/2)}<em>(x1</em>y0+x0<em>y1)+x0</em>y0$$</p>
+<p>我们可以通过递推公式来看一下，现在的算法优劣情况</p>
+<p>$$T(n) = 4T(n/2) +O(n) $$</p>
+<p>$$=&gt; T(n)=O(n^2)$$</p>
+<p>O(n) 为每次移位和相加的复杂度</p>
+<p>貌似没有啥改变……<br><br></p>
+<p>接下来看看我们可不可以通过改变a，b，O(n)的值来降低复杂度</p>
+<p>可以看出O(n)，没有啥可以很好的改进的地方</p>
+<p>但是我们可以发现</p>
+<p>$$x<em>y=2^n *x1</em> y1+2^{(n/2)}<em>(x1</em>y0+x0<em>y1)+x0</em>y0$$</p>
+<p>$$= 2^n <em>x1*y1+2^{(n/2)}</em>((x1+x0)<em>(y1+y0)-x1</em>y1-x0<em>y0)+x0</em>y0$$</p>
+<p>这样就成将4次乘法降低为3次了<br>让我们再来看一次复杂度</p>
+<p>$$T(n) = 3T(n/2) +O(n)=&gt;T(n)=O(n^{(1.585)})$$</p>
+<p>d=====(￣▽￣*)b</p>
+<p>让我们最后再看一下改进后的整数相乘的伪代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Recursive_Multiply</span><span class="params">(x,y)</span>:</span></span><br><span class="line">    x = x1 * <span class="number">2</span>**(n/<span class="number">2</span>) + x0</span><br><span class="line">    y = y1 * <span class="number">2</span>**(n/<span class="number">2</span>) + y0</span><br><span class="line">    <span class="comment"># 计算x1+x0 ,y1+y0</span></span><br><span class="line">    p = Recursive_Multiply(x1+x0,y1+y0)</span><br><span class="line">    </span><br><span class="line">    x1 * y1 = Recursive_Multiply(x1,y1)</span><br><span class="line">    x0 * y0 = Recursive_Multiply(x0,y0)</span><br><span class="line">    <span class="keyword">return</span> x1 * y1 * <span class="number">2</span>**n + (p-x1 * y1 - x0 * y0) * <span class="number">2</span>**(n/<span class="number">2</span>) + x0 * y0</span><br></pre></td></tr></table></figure>
+
+<p>小编是个菜鸡，若有错误请大佬们不吝指正</p>
+
       
     </div>
     
@@ -696,6 +800,35 @@
 	<div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">分之策略及其应用</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 yi 的个人博客">yi</a></p>
+  <p><span>发布时间:</span>2020年03月31日 - 00:26</p>
+  <p><span>最后更新:</span>2020年03月31日 - 00:28</p>
+  <p><span>原始链接:</span><a href="/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" title="分之策略及其应用">http://lyvoid.site/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2020/03/31/%E5%88%86%E4%B9%8B%E7%AD%96%E7%95%A5%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
       
 	</div>
     
@@ -708,7 +841,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
           
         </div>
       
@@ -721,8 +854,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/26/python-%E8%BF%9E%E6%8E%A5mysql/" rel="next" title="python 连接mysql">
-                <i class="fa fa-chevron-left"></i> python 连接mysql
+              <a href="/2020/03/26/%E7%A5%9E%E5%99%A8%E9%9B%86%E5%90%88%EF%BC%881%EF%BC%89/" rel="next" title="神器集合（1）">
+                <i class="fa fa-chevron-left"></i> 神器集合（1）
               </a>
             
           </div>
@@ -730,10 +863,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/26/JS-Math%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="JS Math对象的使用">
-                JS Math对象的使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -878,7 +1007,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#主要内容"><span class="nav-number">1.</span> <span class="nav-text">主要内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、分治策略简介"><span class="nav-number">1.</span> <span class="nav-text">一、分治策略简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、应用领域"><span class="nav-number">2.</span> <span class="nav-text">二、应用领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、算法核心部分分析"><span class="nav-number">3.</span> <span class="nav-text">三、算法核心部分分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、公式推导"><span class="nav-number">4.</span> <span class="nav-text">四、公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#公式的含义"><span class="nav-number">4.1.</span> <span class="nav-text">公式的含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#n为2的倍数"><span class="nav-number">4.2.</span> <span class="nav-text">n为2的倍数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#n为自然数"><span class="nav-number">4.3.</span> <span class="nav-text">n为自然数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-n-c"><span class="nav-number">4.4.</span> <span class="nav-text">g(n)=c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-n-c-n-d"><span class="nav-number">4.5.</span> <span class="nav-text">g(n) = c*n^d</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、分治算法的应用"><span class="nav-number">5.</span> <span class="nav-text">五、分治算法的应用</span></a></li></ol></div>
             
 
           </div>
