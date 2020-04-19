@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="计算机组成原理," />
+  <meta name="keywords" content="计算机基础 神器," />
 
 
 
@@ -87,16 +87,34 @@
 
 
 
-<meta name="description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
-<meta name="keywords" content="计算机组成原理">
+<meta name="description" content="作为一个喜欢写blog的小菜鸟，有时候兴趣来了就啥也不管的敲起了键盘，写起了人生 写完之后，发布出去的一瞬间，感觉,啊，比吃了辣条还开心~~   但是有时候总觉得又得截图，又得录gif，有时候还要敲公式……让时间本就不充裕的自己，又增压力 直到有一天让我发现了一款神器，稍加修改之后，写博客的效率几乎增加了10倍 我又可以了 嘿嘿~~   俗话说的好“磨刀不误砍柴工”，一款好的刀，呸，一款好的软">
+<meta name="keywords" content="计算机基础 神器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MIPS寄存器和指令总结">
-<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;03&#x2F;26&#x2F;MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:title" content="写博客有了他，效率提升10倍！！！">
+<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;04&#x2F;19&#x2F;%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E4%BA%86%E4%BB%96%EF%BC%8C%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%8710%E5%80%8D%EF%BC%81%EF%BC%81%EF%BC%81&#x2F;index.html">
 <meta property="og:site_name" content="Joshua&#39;s blogs">
-<meta property="og:description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
+<meta property="og:description" content="作为一个喜欢写blog的小菜鸟，有时候兴趣来了就啥也不管的敲起了键盘，写起了人生 写完之后，发布出去的一瞬间，感觉,啊，比吃了辣条还开心~~   但是有时候总觉得又得截图，又得录gif，有时候还要敲公式……让时间本就不充裕的自己，又增压力 直到有一天让我发现了一款神器，稍加修改之后，写博客的效率几乎增加了10倍 我又可以了 嘿嘿~~   俗话说的好“磨刀不误砍柴工”，一款好的刀，呸，一款好的软">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-26T13:50:36.444Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419003434377.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419004742530.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419005718443.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419005803562.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419010329303.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419010528370.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419010603394.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419010655479.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419010804475.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2020041901133889.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;202004190114523.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419011651645.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419012846510.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419013613609.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419014103514.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419020749767.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419020140651.gif">
+<meta property="og:updated_time" content="2020-04-19T03:05:52.597Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419003434377.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
 
 
 
@@ -126,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://lyvoid.site/2020/03/26/MIPS寄存器和指令总结/"/>
+  <link rel="canonical" href="http://lyvoid.site/2020/04/19/写博客有了他，效率提升10倍！！！/"/>
 
 
 
 
 
-  <title>MIPS寄存器和指令总结 | Joshua's blogs</title>
+  <title>写博客有了他，效率提升10倍！！！ | Joshua's blogs</title>
   
 
 
@@ -522,7 +540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/04/19/%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E4%BA%86%E4%BB%96%EF%BC%8C%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%8710%E5%80%8D%EF%BC%81%EF%BC%81%EF%BC%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yi">
@@ -539,7 +557,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MIPS寄存器和指令总结</h1>
+          <h1 class="post-title" itemprop="name headline">写博客有了他，效率提升10倍！！！</h1>
         
 
         <div class="post-meta">
@@ -551,8 +569,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T21:50:04+08:00">
-                2020-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T11:04:52+08:00">
+                2020-04-19
               </time>
             
 
@@ -574,8 +592,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机组成原理</span>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%A5%9E%E5%99%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础 神器</span>
                   </a>
                 </span>
 
@@ -592,8 +610,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                <a href="/2020/04/19/%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E4%BA%86%E4%BB%96%EF%BC%8C%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%8710%E5%80%8D%EF%BC%81%EF%BC%81%EF%BC%81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/19/%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E4%BA%86%E4%BB%96%EF%BC%8C%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%8710%E5%80%8D%EF%BC%81%EF%BC%81%EF%BC%81/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -601,7 +619,7 @@
 
           
           
-             <span id="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="MIPS寄存器和指令总结">
+             <span id="/2020/04/19/%E5%86%99%E5%8D%9A%E5%AE%A2%E6%9C%89%E4%BA%86%E4%BB%96%EF%BC%8C%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%8710%E5%80%8D%EF%BC%81%EF%BC%81%EF%BC%81/" class="leancloud_visitors" data-flag-title="写博客有了他，效率提升10倍！！！">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -634,512 +652,128 @@
       
         <br>
 
-<p>每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看</p>
+<p>作为一个喜欢写blog的小菜鸟，有时候兴趣来了就啥也不管的敲起了键盘，写起了人生</p>
+<p>写完之后，发布出去的一瞬间，感觉,啊，比吃了辣条还开心~~</p>
 <br>
 
-<h3 id="32个通用寄存器"><a href="#32个通用寄存器" class="headerlink" title="32个通用寄存器"></a>32个通用寄存器</h3><table>
-<thead>
-<tr>
-<th align="center">Register</th>
-<th align="center">Name</th>
-<th align="center">Usage</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$0</td>
-<td align="center">$zero</td>
-<td align="center">常量0(constant value 0)</td>
-</tr>
-<tr>
-<td align="center">$1</td>
-<td align="center">$at</td>
-<td align="center">保留给汇编器(Reserved for assembler)</td>
-</tr>
-<tr>
-<td align="center">$2-$3</td>
-<td align="center">$v0-$v1</td>
-<td align="center">函数调用返回值(values for results and expression evaluation)</td>
-</tr>
-<tr>
-<td align="center">$4-$7</td>
-<td align="center">$a0-$a3</td>
-<td align="center">函数调用参数(arguments)</td>
-</tr>
-<tr>
-<td align="center">$8-$15</td>
-<td align="center">$t0-$t7</td>
-<td align="center">暂时的(或随便用的)</td>
-</tr>
-<tr>
-<td align="center">$16-$23</td>
-<td align="center">$s0-$s7</td>
-<td align="center">保存的(或如果用，需要SAVE/RESTORE的)(saved)</td>
-</tr>
-<tr>
-<td align="center">$24-$25</td>
-<td align="center">$t8-$t9</td>
-<td align="center">暂时的(或随便用的)</td>
-</tr>
-<tr>
-<td align="center">$28</td>
-<td align="center">$gp</td>
-<td align="center">全局指针(Global Pointer)</td>
-</tr>
-<tr>
-<td align="center">$29</td>
-<td align="center">$sp</td>
-<td align="center">堆栈指针(Stack Pointer)</td>
-</tr>
-<tr>
-<td align="center">$30</td>
-<td align="center">$fp</td>
-<td align="center">帧指针(Frame Pointer)</td>
-</tr>
-<tr>
-<td align="center">$31</td>
-<td align="center">$ra</td>
-<td align="center">返回地址(return address)</td>
-</tr>
-</tbody></table>
+<p>但是有时候总觉得又得截图，又得录gif，有时候还要敲公式……让时间本就不充裕的自己，又增压力</p>
+<p>直到有一天让我发现了一款神器，稍加修改之后，写博客的效率几乎增加了10倍</p>
+<p>我又可以了</p>
+<p>嘿嘿~~</p>
 <br>
 
-<h3 id="32个寄存器（详细）"><a href="#32个寄存器（详细）" class="headerlink" title="32个寄存器（详细）"></a>32个寄存器（详细）</h3><table>
-<thead>
-<tr>
-<th align="center">Register Name</th>
-<th align="center">Number</th>
-<th align="center">Usage</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$zero</td>
-<td align="center">0</td>
-<td align="center">Constant 0</td>
-</tr>
-<tr>
-<td align="center">$at</td>
-<td align="center">1</td>
-<td align="center">Reserved for assembler</td>
-</tr>
-<tr>
-<td align="center">$v0</td>
-<td align="center">2</td>
-<td align="center">Expression evaluation and results of a function</td>
-</tr>
-<tr>
-<td align="center">$v1</td>
-<td align="center">3</td>
-<td align="center">Expression evaluation and results of a function</td>
-</tr>
-<tr>
-<td align="center">$a0</td>
-<td align="center">4</td>
-<td align="center">Argument 1</td>
-</tr>
-<tr>
-<td align="center">$a1</td>
-<td align="center">5</td>
-<td align="center">Argument 2</td>
-</tr>
-<tr>
-<td align="center">$a2</td>
-<td align="center">6</td>
-<td align="center">Argument 3</td>
-</tr>
-<tr>
-<td align="center">$a3</td>
-<td align="center">7</td>
-<td align="center">Argument 4</td>
-</tr>
-<tr>
-<td align="center">$t0</td>
-<td align="center">8</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t1</td>
-<td align="center">9</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t2</td>
-<td align="center">10</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t3</td>
-<td align="center">11</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t4</td>
-<td align="center">12</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t5</td>
-<td align="center">13</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t6</td>
-<td align="center">14</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t7</td>
-<td align="center">15</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s0</td>
-<td align="center">16</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s1</td>
-<td align="center">17</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s2</td>
-<td align="center">18</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s3</td>
-<td align="center">19</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s4</td>
-<td align="center">20</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s5</td>
-<td align="center">21</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s6</td>
-<td align="center">22</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s7</td>
-<td align="center">23</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t8</td>
-<td align="center">24</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t9</td>
-<td align="center">25</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$k0</td>
-<td align="center">26</td>
-<td align="center">Reserved for OS kernel</td>
-</tr>
-<tr>
-<td align="center">$k1</td>
-<td align="center">27</td>
-<td align="center">Reserved for OS kernel</td>
-</tr>
-<tr>
-<td align="center">$gp</td>
-<td align="center">28</td>
-<td align="center">Pointer to global area</td>
-</tr>
-<tr>
-<td align="center">$sp</td>
-<td align="center">29</td>
-<td align="center">Stack pointer</td>
-</tr>
-<tr>
-<td align="center">$fp or s8</td>
-<td align="center">30</td>
-<td align="center">Frame pointer</td>
-</tr>
-<tr>
-<td align="center">$ra</td>
-<td align="center">31</td>
-<td align="center">Return address (used by function call)</td>
-</tr>
-</tbody></table>
+<p>俗话说的好“磨刀不误砍柴工”，一款好的刀，呸，一款好的软件可以让自己的效率提升好多好多倍</p>
+<p>下面我就给大家介绍一款神器，并帮助大家把它打造成你的专属博客小助手</p>
+<p>上截图</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419003434377.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <br>
 
-<h3 id="MIPS指令集（31条）"><a href="#MIPS指令集（31条）" class="headerlink" title="MIPS指令集（31条）"></a>MIPS指令集（31条）</h3><table>
-<thead>
-<tr>
-<th align="center"><strong>助记符</strong></th>
-<th align="center">用法</th>
-<th align="center">解释</th>
-<th align="center">注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">R-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">add</td>
-<td align="center">add $1,$2,$3</td>
-<td align="center">$1=$2+$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">addu</td>
-<td align="center">addu $1,$2,$3</td>
-<td align="center">$1=$2+$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
-</tr>
-<tr>
-<td align="center">sub</td>
-<td align="center">sub $1,$2,$3</td>
-<td align="center">$1=$2-$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">subu</td>
-<td align="center">subu $1,$2,$3</td>
-<td align="center">$1=$2-$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
-</tr>
-<tr>
-<td align="center">and</td>
-<td align="center">and $1,$2,$3</td>
-<td align="center">$1=$2 &amp; $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">or</td>
-<td align="center">or $1,$2,$3</td>
-<td align="center">$1=$2 | $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">xor</td>
-<td align="center">xor $1,$2,$3</td>
-<td align="center">$1=$2 ^ $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1(异或）</td>
-</tr>
-<tr>
-<td align="center">nor</td>
-<td align="center">nor $1,$2,$3</td>
-<td align="center">$1=~($2|$3)</td>
-<td align="center">；其中rs＝$2，rt=$3, rd=$1(或非）</td>
-</tr>
-<tr>
-<td align="center">slt</td>
-<td align="center">slt $1,$2,$3</td>
-<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sltu</td>
-<td align="center">sltu $1,$2,$3</td>
-<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1  (无符号数）</td>
-</tr>
-<tr>
-<td align="center">sll</td>
-<td align="center">sll $1,$2,10</td>
-<td align="center">$1=$2&lt;&lt;10</td>
-<td align="center">rd &lt;- rt &lt;&lt; shamt ；shamt存放移位的位数，  也就是指令中的立即数，其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srl</td>
-<td align="center">srl $1,$2,10</td>
-<td align="center">$1=$2&gt;&gt;10</td>
-<td align="center">rd &lt;- rt &gt;&gt; shamt ；(logical) ，其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sra</td>
-<td align="center">sra $1,$2,10</td>
-<td align="center">$1=$2&gt;&gt;10</td>
-<td align="center">rd &lt;- rt &gt;&gt; shamt  ；(arithmetic) 注意符号位保留  其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sllv</td>
-<td align="center">sllv $1,$2,$3</td>
-<td align="center">$1=$2&lt;&lt;$3</td>
-<td align="center">rd &lt;- rt &lt;&lt; rs ；其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srlv</td>
-<td align="center">srlv $1,$2,$3</td>
-<td align="center">$1=$2&gt;&gt;$3</td>
-<td align="center">rd &lt;- rt &gt;&gt; rs ；(logical)其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srav</td>
-<td align="center">srav $1,$2,$3</td>
-<td align="center">$1=$2&gt;&gt;$3</td>
-<td align="center">rd &lt;- rt &gt;&gt; rs ；(arithmetic) 注意符号位保留  其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">jr</td>
-<td align="center">jr $31</td>
-<td align="center">goto $31</td>
-<td align="center">PC &lt;- rs</td>
-</tr>
-<tr>
-<td align="center">I-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">addi</td>
-<td align="center">addi $1,$2,100</td>
-<td align="center">$1=$2+100</td>
-<td align="center">rt &lt;- rs + (sign-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">addiu</td>
-<td align="center">addiu $1,$2,100</td>
-<td align="center">$1=$2+100</td>
-<td align="center">rt &lt;- rs + (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">andi</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 &amp; 10</td>
-<td align="center">rt &lt;- rs &amp; (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">ori</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 | 10</td>
-<td align="center">rt &lt;- rs | (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">xori</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 ^ 10</td>
-<td align="center">rt &lt;- rs xor (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">lui</td>
-<td align="center">lui $1,100</td>
-<td align="center">$1=100*65536</td>
-<td align="center">rt &lt;- immediate*65536 ；将16位立即数放到目标寄存器高16      位，目标寄存器的低16位填0</td>
-</tr>
-<tr>
-<td align="center">lw</td>
-<td align="center">lw $1,10($2)</td>
-<td align="center">$1=memory[$2  +10]</td>
-<td align="center">rt &lt;- memory[rs + (sign-extend)immediate] ；rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">sw</td>
-<td align="center">sw $1,10($2)</td>
-<td align="center">memory[$2+10]  =$1</td>
-<td align="center">memory[rs + (sign-extend)immediate] &lt;- rt ；rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">beq</td>
-<td align="center">beq $1,$2,10</td>
-<td align="center">if($1==$2)   goto PC+4+40</td>
-<td align="center">if (rs == rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
-</tr>
-<tr>
-<td align="center">bne</td>
-<td align="center">bne $1,$2,10</td>
-<td align="center">if($1!=$2)   goto PC+4+40</td>
-<td align="center">if (rs != rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
-</tr>
-<tr>
-<td align="center">slti</td>
-<td align="center">slti $1,$2,10</td>
-<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt;(sign-extend)immediate) rt=1 else rt=0 ；   其中rs＝$2，rt=$1</td>
-</tr>
-<tr>
-<td align="center">sltiu</td>
-<td align="center">sltiu $1,$2,10</td>
-<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt;(zero-extend)immediate) rt=1 else rt=0 ；  其中rs＝$2，rt=$1</td>
-</tr>
-<tr>
-<td align="center">J-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">j</td>
-<td align="center">j 10000</td>
-<td align="center">goto 10000</td>
-<td align="center">PC &lt;- (PC+4)[31..28],address,0,0  ；address=10000/4</td>
-</tr>
-<tr>
-<td align="center">jal</td>
-<td align="center">jal 10000</td>
-<td align="center">$31&lt;-PC+4; goto 10000</td>
-<td align="center">$31&lt;-PC+4；PC &lt;- (PC+4)[31..28],address,0,0   ；address=10000/4</td>
-</tr>
-</tbody></table>
+<p>相信这个时候大家就认出来了，对</p>
+<p>这就是大名鼎鼎的quicker</p>
+<p>如果不熟悉的小伙伴可以</p>
+<p>点击 <a href="https://www.getquicker.net/" target="_blank" rel="noopener">我 ^ __ ^</a>了解</p>
 <br>
 
-<h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><table>
-<thead>
-<tr>
-<th align="center">助记符</th>
-<th align="center">用法</th>
-<th align="center">解释</th>
-<th align="center">注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">bnez</td>
-<td align="center">bnez $t0 ,trylk</td>
-<td align="center">if $t0 != 0 ,goto  trylk</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">beqz</td>
-<td align="center">beqz $t0 ,trylk</td>
-<td align="center">if $t0 ==0, goto trylk</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">伪指令</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">not</td>
-<td align="center">not $1,$2</td>
-<td align="center">对应MIPS，nor $1,$2,$zero</td>
-<td align="center">或非操作</td>
-</tr>
-<tr>
-<td align="center">move</td>
-<td align="center">move $1,$2</td>
-<td align="center">对应MIPS , or $1,$2,$zero</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">li</td>
-<td align="center">li $1,$2</td>
-<td align="center">对应MIPS，ori $1,$zero,c</td>
-<td align="center">c为16位立即数</td>
-</tr>
-</tbody></table>
+<p>那么如何让这款神器，成为我们的博客小助手呢？<br>来，不要着急，慢慢往下看</p>
+<h3 id="一、有一个支点"><a href="#一、有一个支点" class="headerlink" title="一、有一个支点"></a>一、有一个支点</h3><p>写blog当然先要有一个md文件啦</p>
+<p>这里我用的是<code>Typora</code>，外加<code>pandoc</code></p>
+<p><code>pandoc</code>就不说了，牛逼大了，不知道的小伙伴快去百度吧</p>
 <br>
 
-<p>会不断更新~</p>
-<p>若有错误，不吝指正~</p>
+<p>我们要做的就是通过一个点击操作，在当前文件夹，新建一个指定名称的md，并打开他</p>
+<p>看一下效果</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419004742530.gif" alt="在这里插入图片描述"></p>
+<br>
+
+<p>怎么做到这样的效果呢</p>
+<p>我们可以在quicker里新建一个组合动作</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419005718443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>进去之后添加如下动作</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419005803562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>当然小伙伴们，也可以根据需要再修改，比如说对新建的md添加自定义的开头等</p>
+<p>如果有用<code>hexo</code>等的，也可以自己写一个一键发布的组合动作</p>
+<br>
+只有你想不到，没有你做不到的d====(￣▽￣*)b
+
+<p>也可以复制其他小伙伴写好的组合动作</p>
+<p>例如</p>
+<p>为新建的md添加开头</p>
+<p><a href="https://getquicker.net/Sharedaction?code=e8fcf493-4b67-49b1-96c7-08d6ef28204a" target="_blank" rel="noopener">https://getquicker.net/Sharedaction?code=e8fcf493-4b67-49b1-96c7-08d6ef28204a</a></p>
+<p>下面给出我这里的动作细节</p>
+<h5 id="1、用户输入"><a href="#1、用户输入" class="headerlink" title="1、用户输入"></a>1、用户输入</h5><p><img src="https://img-blog.csdnimg.cn/20200419010329303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="2、等待100ms"><a href="#2、等待100ms" class="headerlink" title="2、等待100ms"></a>2、等待100ms</h5><h5 id="3、运行脚本"><a href="#3、运行脚本" class="headerlink" title="3、运行脚本"></a>3、运行脚本</h5><p><img src="https://img-blog.csdnimg.cn/20200419010528370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="4、提示消息"><a href="#4、提示消息" class="headerlink" title="4、提示消息"></a>4、提示消息</h5><p><img src="https://img-blog.csdnimg.cn/20200419010603394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="5、运行脚本"><a href="#5、运行脚本" class="headerlink" title="5、运行脚本"></a>5、运行脚本</h5><p><img src="https://img-blog.csdnimg.cn/20200419010655479.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>这样就阔以一键新建md文件，并打开辽</p>
+<p>也可以在右下角定义动作名称和图标</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419010804475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<br>
+
+<h3 id="二、几款合适的配件"><a href="#二、几款合适的配件" class="headerlink" title="二、几款合适的配件"></a>二、几款合适的配件</h3><p>在建立md之后，我们就阔以开始我们喜欢的嘿嘿了~~</p>
+<p>在写blog的时候我们免不了要放图片，动图，公式啥的</p>
+<p>下面我就推荐一些极为舒适，也是我在用的软件</p>
+<br>
+
+<h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><p>截图我一般常用微信和TIM自带的快捷键</p>
+<p>或者用quicker自带的快捷键应应急</p>
+<p><img src="https://img-blog.csdnimg.cn/2020041901133889.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<br>
+
+<h4 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h4><p>制作gif呢，我特备推荐ScreenToGif，小巧灵活美观，功能还强大</p>
+<p><img src="https://img-blog.csdnimg.cn/202004190114523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>下载链接:<a href="https://www.screentogif.com/" target="_blank" rel="noopener">https://www.screentogif.com</a></p>
+<p>在下载好之后，我们可以在quicker里启动他</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419011651645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>每次要用的时候，直接点击中键，然后点击ScreenToGif</p>
+<p>是不是特备方便✧(≖ ◡ ≖✿)</p>
+<br>
+
+<h4 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h4><p>公式是最让人头大的了</p>
+<p>但是木的关系，咱有quicker啊</p>
+<p>来上神器mathpix API</p>
+<p>我之前写过一篇的文章，用的就是这个</p>
+<p><a href="https://blog.csdn.net/weixin_44984664/article/details/105242426" target="_blank" rel="noopener">调用Mathpix API 自制Mathpix snipping （每月1000次免费！！！）</a></p>
+<p>咱这次直接用更方便的</p>
+<p>看效果：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419012846510.gif" alt="在这里插入图片描述"></p>
+<p>一点不好的地方就是，就是速度有些慢</p>
+<p>有开发能力的小伙伴，也可以参考我的那片博客，自己写一个mathpix，速度应该会快一些</p>
+<br>
+
+<p>链接如下</p>
+<p><a href="https://getquicker.net/Sharedaction?code=346e60b9-a259-4b50-e5c2-08d7aef4fbee" target="_blank" rel="noopener">https://getquicker.net/Sharedaction?code=346e60b9-a259-4b50-e5c2-08d7aef4fbee</a></p>
+<p>这里咱附上一部分代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageGrab</span><br><span class="line"></span><br><span class="line"><span class="comment"># APP_ID=my-id APP_KEY=my-key python3 simple.py </span></span><br><span class="line"><span class="comment"># Fill in your app id.</span></span><br><span class="line">APP_ID   = <span class="string">'your APP_ID'</span></span><br><span class="line"><span class="comment"># Fill in your app key.</span></span><br><span class="line">APP_KEY  = <span class="string">'your APP_KEY'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Common module for calling Mathpix OCR service from Python.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># N.B.: Set your credentials in environment variables APP_ID and APP_KEY,</span></span><br><span class="line"><span class="comment"># either once via setenv or on the command line as in</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line">env = os.environ</span><br><span class="line"></span><br><span class="line">default_headers = &#123;</span><br><span class="line">    <span class="string">'app_id'</span>: env.get(<span class="string">'APP_ID'</span>, APP_ID),</span><br><span class="line">    <span class="string">'app_key'</span>: env.get(<span class="string">'APP_KEY'</span>, APP_KEY),</span><br><span class="line">    <span class="string">'Content-type'</span>: <span class="string">'application/json'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">service = <span class="string">'https://api.mathpix.com/v3/latex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Return the base64 encoding of an image with the given filename.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">image_uri</span><span class="params">(filename)</span>:</span></span><br><span class="line">    image_data = open(filename, <span class="string">"rb"</span>).read()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"data:image/jpg;base64,"</span> + base64.b64encode(image_data).decode()</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Call the Mathpix service with the given arguments, headers, and timeout.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">latex</span><span class="params">(args, headers=default_headers, timeout=<span class="number">30</span>)</span>:</span></span><br><span class="line">    r = requests.post(service,</span><br><span class="line">        data=json.dumps(args), headers=headers, timeout=timeout)</span><br><span class="line">    <span class="keyword">return</span> json.loads(r.text)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mathpix_clipboard</span><span class="params">()</span>:</span> <span class="comment"># Identify the clipboard formula</span></span><br><span class="line">    im = ImageGrab.grabclipboard()</span><br><span class="line">    fp = os.path.abspath(__file__)</span><br><span class="line">    fp = os.path.dirname(fp) <span class="comment"># Get the file dir. </span></span><br><span class="line">    fn = os.path.join(fp, <span class="string">'equa.png'</span>) <span class="comment"># Get the filename where the picture is stored.</span></span><br><span class="line">    im.save(fn,<span class="string">'PNG'</span>)</span><br><span class="line">    r = latex(&#123;</span><br><span class="line">        <span class="string">'src'</span>: image_uri(fn),</span><br><span class="line">        <span class="string">'formats'</span>: [<span class="string">'latex_simplified'</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    print(r[<span class="string">'latex_simplified'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    mathpix_clipboard()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>同时</p>
+<p>咱还有另一个同类型的latex2img 嘿嘿</p>
+<p>先看一下效果</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419013613609.gif" alt="在这里插入图片描述"></p>
+<p>链接如下</p>
+<p><a href="https://getquicker.net/Sharedaction?code=d06f8af9-03c1-4126-230e-08d7ce35877d" target="_blank" rel="noopener">https://getquicker.net/Sharedaction?code=d06f8af9-03c1-4126-230e-08d7ce35877d</a></p>
+<br>
+
+<h3 id="三、不要拦着我，我要上天了"><a href="#三、不要拦着我，我要上天了" class="headerlink" title="三、不要拦着我，我要上天了"></a>三、不要拦着我，我要上天了</h3><p>当我们把自己的博客写完发布出去之后，当然是先进去看看喽~~</p>
+<p>咱可以新建一个动作</p>
+<p>打开咱的blog主页</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419014103514.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>无论我们在哪儿，都可以一个中键，一个左键，进入自己的主页是不是很开心~~</p>
+<p>或者将自己的blog分享给同伴</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419020749767.gif" alt="在这里插入图片描述"></p>
+<p>相关的组合动作比较多大家可以去找找</p>
+<p>例如</p>
+<p><a href="https://getquicker.net/Sharedaction?code=f99f86f4-c584-402f-43b9-08d6a308ca76" target="_blank" rel="noopener">https://getquicker.net/Sharedaction?code=f99f86f4-c584-402f-43b9-08d6a308ca76</a></p>
+<p>再稍作修改就可以成为自己的得力助手啦~~</p>
+<br>
+
+<h3 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h3><p>这样的话就有了一个得力的blog写作小助手啦~~</p>
+<br>
+
+<p>本次的分享到这里就结束了</p>
+<p>如果小伙伴们觉得此文对你有帮助的话请给个三连吧~~</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419020140651.gif" alt="在这里插入图片描述"></p>
 
       
     </div>
@@ -1158,35 +792,6 @@
 	<div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">MIPS寄存器和指令总结</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 yi 的个人博客">yi</a></p>
-  <p><span>发布时间:</span>2020年03月26日 - 21:50</p>
-  <p><span>最后更新:</span>2020年03月26日 - 21:50</p>
-  <p><span>原始链接:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" title="MIPS寄存器和指令总结">http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-	});
-    });  
-</script>
-
       
 	</div>
     
@@ -1199,7 +804,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%A5%9E%E5%99%A8/" rel="tag"># 计算机基础 神器</a>
           
         </div>
       
@@ -1212,8 +817,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/26/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3git%E4%B8%8B%E8%BD%BD%E6%85%A2%E9%97%AE%E9%A2%98%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E4%B8%8D%E7%94%A8%E6%94%B9host%EF%BC%89/" rel="next" title="完美解决git下载慢问题（亲测有效，不用改host）">
-                <i class="fa fa-chevron-left"></i> 完美解决git下载慢问题（亲测有效，不用改host）
+              <a href="/2020/04/14/MFC%E5%AF%B9%E8%AF%9D%E6%A1%86%E3%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F%E3%80%81%E5%B7%A5%E5%85%B7%E6%A0%8F%E3%80%81%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" rel="next" title="MFC对话框、菜单栏、工具栏、控件的创建和基本使用">
+                <i class="fa fa-chevron-left"></i> MFC对话框、菜单栏、工具栏、控件的创建和基本使用
               </a>
             
           </div>
@@ -1222,8 +827,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/26/G-S%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="prev" title="G-S稳定匹配算法详解">
-                G-S稳定匹配算法详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/19/MFC%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E3%80%81%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E4%B8%8E%E8%BF%90%E5%8A%A8%E5%B0%8F%E7%90%83%E5%AE%9E%E7%8E%B0/" rel="prev" title="MFC鼠标事件、键盘事件、自定义消息与运动小球实现">
+                MFC鼠标事件、键盘事件、自定义消息与运动小球实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1369,7 +974,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#32个通用寄存器"><span class="nav-number">1.</span> <span class="nav-text">32个通用寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32个寄存器（详细）"><span class="nav-number">2.</span> <span class="nav-text">32个寄存器（详细）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIPS指令集（31条）"><span class="nav-number">3.</span> <span class="nav-text">MIPS指令集（31条）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他指令"><span class="nav-number">4.</span> <span class="nav-text">其他指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、有一个支点"><span class="nav-number">1.</span> <span class="nav-text">一、有一个支点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、用户输入"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、用户输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、等待100ms"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、等待100ms</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、运行脚本"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、运行脚本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、提示消息"><span class="nav-number">1.0.4.</span> <span class="nav-text">4、提示消息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、运行脚本"><span class="nav-number">1.0.5.</span> <span class="nav-text">5、运行脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、几款合适的配件"><span class="nav-number">2.</span> <span class="nav-text">二、几款合适的配件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#截图"><span class="nav-number">2.1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gif"><span class="nav-number">2.2.</span> <span class="nav-text">gif</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式"><span class="nav-number">2.3.</span> <span class="nav-text">公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、不要拦着我，我要上天了"><span class="nav-number">3.</span> <span class="nav-text">三、不要拦着我，我要上天了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、总结"><span class="nav-number">4.</span> <span class="nav-text">四、总结</span></a></li></ol></div>
             
 
           </div>

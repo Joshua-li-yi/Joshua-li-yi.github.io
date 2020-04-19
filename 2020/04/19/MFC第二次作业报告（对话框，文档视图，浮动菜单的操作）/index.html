@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="计算机组成原理," />
+  <meta name="keywords" content="MFC," />
 
 
 
@@ -87,16 +87,24 @@
 
 
 
-<meta name="description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
-<meta name="keywords" content="计算机组成原理">
+<meta name="description" content="整体效果 1设计单文档应用程序，要求实现（1）添加一个菜单项、工具栏按钮与快捷键快捷键为‘a’ 效果 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465&#x2F;&#x2F; 消息map处ON_COMMAND(ID_M">
+<meta name="keywords" content="MFC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MIPS寄存器和指令总结">
-<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;03&#x2F;26&#x2F;MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93&#x2F;index.html">
+<meta property="og:title" content="MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）">
+<meta property="og:url" content="http:&#x2F;&#x2F;lyvoid.site&#x2F;2020&#x2F;04&#x2F;19&#x2F;MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="Joshua&#39;s blogs">
-<meta property="og:description" content="每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看   32个通用寄存器   Register Name Usage    $0 $zero 常量0(constant value 0)   $1 $at 保留给汇编器(Reserved for assembler)   $2-$3 $v0-$v1 函数调用返回值(values for results and">
+<meta property="og:description" content="整体效果 1设计单文档应用程序，要求实现（1）添加一个菜单项、工具栏按钮与快捷键快捷键为‘a’ 效果 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465&#x2F;&#x2F; 消息map处ON_COMMAND(ID_M">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-26T13:50:36.444Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105535843.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105613993.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105634496.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105653952.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105711697.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105726322.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105740474.gif">
+<meta property="og:updated_time" content="2020-04-19T03:07:59.754Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20200419105535843.gif">
 
 
 
@@ -126,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://lyvoid.site/2020/03/26/MIPS寄存器和指令总结/"/>
+  <link rel="canonical" href="http://lyvoid.site/2020/04/19/MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）/"/>
 
 
 
 
 
-  <title>MIPS寄存器和指令总结 | Joshua's blogs</title>
+  <title>MFC第二次作业报告（对话框，文档视图，浮动菜单的操作） | Joshua's blogs</title>
   
 
 
@@ -522,7 +530,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://lyvoid.site/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yi">
@@ -539,7 +547,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MIPS寄存器和指令总结</h1>
+          <h1 class="post-title" itemprop="name headline">MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）</h1>
         
 
         <div class="post-meta">
@@ -551,8 +559,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T21:50:04+08:00">
-                2020-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T11:07:23+08:00">
+                2020-04-19
               </time>
             
 
@@ -574,8 +582,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机组成原理</span>
+                  <a href="/categories/MFC/" itemprop="url" rel="index">
+                    <span itemprop="name">MFC</span>
                   </a>
                 </span>
 
@@ -592,8 +600,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                <a href="/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -601,7 +609,7 @@
 
           
           
-             <span id="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="MIPS寄存器和指令总结">
+             <span id="/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/" class="leancloud_visitors" data-flag-title="MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -634,513 +642,35 @@
       
         <br>
 
-<p>每次学计组的时候总要去查MIPS的寄存器和指令，索性自己总结了如下的知识点，方便之后查看</p>
+<h3 id="整体效果"><a href="#整体效果" class="headerlink" title="整体效果"></a>整体效果</h3><p><img src="https://img-blog.csdnimg.cn/20200419105535843.gif" alt="在这里插入图片描述"></p>
+<h3 id="1设计单文档应用程序，要求实现"><a href="#1设计单文档应用程序，要求实现" class="headerlink" title="1设计单文档应用程序，要求实现"></a>1设计单文档应用程序，要求实现</h3><h4 id="（1）添加一个菜单项、工具栏按钮与快捷键"><a href="#（1）添加一个菜单项、工具栏按钮与快捷键" class="headerlink" title="（1）添加一个菜单项、工具栏按钮与快捷键"></a>（1）添加一个菜单项、工具栏按钮与快捷键</h4><p>快捷键为‘a’</p>
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p><img src="https://img-blog.csdnimg.cn/20200419105613993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 消息map处</span></span><br><span class="line">ON_COMMAND(ID_MODELDIALOG, &amp;Csecond2View::OnModeldialog)</span><br><span class="line">ON_COMMAND(ID_BUTTON_MYDIALOG, &amp;Csecond2View::OnButtonMydialog)</span><br><span class="line">ON_WM_KEYDOWN()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 弹出对话框</span></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnModeldialog()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	CMyDialog dlg;</span><br><span class="line">	<span class="comment">// 在模态对话框点击“确定”按钮后</span></span><br><span class="line">	<span class="keyword">if</span> (dlg.DoModal() == IDOK) &#123;</span><br><span class="line">		text_str = dlg.text_str;</span><br><span class="line">		text_x = dlg.text_x;</span><br><span class="line">		text_y = dlg.text_y;</span><br><span class="line">		text_color = dlg.color;</span><br><span class="line">		<span class="comment">// 绘制字体</span></span><br><span class="line">		CDC *pDC;</span><br><span class="line">		pDC = GetDC();</span><br><span class="line">		pDC-&gt;SetTextColor(text_color);</span><br><span class="line">		pDC-&gt;TextOutW(text_x, text_y, text_str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnButtonMydialog()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	CMyDialog dlg;</span><br><span class="line">	<span class="comment">// 在模态对话框点击“确定”按钮后</span></span><br><span class="line">	<span class="keyword">if</span> (dlg.DoModal() == IDOK) &#123;</span><br><span class="line">		text_str = dlg.text_str;</span><br><span class="line">		text_x = dlg.text_x;</span><br><span class="line">		text_y = dlg.text_y;</span><br><span class="line">		text_color = dlg.color;</span><br><span class="line">		<span class="comment">// 绘制字体</span></span><br><span class="line">		CDC *pDC;</span><br><span class="line">		pDC = GetDC();</span><br><span class="line">		pDC-&gt;SetTextColor(text_color);</span><br><span class="line">		pDC-&gt;TextOutW(text_x, text_y, text_str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加消息处理程序代码和/或调用默认值</span></span><br><span class="line">	<span class="keyword">if</span> (nChar == <span class="number">65</span>) &#123;</span><br><span class="line">		CMyDialog dlg;</span><br><span class="line">		<span class="comment">// 在模态对话框点击“确定”按钮后</span></span><br><span class="line">		<span class="keyword">if</span> (dlg.DoModal() == IDOK) &#123;</span><br><span class="line">			text_str = dlg.text_str;</span><br><span class="line">			text_x = dlg.text_x;</span><br><span class="line">			text_y = dlg.text_y;</span><br><span class="line">			text_color = dlg.color;</span><br><span class="line">			<span class="comment">// 绘制字体</span></span><br><span class="line">			CDC *pDC;</span><br><span class="line">			pDC = GetDC();</span><br><span class="line">			pDC-&gt;SetTextColor(text_color);</span><br><span class="line">			pDC-&gt;TextOutW(text_x, text_y, text_str);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	CView::OnKeyDown(nChar, nRepCnt, nFlags);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="（2）通过上述方式打开一个对话框其中有编辑框与按钮控件"><a href="#（2）通过上述方式打开一个对话框其中有编辑框与按钮控件" class="headerlink" title="（2）通过上述方式打开一个对话框其中有编辑框与按钮控件"></a>（2）通过上述方式打开一个对话框其中有编辑框与按钮控件</h4><p>可以设置文字的内容，显示的位置以及颜色</p>
+<p>也可以使用默认的设置</p>
+<p><img src="https://img-blog.csdnimg.cn/20200419105634496.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk4NDY2NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框"><a href="#（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框" class="headerlink" title="（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框"></a>（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框</h4><h4 id="（4）在客户区输出来自编辑框的文本"><a href="#（4）在客户区输出来自编辑框的文本" class="headerlink" title="（4）在客户区输出来自编辑框的文本"></a>（4）在客户区输出来自编辑框的文本</h4><p><img src="https://img-blog.csdnimg.cn/20200419105653952.gif" alt="在这里插入图片描述"></p>
 <br>
 
-<h3 id="32个通用寄存器"><a href="#32个通用寄存器" class="headerlink" title="32个通用寄存器"></a>32个通用寄存器</h3><table>
-<thead>
-<tr>
-<th align="center">Register</th>
-<th align="center">Name</th>
-<th align="center">Usage</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$0</td>
-<td align="center">$zero</td>
-<td align="center">常量0(constant value 0)</td>
-</tr>
-<tr>
-<td align="center">$1</td>
-<td align="center">$at</td>
-<td align="center">保留给汇编器(Reserved for assembler)</td>
-</tr>
-<tr>
-<td align="center">$2-$3</td>
-<td align="center">$v0-$v1</td>
-<td align="center">函数调用返回值(values for results and expression evaluation)</td>
-</tr>
-<tr>
-<td align="center">$4-$7</td>
-<td align="center">$a0-$a3</td>
-<td align="center">函数调用参数(arguments)</td>
-</tr>
-<tr>
-<td align="center">$8-$15</td>
-<td align="center">$t0-$t7</td>
-<td align="center">暂时的(或随便用的)</td>
-</tr>
-<tr>
-<td align="center">$16-$23</td>
-<td align="center">$s0-$s7</td>
-<td align="center">保存的(或如果用，需要SAVE/RESTORE的)(saved)</td>
-</tr>
-<tr>
-<td align="center">$24-$25</td>
-<td align="center">$t8-$t9</td>
-<td align="center">暂时的(或随便用的)</td>
-</tr>
-<tr>
-<td align="center">$28</td>
-<td align="center">$gp</td>
-<td align="center">全局指针(Global Pointer)</td>
-</tr>
-<tr>
-<td align="center">$29</td>
-<td align="center">$sp</td>
-<td align="center">堆栈指针(Stack Pointer)</td>
-</tr>
-<tr>
-<td align="center">$30</td>
-<td align="center">$fp</td>
-<td align="center">帧指针(Frame Pointer)</td>
-</tr>
-<tr>
-<td align="center">$31</td>
-<td align="center">$ra</td>
-<td align="center">返回地址(return address)</td>
-</tr>
-</tbody></table>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用该设置的按钮</span></span><br><span class="line"><span class="keyword">void</span> CMyDialog::OnBnClickedButton1()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将控件的值赋值给成员变量</span></span><br><span class="line">	UpdateData(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">// 将成员变量的值赋值给控件</span></span><br><span class="line">	UpdateData(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用默认设置的按钮</span></span><br><span class="line"><span class="keyword">void</span> CMyDialog::OnBnClickedButton2()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	text_str = <span class="string">"默认输出"</span>;</span><br><span class="line">	text_x = <span class="number">100</span>;</span><br><span class="line">	text_y = <span class="number">100</span>;</span><br><span class="line">	color = RGB(<span class="number">255</span>,<span class="number">0</span> , <span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 设置控件上显示的颜色</span></span><br><span class="line">	text_color.SetColor(color);</span><br><span class="line">	<span class="comment">// 将成员变量的值赋值给控件</span></span><br><span class="line">	UpdateData(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CMyDialog::OnBnClickedOk()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line">	CDialogEx::OnOK();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CMyDialog::OnBnClickedMymfccolorbutton()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加控件通知处理程序代码</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取控件上选择的RGB</span></span><br><span class="line">	 color = text_color.GetColor();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2设计单文档应用程序，要求实现："><a href="#2设计单文档应用程序，要求实现：" class="headerlink" title="2设计单文档应用程序，要求实现："></a>2设计单文档应用程序，要求实现：</h3><h4 id="（1）单击鼠标右键，弹出浮动菜单-Line、-Ellipse、-Rectangle）"><a href="#（1）单击鼠标右键，弹出浮动菜单-Line、-Ellipse、-Rectangle）" class="headerlink" title="（1）单击鼠标右键，弹出浮动菜单(Line、 Ellipse、 Rectangle）"></a>（1）单击鼠标右键，弹出浮动菜单(Line、 Ellipse、 Rectangle）</h4><p><img src="https://img-blog.csdnimg.cn/20200419105711697.gif" alt="在这里插入图片描述"></p>
+<h4 id="（2）当选择某个菜单项时，在客户区输出相应的图形"><a href="#（2）当选择某个菜单项时，在客户区输出相应的图形" class="headerlink" title="（2）当选择某个菜单项时，在客户区输出相应的图形"></a>（2）当选择某个菜单项时，在客户区输出相应的图形</h4><p><img src="https://img-blog.csdnimg.cn/20200419105726322.gif" alt="在这里插入图片描述"></p>
+<h4 id="（3）将图形类型、左上角坐标、右下角坐标保存到文档中"><a href="#（3）将图形类型、左上角坐标、右下角坐标保存到文档中" class="headerlink" title="（3）将图形类型、左上角坐标、右下角坐标保存到文档中"></a>（3）将图形类型、左上角坐标、右下角坐标保存到文档中</h4><p><img src="https://img-blog.csdnimg.cn/20200419105740474.gif" alt="在这里插入图片描述"></p>
 <br>
 
-<h3 id="32个寄存器（详细）"><a href="#32个寄存器（详细）" class="headerlink" title="32个寄存器（详细）"></a>32个寄存器（详细）</h3><table>
-<thead>
-<tr>
-<th align="center">Register Name</th>
-<th align="center">Number</th>
-<th align="center">Usage</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$zero</td>
-<td align="center">0</td>
-<td align="center">Constant 0</td>
-</tr>
-<tr>
-<td align="center">$at</td>
-<td align="center">1</td>
-<td align="center">Reserved for assembler</td>
-</tr>
-<tr>
-<td align="center">$v0</td>
-<td align="center">2</td>
-<td align="center">Expression evaluation and results of a function</td>
-</tr>
-<tr>
-<td align="center">$v1</td>
-<td align="center">3</td>
-<td align="center">Expression evaluation and results of a function</td>
-</tr>
-<tr>
-<td align="center">$a0</td>
-<td align="center">4</td>
-<td align="center">Argument 1</td>
-</tr>
-<tr>
-<td align="center">$a1</td>
-<td align="center">5</td>
-<td align="center">Argument 2</td>
-</tr>
-<tr>
-<td align="center">$a2</td>
-<td align="center">6</td>
-<td align="center">Argument 3</td>
-</tr>
-<tr>
-<td align="center">$a3</td>
-<td align="center">7</td>
-<td align="center">Argument 4</td>
-</tr>
-<tr>
-<td align="center">$t0</td>
-<td align="center">8</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t1</td>
-<td align="center">9</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t2</td>
-<td align="center">10</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t3</td>
-<td align="center">11</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t4</td>
-<td align="center">12</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t5</td>
-<td align="center">13</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t6</td>
-<td align="center">14</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t7</td>
-<td align="center">15</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s0</td>
-<td align="center">16</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s1</td>
-<td align="center">17</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s2</td>
-<td align="center">18</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s3</td>
-<td align="center">19</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s4</td>
-<td align="center">20</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s5</td>
-<td align="center">21</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s6</td>
-<td align="center">22</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$s7</td>
-<td align="center">23</td>
-<td align="center">Saved temporary (preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t8</td>
-<td align="center">24</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$t9</td>
-<td align="center">25</td>
-<td align="center">Temporary (not preserved across call)</td>
-</tr>
-<tr>
-<td align="center">$k0</td>
-<td align="center">26</td>
-<td align="center">Reserved for OS kernel</td>
-</tr>
-<tr>
-<td align="center">$k1</td>
-<td align="center">27</td>
-<td align="center">Reserved for OS kernel</td>
-</tr>
-<tr>
-<td align="center">$gp</td>
-<td align="center">28</td>
-<td align="center">Pointer to global area</td>
-</tr>
-<tr>
-<td align="center">$sp</td>
-<td align="center">29</td>
-<td align="center">Stack pointer</td>
-</tr>
-<tr>
-<td align="center">$fp or s8</td>
-<td align="center">30</td>
-<td align="center">Frame pointer</td>
-</tr>
-<tr>
-<td align="center">$ra</td>
-<td align="center">31</td>
-<td align="center">Return address (used by function call)</td>
-</tr>
-</tbody></table>
+<h6 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h6><p><code>seconde2View.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// message map 处</span></span><br><span class="line">	ON_WM_CONTEXTMENU()</span><br><span class="line">	ON_COMMAND(ID_POPUP_LINE, &amp;Csecond2View::OnPopupLine)</span><br><span class="line">	ON_COMMAND(ID_POPUP_ELLIPSE, &amp;Csecond2View::OnPopupEllipse)</span><br><span class="line">	ON_COMMAND(ID_POPUP_RECTANGLE, &amp;Csecond2View::OnPopupRectangle)</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnContextMenu(CWnd* pWnd, CPoint point)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此处添加消息处理程序代码</span></span><br><span class="line">	CMenu menu;</span><br><span class="line">	menu.LoadMenu(IDR_POPUPMENU);</span><br><span class="line">	CMenu *pMenu = menu.GetSubMenu(<span class="number">0</span>);</span><br><span class="line">	pMenu-&gt;TrackPopupMenu(TPM_LEFTALIGN, point.x, point.y, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnPopupLine()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	Csecond2Doc *pDoc = GetDocument();</span><br><span class="line">	<span class="keyword">int</span> start_x, start_y, end_x, end_y;</span><br><span class="line">	start_x = <span class="number">100</span>;</span><br><span class="line">	start_y = <span class="number">100</span>;</span><br><span class="line">	end_x = <span class="number">200</span>;</span><br><span class="line">	end_y = <span class="number">200</span>;</span><br><span class="line">	</span><br><span class="line">	CString str = CString(<span class="string">"line"</span>);</span><br><span class="line">	<span class="comment">// int转str</span></span><br><span class="line">	CString str_start_x, str_start_y, str_end_x, str_end_y;</span><br><span class="line">	str_start_x.Format(_T(<span class="string">"%d"</span>), start_x);</span><br><span class="line">	str_start_y.Format(_T(<span class="string">"%d"</span>), start_y);</span><br><span class="line">	str_end_x.Format(_T(<span class="string">"%d"</span>), end_x);</span><br><span class="line">	str_end_y.Format(_T(<span class="string">"%d"</span>), end_y);</span><br><span class="line">	</span><br><span class="line">	CDC *pDC = GetDC();</span><br><span class="line">	pDoc-&gt;Set(str,str_start_x, str_start_y, str_end_x, str_end_y);</span><br><span class="line">	pDC-&gt;MoveTo(start_x,start_y);</span><br><span class="line">	pDC-&gt;LineTo(end_x,end_y);</span><br><span class="line">	ReleaseDC(pDC);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnPopupEllipse()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	Csecond2Doc *pDoc = GetDocument();</span><br><span class="line">	<span class="keyword">int</span> start_x, start_y, end_x, end_y;</span><br><span class="line">	start_x = <span class="number">100</span>;</span><br><span class="line">	start_y = <span class="number">200</span>;</span><br><span class="line">	end_x = <span class="number">400</span>;</span><br><span class="line">	end_y = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line">	CString str = CString(<span class="string">"Ellipse"</span>);</span><br><span class="line"></span><br><span class="line">	CString str_start_x, str_start_y, str_end_x, str_end_y;</span><br><span class="line">	str_start_x.Format(_T(<span class="string">"%d"</span>), start_x);</span><br><span class="line">	str_start_y.Format(_T(<span class="string">"%d"</span>), start_y);</span><br><span class="line">	str_end_x.Format(_T(<span class="string">"%d"</span>), end_x);</span><br><span class="line">	str_end_y.Format(_T(<span class="string">"%d"</span>), end_y);</span><br><span class="line"></span><br><span class="line">	CDC *pDC = GetDC();</span><br><span class="line">	pDoc-&gt;Set(str, str_start_x, str_start_y, str_end_x, str_end_y);</span><br><span class="line">	pDC-&gt;Ellipse(start_x, start_y, end_x, end_y);</span><br><span class="line">	ReleaseDC(pDC);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2View::OnPopupRectangle()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> 在此添加命令处理程序代码</span></span><br><span class="line">	Csecond2Doc *pDoc = GetDocument();</span><br><span class="line">	<span class="keyword">int</span> start_x, start_y, end_x, end_y;</span><br><span class="line">	start_x = <span class="number">300</span>;</span><br><span class="line">	start_y = <span class="number">400</span>;</span><br><span class="line">	end_x = <span class="number">450</span>;</span><br><span class="line">	end_y = <span class="number">550</span>;</span><br><span class="line"></span><br><span class="line">	CString str = CString(<span class="string">"Rectangle"</span>);</span><br><span class="line"></span><br><span class="line">	CString str_start_x, str_start_y, str_end_x, str_end_y;</span><br><span class="line">	str_start_x.Format(_T(<span class="string">"%d"</span>), start_x);</span><br><span class="line">	str_start_y.Format(_T(<span class="string">"%d"</span>), start_y);</span><br><span class="line">	str_end_x.Format(_T(<span class="string">"%d"</span>), end_x);</span><br><span class="line">	str_end_y.Format(_T(<span class="string">"%d"</span>), end_y);</span><br><span class="line"></span><br><span class="line">	CDC *pDC = GetDC();</span><br><span class="line">	pDoc-&gt;Set(str, str_start_x, str_start_y, str_end_x, str_end_y);</span><br><span class="line">	pDC-&gt;Rectangle(start_x, start_y, end_x, end_y);</span><br><span class="line">	ReleaseDC(pDC);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <br>
 
-<h3 id="MIPS指令集（31条）"><a href="#MIPS指令集（31条）" class="headerlink" title="MIPS指令集（31条）"></a>MIPS指令集（31条）</h3><table>
-<thead>
-<tr>
-<th align="center"><strong>助记符</strong></th>
-<th align="center">用法</th>
-<th align="center">解释</th>
-<th align="center">注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">R-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">add</td>
-<td align="center">add $1,$2,$3</td>
-<td align="center">$1=$2+$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">addu</td>
-<td align="center">addu $1,$2,$3</td>
-<td align="center">$1=$2+$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
-</tr>
-<tr>
-<td align="center">sub</td>
-<td align="center">sub $1,$2,$3</td>
-<td align="center">$1=$2-$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">subu</td>
-<td align="center">subu $1,$2,$3</td>
-<td align="center">$1=$2-$3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1,无符号数</td>
-</tr>
-<tr>
-<td align="center">and</td>
-<td align="center">and $1,$2,$3</td>
-<td align="center">$1=$2 &amp; $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">or</td>
-<td align="center">or $1,$2,$3</td>
-<td align="center">$1=$2 | $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">xor</td>
-<td align="center">xor $1,$2,$3</td>
-<td align="center">$1=$2 ^ $3</td>
-<td align="center">其中rs＝$2，rt=$3, rd=$1(异或）</td>
-</tr>
-<tr>
-<td align="center">nor</td>
-<td align="center">nor $1,$2,$3</td>
-<td align="center">$1=~($2|$3)</td>
-<td align="center">；其中rs＝$2，rt=$3, rd=$1(或非）</td>
-</tr>
-<tr>
-<td align="center">slt</td>
-<td align="center">slt $1,$2,$3</td>
-<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sltu</td>
-<td align="center">sltu $1,$2,$3</td>
-<td align="center">if($2&lt;$3)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt; rt) rd=1 else rd=0 ；其中rs＝$2，rt=$3, rd=$1  (无符号数）</td>
-</tr>
-<tr>
-<td align="center">sll</td>
-<td align="center">sll $1,$2,10</td>
-<td align="center">$1=$2&lt;&lt;10</td>
-<td align="center">rd &lt;- rt &lt;&lt; shamt ；shamt存放移位的位数，  也就是指令中的立即数，其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srl</td>
-<td align="center">srl $1,$2,10</td>
-<td align="center">$1=$2&gt;&gt;10</td>
-<td align="center">rd &lt;- rt &gt;&gt; shamt ；(logical) ，其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sra</td>
-<td align="center">sra $1,$2,10</td>
-<td align="center">$1=$2&gt;&gt;10</td>
-<td align="center">rd &lt;- rt &gt;&gt; shamt  ；(arithmetic) 注意符号位保留  其中rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">sllv</td>
-<td align="center">sllv $1,$2,$3</td>
-<td align="center">$1=$2&lt;&lt;$3</td>
-<td align="center">rd &lt;- rt &lt;&lt; rs ；其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srlv</td>
-<td align="center">srlv $1,$2,$3</td>
-<td align="center">$1=$2&gt;&gt;$3</td>
-<td align="center">rd &lt;- rt &gt;&gt; rs ；(logical)其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">srav</td>
-<td align="center">srav $1,$2,$3</td>
-<td align="center">$1=$2&gt;&gt;$3</td>
-<td align="center">rd &lt;- rt &gt;&gt; rs ；(arithmetic) 注意符号位保留  其中rs＝$3，rt=$2, rd=$1</td>
-</tr>
-<tr>
-<td align="center">jr</td>
-<td align="center">jr $31</td>
-<td align="center">goto $31</td>
-<td align="center">PC &lt;- rs</td>
-</tr>
-<tr>
-<td align="center">I-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">addi</td>
-<td align="center">addi $1,$2,100</td>
-<td align="center">$1=$2+100</td>
-<td align="center">rt &lt;- rs + (sign-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">addiu</td>
-<td align="center">addiu $1,$2,100</td>
-<td align="center">$1=$2+100</td>
-<td align="center">rt &lt;- rs + (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">andi</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 &amp; 10</td>
-<td align="center">rt &lt;- rs &amp; (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">ori</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 | 10</td>
-<td align="center">rt &lt;- rs | (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">xori</td>
-<td align="center">andi $1,$2,10</td>
-<td align="center">$1=$2 ^ 10</td>
-<td align="center">rt &lt;- rs xor (zero-extend)immediate ；其中rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">lui</td>
-<td align="center">lui $1,100</td>
-<td align="center">$1=100*65536</td>
-<td align="center">rt &lt;- immediate*65536 ；将16位立即数放到目标寄存器高16      位，目标寄存器的低16位填0</td>
-</tr>
-<tr>
-<td align="center">lw</td>
-<td align="center">lw $1,10($2)</td>
-<td align="center">$1=memory[$2  +10]</td>
-<td align="center">rt &lt;- memory[rs + (sign-extend)immediate] ；rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">sw</td>
-<td align="center">sw $1,10($2)</td>
-<td align="center">memory[$2+10]  =$1</td>
-<td align="center">memory[rs + (sign-extend)immediate] &lt;- rt ；rt=$1,rs=$2</td>
-</tr>
-<tr>
-<td align="center">beq</td>
-<td align="center">beq $1,$2,10</td>
-<td align="center">if($1==$2)   goto PC+4+40</td>
-<td align="center">if (rs == rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
-</tr>
-<tr>
-<td align="center">bne</td>
-<td align="center">bne $1,$2,10</td>
-<td align="center">if($1!=$2)   goto PC+4+40</td>
-<td align="center">if (rs != rt) PC &lt;- PC+4 + (sign-extend)immediate&lt;&lt;2</td>
-</tr>
-<tr>
-<td align="center">slti</td>
-<td align="center">slti $1,$2,10</td>
-<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt;(sign-extend)immediate) rt=1 else rt=0 ；   其中rs＝$2，rt=$1</td>
-</tr>
-<tr>
-<td align="center">sltiu</td>
-<td align="center">sltiu $1,$2,10</td>
-<td align="center">if($2&lt;10)   $1=1 else   $1=0</td>
-<td align="center">if (rs &lt;(zero-extend)immediate) rt=1 else rt=0 ；  其中rs＝$2，rt=$1</td>
-</tr>
-<tr>
-<td align="center">J-type</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">j</td>
-<td align="center">j 10000</td>
-<td align="center">goto 10000</td>
-<td align="center">PC &lt;- (PC+4)[31..28],address,0,0  ；address=10000/4</td>
-</tr>
-<tr>
-<td align="center">jal</td>
-<td align="center">jal 10000</td>
-<td align="center">$31&lt;-PC+4; goto 10000</td>
-<td align="center">$31&lt;-PC+4；PC &lt;- (PC+4)[31..28],address,0,0   ；address=10000/4</td>
-</tr>
-</tbody></table>
-<br>
-
-<h3 id="其他指令"><a href="#其他指令" class="headerlink" title="其他指令"></a>其他指令</h3><table>
-<thead>
-<tr>
-<th align="center">助记符</th>
-<th align="center">用法</th>
-<th align="center">解释</th>
-<th align="center">注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">bnez</td>
-<td align="center">bnez $t0 ,trylk</td>
-<td align="center">if $t0 != 0 ,goto  trylk</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">beqz</td>
-<td align="center">beqz $t0 ,trylk</td>
-<td align="center">if $t0 ==0, goto trylk</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">伪指令</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">not</td>
-<td align="center">not $1,$2</td>
-<td align="center">对应MIPS，nor $1,$2,$zero</td>
-<td align="center">或非操作</td>
-</tr>
-<tr>
-<td align="center">move</td>
-<td align="center">move $1,$2</td>
-<td align="center">对应MIPS , or $1,$2,$zero</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">li</td>
-<td align="center">li $1,$2</td>
-<td align="center">对应MIPS，ori $1,$zero,c</td>
-<td align="center">c为16位立即数</td>
-</tr>
-</tbody></table>
-<br>
-
-<p>会不断更新~</p>
-<p>若有错误，不吝指正~</p>
-
+<p><code>second2Doc.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Csecond2Doc 序列化</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Csecond2Doc::Serialize(CArchive&amp; ar)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (ar.IsStoring())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> 在此添加存储代码</span></span><br><span class="line">		ar &lt;&lt; str;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> 在此添加加载代码</span></span><br><span class="line">		ar &gt;&gt; str;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> Csecond2Doc::Set(CString &amp;str_type, CString start_x, CString start_y, CString end_x, CString end_y) &#123;</span><br><span class="line">	type_str = str_type;</span><br><span class="line">	start_point_x = start_x;</span><br><span class="line">	start_point_y = start_y;</span><br><span class="line">	end_point_x = end_x;</span><br><span class="line">	end_point_y = end_y;</span><br><span class="line">	str += type_str + start_x + start_y + end_x + end_y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -1164,12 +694,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/">MIPS寄存器和指令总结</a></p>
+  <p><span>本文标题:</span><a href="/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/">MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 yi 的个人博客">yi</a></p>
-  <p><span>发布时间:</span>2020年03月26日 - 21:50</p>
-  <p><span>最后更新:</span>2020年03月26日 - 21:50</p>
-  <p><span>原始链接:</span><a href="/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" title="MIPS寄存器和指令总结">http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2020/03/26/MIPS%E5%AF%84%E5%AD%98%E5%99%A8%E5%92%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年04月19日 - 11:07</p>
+  <p><span>最后更新:</span>2020年04月19日 - 11:07</p>
+  <p><span>原始链接:</span><a href="/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/" title="MFC第二次作业报告（对话框，文档视图，浮动菜单的操作）">http://lyvoid.site/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://lyvoid.site/2020/04/19/MFC%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E6%8A%A5%E5%91%8A%EF%BC%88%E5%AF%B9%E8%AF%9D%E6%A1%86%EF%BC%8C%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%EF%BC%8C%E6%B5%AE%E5%8A%A8%E8%8F%9C%E5%8D%95%E7%9A%84%E6%93%8D%E4%BD%9C%EF%BC%89/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -1199,7 +729,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+            <a href="/tags/MFC/" rel="tag"># MFC</a>
           
         </div>
       
@@ -1212,8 +742,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/26/%E5%AE%8C%E7%BE%8E%E8%A7%A3%E5%86%B3git%E4%B8%8B%E8%BD%BD%E6%85%A2%E9%97%AE%E9%A2%98%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%8C%E4%B8%8D%E7%94%A8%E6%94%B9host%EF%BC%89/" rel="next" title="完美解决git下载慢问题（亲测有效，不用改host）">
-                <i class="fa fa-chevron-left"></i> 完美解决git下载慢问题（亲测有效，不用改host）
+              <a href="/2020/04/19/MFC%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E3%80%81%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E4%B8%8E%E8%BF%90%E5%8A%A8%E5%B0%8F%E7%90%83%E5%AE%9E%E7%8E%B0/" rel="next" title="MFC鼠标事件、键盘事件、自定义消息与运动小球实现">
+                <i class="fa fa-chevron-left"></i> MFC鼠标事件、键盘事件、自定义消息与运动小球实现
               </a>
             
           </div>
@@ -1221,10 +751,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/26/G-S%E7%A8%B3%E5%AE%9A%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/" rel="prev" title="G-S稳定匹配算法详解">
-                G-S稳定匹配算法详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1369,7 +895,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#32个通用寄存器"><span class="nav-number">1.</span> <span class="nav-text">32个通用寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32个寄存器（详细）"><span class="nav-number">2.</span> <span class="nav-text">32个寄存器（详细）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIPS指令集（31条）"><span class="nav-number">3.</span> <span class="nav-text">MIPS指令集（31条）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他指令"><span class="nav-number">4.</span> <span class="nav-text">其他指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体效果"><span class="nav-number">1.</span> <span class="nav-text">整体效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1设计单文档应用程序，要求实现"><span class="nav-number">2.</span> <span class="nav-text">1设计单文档应用程序，要求实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）添加一个菜单项、工具栏按钮与快捷键"><span class="nav-number">2.1.</span> <span class="nav-text">（1）添加一个菜单项、工具栏按钮与快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#效果"><span class="nav-number">2.1.1.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码"><span class="nav-number">2.1.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）通过上述方式打开一个对话框其中有编辑框与按钮控件"><span class="nav-number">2.2.</span> <span class="nav-text">（2）通过上述方式打开一个对话框其中有编辑框与按钮控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框"><span class="nav-number">2.3.</span> <span class="nav-text">（3）在编辑框中输入文本，单击“确定”按钮，关闭对话框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）在客户区输出来自编辑框的文本"><span class="nav-number">2.4.</span> <span class="nav-text">（4）在客户区输出来自编辑框的文本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代码-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2设计单文档应用程序，要求实现："><span class="nav-number">3.</span> <span class="nav-text">2设计单文档应用程序，要求实现：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）单击鼠标右键，弹出浮动菜单-Line、-Ellipse、-Rectangle）"><span class="nav-number">3.1.</span> <span class="nav-text">（1）单击鼠标右键，弹出浮动菜单(Line、 Ellipse、 Rectangle）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）当选择某个菜单项时，在客户区输出相应的图形"><span class="nav-number">3.2.</span> <span class="nav-text">（2）当选择某个菜单项时，在客户区输出相应的图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）将图形类型、左上角坐标、右下角坐标保存到文档中"><span class="nav-number">3.3.</span> <span class="nav-text">（3）将图形类型、左上角坐标、右下角坐标保存到文档中</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.0.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
